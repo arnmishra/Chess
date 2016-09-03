@@ -1,7 +1,11 @@
+package Pieces;
+import Other.Board;
+import Other.Move;
+
 /**
 Parent Piece Class
 */
-public class Piece
+public abstract class Piece
 {
 	protected int team; // Team number 0 or 1.
 	
@@ -16,11 +20,11 @@ public class Piece
 	}
 	
 	/**
-	 * Set the team for this piece
+	 * Constructor that sets piece's team
 	 * 
 	 * @param teamNumber
 	 */
-	public void setTeam(int teamNumber)
+	public Piece(int teamNumber)
 	{
 		this.team = teamNumber;
 	}
@@ -32,14 +36,12 @@ public class Piece
 	 * @param board
 	 * @return whether it is valid
 	 */
-	public boolean isValidMove(Move move, Board board)
+	public abstract boolean isValidMove(Move move, Board board);
+	
+	public boolean onBoard(Move move, Board board)
 	{
 		int endX = move.getEndX();
 		int endY = move.getEndY();
-		if(board.positions[endY][endX] != null)
-		{
-			return false; // Ensure that no other piece holds this position. 
-		}
 		if(board.getWidth() < endX)
 		{
 			return false; // Ensure that this move doesn't put the piece off the board. 
@@ -50,4 +52,7 @@ public class Piece
 		}
 		return true;
 	}
+	
+	public abstract boolean hasNoLeaps(Move move, Board board);
+	
 }

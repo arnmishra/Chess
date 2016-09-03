@@ -1,3 +1,6 @@
+package Other;
+import Pieces.Piece;
+
 public class Board
 {
 	
@@ -39,5 +42,30 @@ public class Board
 	public void setLength(int length)
 	{
 		this.length = length;
+	}
+	
+	/**
+	 * Get positions on entire chess board
+	 * @return positions
+	 */
+	
+	public Piece[][] getPositions()
+	{
+		return this.positions;
+	}
+	
+	/**
+	 * Set the new positions of a chess board after a move
+	 * @param move
+	 */
+	public void setPositions(Move move)
+	{
+		int startX = move.getStartX();
+		int startY = move.getStartY();
+		int endX = move.getEndX();
+		int endY = move.getEndY();
+		
+		positions[endY][endX] = positions[startY][startX];
+		positions[startY][startX] = null;
 	}
 }

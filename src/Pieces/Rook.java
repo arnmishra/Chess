@@ -1,0 +1,29 @@
+package Pieces;
+import Other.Board;
+import Other.Move;
+
+public class Rook extends Piece
+{
+	public Rook(int teamNumber) {
+		super(teamNumber);
+	}
+
+	public boolean isValidMove(Move move, Board board)
+	{
+		boolean isOnBoard = onBoard(move, board);
+		int xMovement = Math.abs(move.getEndX() - move.getStartX());
+		int yMovement = Math.abs(move.getEndY() - move.getStartY());
+		if(isOnBoard && (xMovement == 0 || yMovement == 0))
+		{
+			return hasNoLeaps(move, board); //Check that the Rook only moved in one direction
+		}
+		else{
+			return false;
+		}
+	}
+
+	@Override
+	public boolean hasNoLeaps(Move move, Board board) {
+		return false;
+	}
+}

@@ -1,9 +1,11 @@
+package Other;
 public class Move
 {
 	protected int startX;
 	protected int endX;
 	protected int startY;
 	protected int endY;
+	protected int team;
 	
 	public int getStartX()
 	{
@@ -43,6 +45,11 @@ public class Move
 	public void setEndY(int endY)
 	{
 		this.endY = endY;
+	}
+	
+	public int getTeam()
+	{
+		return this.team;
 	}
 	
 }
