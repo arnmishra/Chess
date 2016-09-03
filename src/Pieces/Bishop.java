@@ -24,7 +24,26 @@ public class Bishop extends Piece
 
 	@Override
 	public boolean hasNoLeaps(Move move, Board board) {
-		// TODO Auto-generated method stub
-		return false;
+		Piece[][] positions = board.getPositions();
+		int startX = move.getStartX();
+		int endX = move.getEndX();
+		int startY = move.getStartY();
+		int endY = move.getEndY();
+		if(endX > startX && endY > startY)
+		{
+			return traverseDiagonal(startX, endX, startY, endY, positions);
+		}
+		else if(endX > startX && startY > endY)
+		{
+			return traverseDiagonal(startX, endX, endY, startY, positions);
+		}
+		else if(startX > endX && startY > endY)
+		{
+			return traverseDiagonal(endX, startX, endY, startY, positions);
+		}
+		else
+		{
+			return traverseDiagonal(endX, startX, startY, endY, positions);
+		}
 	}
 }

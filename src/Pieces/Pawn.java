@@ -64,10 +64,14 @@ public class Pawn extends Piece
 		Piece[][] positions = board.getPositions();
 		int startY = move.getStartY();
 		int endY = move.getEndY();
+		int column = move.getStartX();
 		if(endY > startY)
 		{
-			return true;
+			return traverseColumn(column, startY, endY, positions);
 		}
-		return false;
+		else
+		{
+			return traverseColumn(column, endY, startY, positions);
+		}
 	}
 }

@@ -23,7 +23,18 @@ public class Rook extends Piece
 	}
 
 	@Override
-	public boolean hasNoLeaps(Move move, Board board) {
-		return false;
+	public boolean hasNoLeaps(Move move, Board board)  {
+		Piece[][] positions = board.getPositions();
+		int startX = move.getStartX();
+		int endX = move.getEndX();
+		int row = move.getStartY();
+		if(endX > startX)
+		{
+			return traverseRow(row, startX, endX, positions);
+		}
+		else
+		{
+			return traverseRow(row, endX, startX, positions);
+		}
 	}
 }

@@ -24,7 +24,40 @@ public class Queen extends Piece
 
 	@Override
 	public boolean hasNoLeaps(Move move, Board board) {
-		// TODO Auto-generated method stub
-		return false;
+		Piece[][] positions = board.getPositions();
+		int startX = move.getStartX();
+		int endX = move.getEndX();
+		int startY = move.getStartY();
+		int endY = move.getEndY();
+		boolean checkRow, checkColumn, checkDiagonal;
+		if(endX > startX)
+		{
+			checkRow = traverseRow(startY, startX, endX, positions);
+			if(endY > startY)
+			{
+				checkColumn = traverseColumn(startX, startY, endY, positions);
+				checkDiagonal = traverseDiagonal(startX, endX, startY, endY, positions);
+			}
+			else
+			{
+				checkColumn = traverseColumn(startX, endY, startY, positions);
+				checkDiagonal = traverseDiagonal(startX, endX, endY, startY, positions);
+			}
+		}
+		else
+		{
+			checkRow = traverseRow(startY, startX, endX, positions);
+			if(endY > startY)
+			{
+				checkColumn = traverseColumn(startX, startY, endY, positions);
+				checkDiagonal = traverseDiagonal(endX, startX, startY, endY, positions);
+			}
+			else
+			{
+				checkColumn = traverseColumn(startX, endY, startY, positions);
+				checkDiagonal = traverseDiagonal(endX, startX, endY, startY, positions);
+			}
+		}
+		return checkRow && checkColumn && checkDiagonal;
 	}
 }

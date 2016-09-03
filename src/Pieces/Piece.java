@@ -53,6 +53,45 @@ public abstract class Piece
 		return true;
 	}
 	
+	public boolean traverseRow(int row, int smallX, int bigX, Piece[][] positions)
+	{
+		for(int i = smallX + 1; i < bigX; i++)
+		{
+			if(positions[row][i] != null)
+			{
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	public boolean traverseColumn(int column, int smallY, int bigY, Piece[][] positions)
+	{
+		for(int i = smallY + 1; i < bigY; i++)
+		{
+			if(positions[i][column] != null)
+			{
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	public boolean traverseDiagonal(int smallX, int bigX, int smallY, int bigY, Piece[][] positions)
+	{
+		for(int i = smallY + 1; i < bigY; i++)
+		{
+			for(int j = smallX + 1; i < bigX; i++)
+			{
+				if(positions[i][j] != null)
+					{
+						return false;
+					}
+			}
+		}
+		return true;
+	}
+	
 	public abstract boolean hasNoLeaps(Move move, Board board);
 	
 }
