@@ -1,6 +1,6 @@
-package Pieces;
-import Other.Board;
-import Other.Move;
+package Framework.Pieces;
+import Framework.Board;
+import Framework.Move;
 
 public class Pawn extends Piece
 {

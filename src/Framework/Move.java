@@ -1,4 +1,4 @@
-package Other;
+package Framework;
 public class Move
 {
 	protected int startX;

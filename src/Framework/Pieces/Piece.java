@@ -1,6 +1,6 @@
-package Pieces;
-import Other.Board;
-import Other.Move;
+package Framework.Pieces;
+import Framework.Board;
+import Framework.Move;
 
 /**
 Parent Piece Class
@@ -10,16 +10,6 @@ public abstract class Piece
 	protected int team; // Team number 0 or 1.
 	
 	/**
-	 * Get what team this piece is on
-	 * 
-	 * @return team number
-	 */
-	public int getTeam()
-	{
-		return this.team;
-	}
-	
-	/**
 	 * Constructor that sets piece's team
 	 * 
 	 * @param teamNumber
@@ -27,6 +17,16 @@ public abstract class Piece
 	public Piece(int teamNumber)
 	{
 		this.team = teamNumber;
+	}
+	
+	/**
+	 * Get what team this piece is on
+	 * 
+	 * @return team number
+	 */
+	public int getTeam()
+	{
+		return this.team;
 	}
 	
 	/**

@@ -1,5 +1,5 @@
-package Other;
-import Pieces.Piece;
+package Framework;
+import Framework.Pieces.*;
 
 public class Board
 {
@@ -7,6 +7,40 @@ public class Board
 	protected Piece[][] positions; // Holds positions of all pieces on the board.
 	protected int width;
 	protected int length;
+	
+	public Board(int width, int length)
+	{
+		this.width = width;
+		this.length = length;
+		this.positions = setBoard();
+		
+	}
+	
+	public Piece[][] setBoard()
+	{
+		Piece[][] positions = new Piece[this.length][this.width];
+		positions[0] = setPrimaryPieces(positions[0], 0);
+		positions[7] = setPrimaryPieces(positions[7], 1);
+		for(int i = 0; i < 8; i++)
+		{
+			positions[1][i] = new Pawn(0);
+			positions[6][i] = new Pawn(1);
+		}
+		return positions;
+	}
+	
+	public Piece[] setPrimaryPieces(Piece[] primaryRow, int team)
+	{
+		primaryRow[0] = new Rook(team);
+		primaryRow[1] = new Knight(team);
+		primaryRow[2] = new Bishop(team);
+		primaryRow[3] = new King(team);
+		primaryRow[4] = new Queen(team);
+		primaryRow[5] = new Bishop(team);
+		primaryRow[6] = new Knight(team);
+		primaryRow[7] = new Rook(team);
+		return primaryRow;
+	}
 	
 	/**
 	 * Get width of board
