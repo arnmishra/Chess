@@ -10,7 +10,7 @@ public class Queen extends Piece
 
 	public boolean isValidMove(Move move, Board board)
 	{
-		boolean isOnBoard = onBoard(move, board);
+		boolean isOnBoard = onAvailableSquare(move, board);
 		int xMovement = Math.abs(move.getEndX() - move.getStartX());
 		int yMovement = Math.abs(move.getEndY() - move.getStartY());
 		if(isOnBoard && (xMovement == 0 || yMovement == 0 || xMovement == yMovement))
@@ -29,35 +29,50 @@ public class Queen extends Piece
 		int endX = move.getEndX();
 		int startY = move.getStartY();
 		int endY = move.getEndY();
-		boolean checkRow, checkColumn, checkDiagonal;
+		boolean noLeaps;
 		if(endX > startX)
 		{
-			checkRow = traverseRow(startY, startX, endX, positions);
-			if(endY > startY)
+			if(endY == startY)
 			{
-				checkColumn = traverseColumn(startX, startY, endY, positions);
-				checkDiagonal = traverseDiagonal(startX, endX, startY, endY, positions);
+				noLeaps = traverseRow(startY, startX, endX, positions);
+				
+			}
+			else if(endY > startY)
+			{
+				noLeaps = traverseDiagonal(startX, endX, startY, endY, positions);
 			}
 			else
 			{
-				checkColumn = traverseColumn(startX, endY, startY, positions);
-				checkDiagonal = traverseDiagonal(startX, endX, endY, startY, positions);
+				noLeaps = traverseDiagonal(startX, endX, endY, startY, positions);
+			}
+		}
+		else if(endX < startX)
+		{
+			if(endY == startY)
+			{
+				noLeaps = traverseRow(startY, endX, startX, positions);
+				
+			}
+			else if(endY > startY)
+			{
+				noLeaps = traverseDiagonal(endX, startX, startY, endY, positions);
+			}
+			else
+			{
+				noLeaps = traverseDiagonal(endX, startX, endY, startY, positions);
 			}
 		}
 		else
 		{
-			checkRow = traverseRow(startY, startX, endX, positions);
 			if(endY > startY)
 			{
-				checkColumn = traverseColumn(startX, startY, endY, positions);
-				checkDiagonal = traverseDiagonal(endX, startX, startY, endY, positions);
+				noLeaps = traverseColumn(startX, startY, endY, positions);
 			}
 			else
 			{
-				checkColumn = traverseColumn(startX, endY, startY, positions);
-				checkDiagonal = traverseDiagonal(endX, startX, endY, startY, positions);
+				noLeaps = traverseColumn(startX, endY, startY, positions);
 			}
 		}
-		return checkRow && checkColumn && checkDiagonal;
+		return noLeaps;
 	}
 }

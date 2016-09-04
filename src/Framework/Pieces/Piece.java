@@ -38,7 +38,7 @@ public abstract class Piece
 	 */
 	public abstract boolean isValidMove(Move move, Board board);
 	
-	public boolean onBoard(Move move, Board board)
+	public boolean onAvailableSquare(Move move, Board board)
 	{
 		int endX = move.getEndX();
 		int endY = move.getEndY();
@@ -46,9 +46,22 @@ public abstract class Piece
 		{
 			return false; // Ensure that this move doesn't put the piece off the board. 
 		}
-		else if(board.getLength() > endY)
+		else if(board.getLength() < endY)
 		{
 			return false; // Ensure that this move doesn't put the piece off the board. 
+		}
+		
+		Piece[][] positions = board.getPositions();
+		if(positions[endY][endX] != null)
+		{
+			int startX = move.getStartX();
+			int startY = move.getStartY();
+			int replacedPieceTeam = positions[endY][endX].getTeam();
+			int currentPieceTeam = positions[startY][startX].getTeam();
+			if(replacedPieceTeam == currentPieceTeam)
+			{
+				return false;
+			}
 		}
 		return true;
 	}

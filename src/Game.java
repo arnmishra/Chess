@@ -1,6 +1,7 @@
 import java.util.*;
 
 import Framework.Board;
+import Framework.Move;
 import Framework.Pieces.*;
 
 public class Game
@@ -10,25 +11,51 @@ public class Game
 		Board board = new Board(8,8);
 		printBoard(board);
 		Piece[][] positions = board.getPositions(); 
+		Scanner readInput = new Scanner(System.in);
+		int turnTeamNumber = 0;
 		while(true)
 		{
-			int[] inputs = getInputs();
-			if(positions[inputs[0]][inputs[1]] != null)
+			int[] inputs = getInputs(readInput);
+			if(positions[inputs[1]][inputs[0]] != null)
 			{
-				Piece piece = positions[inputs[0]][inputs[1]];
-				System.out.println("");
-				printPiece(piece);
+				Piece piece = positions[inputs[1]][inputs[0]];
+				if(piece.getTeam() != turnTeamNumber)
+				{
+					System.out.println("It is team " + turnTeamNumber + "'s turn");
+					continue;
+				}
+				Move move = new Move(inputs[0], inputs[1], inputs[2], inputs[3], turnTeamNumber);
+				boolean isValid = piece.isValidMove(move, board);
+				if(isValid)
+				{
+					board.setPositions(move);
+					if(turnTeamNumber == 0)
+					{
+						turnTeamNumber = 1;
+					}
+					else
+					{
+						turnTeamNumber = 0;
+					}
+				}
+				else
+				{
+					System.out.println("Invalid Move");
+					continue;
+				}
 			}
 			else
 			{
+				System.out.println("No Piece at that Start Coordinate");
 				continue;
 			}
+			printBoard(board);
+			
 		}
 	}
 	
-	public static int[] getInputs()
+	public static int[] getInputs(Scanner readInput)
 	{
-		Scanner readInput = new Scanner(System.in);
 		System.out.print("StartX: ");
 		int startX = readInput.nextInt();
 		System.out.print("StartY: ");

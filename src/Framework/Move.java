@@ -7,14 +7,17 @@ public class Move
 	protected int endY;
 	protected int team;
 	
+	public Move(int startX, int startY, int endX, int endY, int team){
+		this.startX = startX;
+		this.startY = startY;
+		this.endX = endX;
+		this.endY = endY;
+		this.team = team;
+	}
+	
 	public int getStartX()
 	{
 		return this.startX;
-	}
-	
-	public void setStartX(int startX)
-	{
-		this.startX = startX;
 	}
 	
 	public int getEndX()
@@ -22,29 +25,14 @@ public class Move
 		return this.endX;
 	}
 	
-	public void setEndX(int endX)
-	{
-		this.endX = endX;
-	}
-	
 	public int getStartY()
 	{
 		return this.startY;
 	}
 	
-	public void setStartY(int startY)
-	{
-		this.startY = startY;
-	}
-	
 	public int getEndY()
 	{
 		return this.endY;
-	}
-	
-	public void setEndY(int endY)
-	{
-		this.endY = endY;
 	}
 	
 	public int getTeam()

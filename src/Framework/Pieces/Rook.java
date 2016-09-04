@@ -10,7 +10,7 @@ public class Rook extends Piece
 
 	public boolean isValidMove(Move move, Board board)
 	{
-		boolean isOnBoard = onBoard(move, board);
+		boolean isOnBoard = onAvailableSquare(move, board);
 		int xMovement = Math.abs(move.getEndX() - move.getStartX());
 		int yMovement = Math.abs(move.getEndY() - move.getStartY());
 		if(isOnBoard && (xMovement == 0 || yMovement == 0))
@@ -27,14 +27,23 @@ public class Rook extends Piece
 		Piece[][] positions = board.getPositions();
 		int startX = move.getStartX();
 		int endX = move.getEndX();
-		int row = move.getStartY();
+		int startY = move.getStartY();
+		int endY = move.getEndY();
 		if(endX > startX)
 		{
-			return traverseRow(row, startX, endX, positions);
+			return traverseRow(startY, startX, endX, positions);
+		}
+		else if(startX < endX)
+		{
+			return traverseRow(startY, endX, startX, positions);
+		}
+		else if(endY > startY)
+		{
+			return traverseColumn(startX, startY, endY, positions);
 		}
 		else
 		{
-			return traverseRow(row, endX, startX, positions);
+			return traverseColumn(startX, endY, startY, positions);
 		}
 	}
 }

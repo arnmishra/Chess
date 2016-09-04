@@ -11,7 +11,7 @@ public class Pawn extends Piece
 	public boolean isValidMove(Move move, Board board)
 	{
 		boolean isValid;
-		boolean isOnBoard = onBoard(move, board);
+		boolean isOnBoard = onAvailableSquare(move, board);
 		int yDelta = move.getEndY() - move.getStartY();
 		boolean isForward = checkForward(move, yDelta);
 		boolean firstMove = (move.getStartY() == 1 || move.getStartY() == board.getLength()-2);
@@ -29,7 +29,8 @@ public class Pawn extends Piece
 		{
 			isValid = opponentPiece(move, board);
 		}
-		else{
+		else
+		{
 			isValid = false;
 		}
 		return isValid;
