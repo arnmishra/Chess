@@ -28,18 +28,18 @@ public class Game
 			return turnTeamNumber;
 		}
 		Piece piece = positions[inputs[1]][inputs[0]];
-		if(piece.getTeam() != turnTeamNumber)
+		if(piece.getTeamNumber() != turnTeamNumber)
 		{
 			System.out.println("It is team " + turnTeamNumber + "'s turn");
 			return turnTeamNumber;
 		}
 		Move move = new Move(inputs[0], inputs[1], inputs[2], inputs[3], turnTeamNumber);
 		
-		/**if(board.getCheck(turnTeamNumber, move))
+		if(board.getCheck(move, board))
 		{
 			System.out.println("Invalid Move: Your King is in Check");
 			return turnTeamNumber;
-		}*/
+		}
 		boolean isValid = piece.isValidMove(move, board);
 		if(!isValid)
 		{
@@ -48,20 +48,7 @@ public class Game
 		}
 		board.setPositions(move);
 		printBoard(board);
-		return toggleTeam(turnTeamNumber);
-	}
-	
-	public static int toggleTeam(int turnTeamNumber)
-	{
-		if(turnTeamNumber == 0)
-		{
-			turnTeamNumber = 1;
-		}
-		else
-		{
-			turnTeamNumber = 0;
-		}
-		return turnTeamNumber;
+		return board.toggleTeam(turnTeamNumber);
 	}
 
 	public static int[] getInputs(Scanner readInput)
@@ -81,17 +68,19 @@ public class Game
 	public static void printBoard(Board board)
 	{
 		Piece[][] positions = board.getPositions();
-		System.out.println("- - - - - - - - - - - - -");
+		System.out.println("   0  1  2  3  4  5  6  7 ");
+		System.out.println("  - - - - - - - - - - - - -");
 		for(int i = 0; i < board.getLength(); i++)
 		{
-			System.out.print("|");
+			System.out.print(i);
+			System.out.print(" |");
 			for(int j = 0; j < board.getWidth(); j++)
 			{
 				printPiece(positions[i][j]);
 				System.out.print("|");
 			}
 			System.out.println("");
-			System.out.println("- - - - - - - - - - - - -");
+			System.out.println("  - - - - - - - - - - - - -");
 		}
 	}
 	
@@ -103,7 +92,7 @@ public class Game
 		}
 		else
 		{
-			int team = piece.getTeam();
+			int team = piece.getTeamNumber();
 			if(piece instanceof Rook)
 			{
 				System.out.print(team + "R");

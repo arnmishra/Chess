@@ -1,11 +1,12 @@
 package Framework.Pieces;
 import Framework.Board;
 import Framework.Move;
+import Framework.Team;
 
 public class Rook extends Piece
 {
-	public Rook(int teamNumber) {
-		super(teamNumber);
+	public Rook(Team team) {
+		super(team);
 	}
 
 	public boolean isValidMove(Move move, Board board)

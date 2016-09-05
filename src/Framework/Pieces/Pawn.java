@@ -1,11 +1,12 @@
 package Framework.Pieces;
 import Framework.Board;
 import Framework.Move;
+import Framework.Team;
 
 public class Pawn extends Piece
 {
-	public Pawn(int teamNumber) {
-		super(teamNumber);
+	public Pawn(Team team) {
+		super(team);
 	}
 
 	public boolean isValidMove(Move move, Board board)
@@ -53,7 +54,7 @@ public class Pawn extends Piece
 		int endY = move.getEndY();
 		int team = move.getTeam();
 		Piece currentPiece = positions[endY][endX];
-		if(currentPiece != null && currentPiece.getTeam() != team)
+		if(currentPiece != null && currentPiece.getTeamNumber() != team)
 		{
 			return true;
 		}

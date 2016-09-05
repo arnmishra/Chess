@@ -6,7 +6,18 @@ import Framework.Pieces.*;
 public class Team
 {
 	private boolean inCheck;
+	private int teamNumber;
 	private List<Piece> pieces = new ArrayList<Piece>();
+	
+	public Team(int teamNumber)
+	{
+		this.teamNumber = teamNumber;
+	}
+	
+	public int getTeamNumber()
+	{
+		return this.teamNumber;
+	}
 	
 	public boolean getInCheck()
 	{

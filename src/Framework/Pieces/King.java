@@ -1,11 +1,12 @@
 package Framework.Pieces;
 import Framework.Board;
 import Framework.Move;
+import Framework.Team;
 
 public class King extends Piece
 {
-	public King(int teamNumber) {
-		super(teamNumber);
+	public King(Team team) {
+		super(team);
 	}
 
 	public boolean isValidMove(Move move, Board board)

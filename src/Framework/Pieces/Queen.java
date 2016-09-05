@@ -1,11 +1,12 @@
 package Framework.Pieces;
 import Framework.Board;
 import Framework.Move;
+import Framework.Team;
 
 public class Queen extends Piece
 {
-	public Queen(int teamNumber) {
-		super(teamNumber);
+	public Queen(Team team) {
+		super(team);
 	}
 
 	public boolean isValidMove(Move move, Board board)
@@ -37,13 +38,9 @@ public class Queen extends Piece
 				noLeaps = traverseRow(startY, startX, endX, positions);
 				
 			}
-			else if(endY > startY)
-			{
-				noLeaps = traverseDiagonal(startX, endX, startY, endY, positions);
-			}
 			else
 			{
-				noLeaps = traverseDiagonal(startX, endX, endY, startY, positions);
+				noLeaps = traverseDiagonal(startX, endX, startY, endY, positions);
 			}
 		}
 		else if(endX < startX)
@@ -53,13 +50,9 @@ public class Queen extends Piece
 				noLeaps = traverseRow(startY, endX, startX, positions);
 				
 			}
-			else if(endY > startY)
-			{
-				noLeaps = traverseDiagonal(endX, startX, startY, endY, positions);
-			}
 			else
 			{
-				noLeaps = traverseDiagonal(endX, startX, endY, startY, positions);
+				noLeaps = traverseDiagonal(startX, endX, startY, endY, positions);
 			}
 		}
 		else

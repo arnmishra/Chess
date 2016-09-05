@@ -1,11 +1,12 @@
 package Framework.Pieces;
 import Framework.Board;
 import Framework.Move;
+import Framework.Team;
 
 public class Bishop extends Piece
 {
-	public Bishop(int teamNumber) {
-		super(teamNumber);
+	public Bishop(Team team) {
+		super(team);
 	}
 
 	public boolean isValidMove(Move move, Board board)
@@ -29,21 +30,6 @@ public class Bishop extends Piece
 		int endX = move.getEndX();
 		int startY = move.getStartY();
 		int endY = move.getEndY();
-		if(endX > startX && endY > startY)
-		{
-			return traverseDiagonal(startX, endX, startY, endY, positions);
-		}
-		else if(endX > startX && startY > endY)
-		{
-			return traverseDiagonal(startX, endX, endY, startY, positions);
-		}
-		else if(startX > endX && startY > endY)
-		{
-			return traverseDiagonal(endX, startX, endY, startY, positions);
-		}
-		else
-		{
-			return traverseDiagonal(endX, startX, startY, endY, positions);
-		}
+		return traverseDiagonal(startX, endX, startY, endY, positions);
 	}
 }
