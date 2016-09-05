@@ -4,9 +4,11 @@ import Framework.Pieces.*;
 public class Board
 {
 	
-	protected Piece[][] positions; // Holds positions of all pieces on the board.
-	protected int width;
-	protected int length;
+	private Piece[][] positions; // Holds positions of all pieces on the board.
+	private int width;
+	private int length;
+	private boolean zeroCheck;
+	private boolean oneCheck;
 	
 	public Board(int width, int length)
 	{
@@ -86,6 +88,16 @@ public class Board
 	public Piece[][] getPositions()
 	{
 		return this.positions;
+	}
+	
+	public boolean getZeroCheck()
+	{
+		return this.zeroCheck;
+	}
+	
+	public boolean getOneCheck()
+	{
+		return this.oneCheck;
 	}
 	
 	/**

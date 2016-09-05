@@ -15,43 +15,57 @@ public class Game
 		int turnTeamNumber = 0;
 		while(true)
 		{
-			int[] inputs = getInputs(readInput);
-			if(positions[inputs[1]][inputs[0]] != null)
-			{
-				Piece piece = positions[inputs[1]][inputs[0]];
-				if(piece.getTeam() != turnTeamNumber)
-				{
-					System.out.println("It is team " + turnTeamNumber + "'s turn");
-					continue;
-				}
-				Move move = new Move(inputs[0], inputs[1], inputs[2], inputs[3], turnTeamNumber);
-				boolean isValid = piece.isValidMove(move, board);
-				if(isValid)
-				{
-					board.setPositions(move);
-					if(turnTeamNumber == 0)
-					{
-						turnTeamNumber = 1;
-					}
-					else
-					{
-						turnTeamNumber = 0;
-					}
-				}
-				else
-				{
-					System.out.println("Invalid Move");
-					continue;
-				}
-			}
-			else
-			{
-				System.out.println("No Piece at that Start Coordinate");
-				continue;
-			}
-			printBoard(board);
-			
+			playMove(board, positions, readInput, turnTeamNumber);
 		}
+	}
+	
+	public static void playMove(Board board, Piece[][] positions, Scanner readInput, int turnTeamNumber)
+	{
+		int[] inputs = getInputs(readInput);
+		if(positions[inputs[1]][inputs[0]] == null)
+		{
+			System.out.println("No Piece at that Start Coordinate");
+			return;
+		}
+		Piece piece = positions[inputs[1]][inputs[0]];
+		if(piece.getTeam() != turnTeamNumber)
+		{
+			System.out.println("It is team " + turnTeamNumber + "'s turn");
+			return;
+		}
+		Move move = new Move(inputs[0], inputs[1], inputs[2], inputs[3], turnTeamNumber);
+		
+		if((turnTeamNumber == 0 && board.getZeroCheck()) || (turnTeamNumber == 1 && board.getOneCheck()))
+		{
+			boolean validMove = checkProtectKing(positions, move);
+			if(!validMove)
+			{
+				System.out.println(turnTeamNumber + "'s King is in Check");
+				return;
+			}
+		}
+		boolean isValid = piece.isValidMove(move, board);
+		if(!isValid)
+		{
+			System.out.println("Invalid Move");
+			return;
+		}
+		
+		board.setPositions(move);
+		if(turnTeamNumber == 0)
+		{
+			turnTeamNumber = 1;
+		}
+		else
+		{
+			turnTeamNumber = 0;
+		}
+		printBoard(board);
+	}
+	
+	public static boolean checkProtectKing(Piece[][] checkPositions, Move checkMove)
+	{
+		return false;
 	}
 	
 	public static int[] getInputs(Scanner readInput)

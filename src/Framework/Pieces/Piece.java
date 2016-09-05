@@ -7,7 +7,7 @@ Parent Piece Class
 */
 public abstract class Piece
 {
-	protected int team; // Team number 0 or 1.
+	private int team; // Team number 0 or 1.
 	
 	/**
 	 * Constructor that sets piece's team
@@ -106,5 +106,10 @@ public abstract class Piece
 	}
 	
 	public abstract boolean hasNoLeaps(Move move, Board board);
+	
+	public boolean findCheck(Move move, Board board)
+	{
+		return false;
+	}
 	
 }

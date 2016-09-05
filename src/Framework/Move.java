@@ -1,11 +1,11 @@
 package Framework;
 public class Move
 {
-	protected int startX;
-	protected int endX;
-	protected int startY;
-	protected int endY;
-	protected int team;
+	private int startX;
+	private int endX;
+	private int startY;
+	private int endY;
+	private int team;
 	
 	public Move(int startX, int startY, int endX, int endY, int team){
 		this.startX = startX;
