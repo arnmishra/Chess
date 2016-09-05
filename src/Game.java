@@ -15,43 +15,44 @@ public class Game
 		int turnTeamNumber = 0;
 		while(true)
 		{
-			playMove(board, positions, readInput, turnTeamNumber);
+			turnTeamNumber = playMove(board, positions, readInput, turnTeamNumber);
 		}
 	}
 	
-	public static void playMove(Board board, Piece[][] positions, Scanner readInput, int turnTeamNumber)
+	public static int playMove(Board board, Piece[][] positions, Scanner readInput, int turnTeamNumber)
 	{
 		int[] inputs = getInputs(readInput);
 		if(positions[inputs[1]][inputs[0]] == null)
 		{
 			System.out.println("No Piece at that Start Coordinate");
-			return;
+			return turnTeamNumber;
 		}
 		Piece piece = positions[inputs[1]][inputs[0]];
 		if(piece.getTeam() != turnTeamNumber)
 		{
 			System.out.println("It is team " + turnTeamNumber + "'s turn");
-			return;
+			return turnTeamNumber;
 		}
 		Move move = new Move(inputs[0], inputs[1], inputs[2], inputs[3], turnTeamNumber);
 		
-		if((turnTeamNumber == 0 && board.getZeroCheck()) || (turnTeamNumber == 1 && board.getOneCheck()))
+		/**if(board.getCheck(turnTeamNumber, move))
 		{
-			boolean validMove = checkProtectKing(positions, move);
-			if(!validMove)
-			{
-				System.out.println(turnTeamNumber + "'s King is in Check");
-				return;
-			}
-		}
+			System.out.println("Invalid Move: Your King is in Check");
+			return turnTeamNumber;
+		}*/
 		boolean isValid = piece.isValidMove(move, board);
 		if(!isValid)
 		{
 			System.out.println("Invalid Move");
-			return;
+			return turnTeamNumber;
 		}
-		
 		board.setPositions(move);
+		printBoard(board);
+		return toggleTeam(turnTeamNumber);
+	}
+	
+	public static int toggleTeam(int turnTeamNumber)
+	{
 		if(turnTeamNumber == 0)
 		{
 			turnTeamNumber = 1;
@@ -60,14 +61,9 @@ public class Game
 		{
 			turnTeamNumber = 0;
 		}
-		printBoard(board);
+		return turnTeamNumber;
 	}
-	
-	public static boolean checkProtectKing(Piece[][] checkPositions, Move checkMove)
-	{
-		return false;
-	}
-	
+
 	public static int[] getInputs(Scanner readInput)
 	{
 		System.out.print("StartX: ");

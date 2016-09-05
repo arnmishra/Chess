@@ -1,4 +1,6 @@
 package Framework;
+import Framework.Move;
+import Framework.Team;
 import Framework.Pieces.*;
 
 public class Board
@@ -7,8 +9,8 @@ public class Board
 	private Piece[][] positions; // Holds positions of all pieces on the board.
 	private int width;
 	private int length;
-	private boolean zeroCheck;
-	private boolean oneCheck;
+	private Team team0 = new Team();
+	private Team team1 = new Team();
 	
 	public Board(int width, int length)
 	{
@@ -28,6 +30,10 @@ public class Board
 			positions[1][i] = new Pawn(0);
 			positions[6][i] = new Pawn(1);
 		}
+		team0.addPieces(positions[0]);
+		team0.addPieces(positions[1]);
+		team1.addPieces(positions[7]);
+		team1.addPieces(positions[6]);
 		return positions;
 	}
 	
@@ -88,16 +94,6 @@ public class Board
 	public Piece[][] getPositions()
 	{
 		return this.positions;
-	}
-	
-	public boolean getZeroCheck()
-	{
-		return this.zeroCheck;
-	}
-	
-	public boolean getOneCheck()
-	{
-		return this.oneCheck;
 	}
 	
 	/**

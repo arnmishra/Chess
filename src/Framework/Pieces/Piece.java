@@ -42,11 +42,11 @@ public abstract class Piece
 	{
 		int endX = move.getEndX();
 		int endY = move.getEndY();
-		if(board.getWidth() < endX)
+		if(board.getWidth() <= endX)
 		{
 			return false; // Ensure that this move doesn't put the piece off the board. 
 		}
-		else if(board.getLength() < endY)
+		else if(board.getLength() <= endY)
 		{
 			return false; // Ensure that this move doesn't put the piece off the board. 
 		}
