@@ -84,7 +84,7 @@ public class Pawn extends Piece
 	 */
 	public boolean checkForward(Move move, int yDelta)
 	{
-		int team = move.getTeam();
+		int team = move.getTeamNumber();
 		if((team == 0 && yDelta > 0) || (team == 1 && yDelta < 0))
 		{
 			return true;
@@ -103,7 +103,7 @@ public class Pawn extends Piece
 		Piece[][] positions = board.getPositions();
 		int endX = move.getEndX();
 		int endY = move.getEndY();
-		int team = move.getTeam();
+		int team = move.getTeamNumber();
 		Piece currentPiece = positions[endY][endX];
 		if(currentPiece != null && currentPiece.getTeamNumber() != team)
 		{

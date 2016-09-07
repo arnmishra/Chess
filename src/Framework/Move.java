@@ -63,7 +63,7 @@ public class Move
 	 * Getter for move's team number.
 	 * @return move's team number.
 	 */
-	public int getTeam()
+	public int getTeamNumber()
 	{
 		return this.team;
 	}

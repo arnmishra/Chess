@@ -41,6 +41,15 @@ public class Team
 	}
 	
 	/**
+	 * Adds a single piece to the active piece list for the team.
+	 * @param piece
+	 */
+	public void addPiece(Piece piece)
+	{
+		pieces.add(piece);
+	}
+	
+	/**
 	 * Removes a piece from the array of pieces after capture.
 	 * @param piece
 	 */

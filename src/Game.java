@@ -18,7 +18,7 @@ public class Game
 	public static void main(String args[])
 	{
 		Board board = new Board(8,8);
-		printBoard(board);
+		board.printBoard();
 		Piece[][] positions = board.getPositions(); 
 		Scanner readInput = new Scanner(System.in);
 		int turnTeamNumber = 0;
@@ -70,7 +70,7 @@ public class Game
 			return turnTeamNumber;
 		}
 		board.setPositions(move);
-		printBoard(board);
+		board.printBoard();
 		boolean isCheckMate = board.getCheckMate(turnTeamNumber);
 		if(isCheckMate)
 		{
@@ -97,70 +97,6 @@ public class Game
 		int endY = readInput.nextInt();
 		int[] inputs = {startX, startY, endX, endY};
 		return inputs;
-	}
-	
-	/**
-	 * Helper function to print out the board.
-	 * @param board
-	 */
-	public static void printBoard(Board board)
-	{
-		Piece[][] positions = board.getPositions();
-		System.out.println("   0  1  2  3  4  5  6  7 ");
-		System.out.println("  - - - - - - - - - - - - -");
-		for(int i = board.getLength() - 1; i >= 0; i--)
-		{
-			System.out.print(i + " |");
-			for(int j = 0; j < board.getWidth(); j++)
-			{
-				printPiece(positions[i][j]);
-				System.out.print("|");
-			}
-			System.out.print(" " + i);
-			System.out.println("");
-			System.out.println("  - - - - - - - - - - - - -");
-		}
-		System.out.println("   0  1  2  3  4  5  6  7 ");
-	}
-	
-	/**
-	 * Helper function to print out each piece on the board.
-	 * @param piece
-	 */
-	public static void printPiece(Piece piece)
-	{
-		if(piece == null)
-		{
-			System.out.print("  ");
-		}
-		else
-		{
-			int team = piece.getTeamNumber();
-			if(piece instanceof Rook)
-			{
-				System.out.print(team + "R");
-			}
-			else if(piece instanceof Knight)
-			{
-				System.out.print(team + "N");
-			}
-			else if(piece instanceof Bishop)
-			{
-				System.out.print(team + "B");
-			}
-			else if(piece instanceof Queen)
-			{
-				System.out.print(team + "Q");
-			}
-			else if(piece instanceof King)
-			{
-				System.out.print(team + "K");
-			}
-			else if(piece instanceof Pawn)
-			{
-				System.out.print(team + "P");
-			}
-		}
 	}
 	
 }
