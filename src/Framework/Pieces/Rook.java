@@ -1,4 +1,7 @@
 package Framework.Pieces;
+import java.util.ArrayList;
+import java.util.List;
+
 import Framework.Board;
 import Framework.Move;
 import Framework.Team;
@@ -14,7 +17,7 @@ public class Rook extends Piece
 		boolean isOnBoard = onAvailableSquare(move, board);
 		int xMovement = Math.abs(move.getEndX() - move.getStartX());
 		int yMovement = Math.abs(move.getEndY() - move.getStartY());
-		if(isOnBoard && (xMovement == 0 || yMovement == 0))
+		if(isOnBoard && (xMovement == 0 ^ yMovement == 0))
 		{
 			return hasNoLeaps(move, board); //Check that the Rook only moved in one direction
 		}
@@ -46,5 +49,19 @@ public class Rook extends Piece
 		{
 			return traverseColumn(startX, endY, startY, positions);
 		}
+	}
+
+	@Override
+	public List<Move> findAllMoves(Board board) {
+		int xValue = this.getXValue();
+		int yValue = this.getYValue();
+		
+		List<Move> possibleMoves = new ArrayList<Move>();
+		possibleMoves.addAll(getMoves(board, 1, 0, xValue, yValue));
+		possibleMoves.addAll(getMoves(board, -1, 0, xValue, yValue));
+		possibleMoves.addAll(getMoves(board, 0, 1, xValue, yValue));
+		possibleMoves.addAll(getMoves(board, 0, -1, xValue, yValue));
+		
+		return possibleMoves;
 	}
 }

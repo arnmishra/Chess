@@ -1,4 +1,6 @@
 package Framework.Pieces;
+import java.util.*;
+
 import Framework.Board;
 import Framework.Move;
 import Framework.Team;
@@ -70,14 +72,14 @@ public abstract class Piece
 	{
 		int endX = move.getEndX();
 		int endY = move.getEndY();
-		if(board.getWidth() <= endX)
+		if(board.getWidth() <= endX || endX < 0)
 		{
-			System.out.print("Off width of board: ");
+			//System.out.print("Off width of board: ");
 			return false; // Ensure that this move doesn't put the piece off the board. 
 		}
-		else if(board.getLength() <= endY)
+		else if(board.getLength() <= endY || endY < 0)
 		{
-			System.out.print("Off length of board: ");
+			//System.out.print("Off length of board: ");
 			return false; // Ensure that this move doesn't put the piece off the board. 
 		}
 		
@@ -90,7 +92,7 @@ public abstract class Piece
 			int currentPieceTeam = positions[startY][startX].getTeamNumber();
 			if(replacedPieceTeam == currentPieceTeam)
 			{
-				System.out.print("End coordinates occupied by same team: ");
+				//System.out.print("End coordinates occupied by same team: ");
 				return false;
 			}
 		}
@@ -125,7 +127,6 @@ public abstract class Piece
 	{
 		int xDirection = getDirection(startX, endX);
 		int yDirection = getDirection(startY, endY);
-		//System.out.println(startX + " " + endX + " " + startY + " " + endY + " " + xDirection + " " + yDirection);
 		int i = startY + yDirection;
 		int j = startX + xDirection;
 		while(endY != i || endX != j)
@@ -154,9 +155,27 @@ public abstract class Piece
 	
 	public abstract boolean hasNoLeaps(Move move, Board board);
 	
-	public boolean findCheck(Move move, Board board)
+	public abstract List<Move> findAllMoves(Board board);
+	
+	public List<Move> getMoves(Board board, int xDirection, int yDirection, int xValue, int yValue)
 	{
-		return false;
+		int width = board.getWidth();
+		int length = board.getLength();
+		int changeX = xValue + xDirection;
+		int changeY = yValue + yDirection;
+		List<Move> possibleMoves = new ArrayList<Move>();
+		while(changeX < width && changeX >=0 && changeY < length && changeY >= 0)
+		{
+			Move newMove = new Move(xValue, yValue, changeX, changeY, this.getTeamNumber());
+			boolean isValid = isValidMove(newMove, board);
+			if(isValid)
+			{
+				possibleMoves.add(newMove);
+			}
+			changeX += xDirection;
+			changeY += yDirection;
+		}
+		return possibleMoves;
 	}
 	
 }

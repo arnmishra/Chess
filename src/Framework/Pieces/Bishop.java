@@ -1,4 +1,7 @@
 package Framework.Pieces;
+import java.util.ArrayList;
+import java.util.List;
+
 import Framework.Board;
 import Framework.Move;
 import Framework.Team;
@@ -31,5 +34,19 @@ public class Bishop extends Piece
 		int startY = move.getStartY();
 		int endY = move.getEndY();
 		return traverseDiagonal(startX, endX, startY, endY, positions);
+	}
+
+	@Override
+	public List<Move> findAllMoves(Board board) {
+		int xValue = this.getXValue();
+		int yValue = this.getYValue();
+		
+		List<Move> possibleMoves = new ArrayList<Move>();
+		possibleMoves.addAll(getMoves(board, 1, 1, xValue, yValue));
+		possibleMoves.addAll(getMoves(board, 1, -1, xValue, yValue));
+		possibleMoves.addAll(getMoves(board, -1, 1, xValue, yValue));
+		possibleMoves.addAll(getMoves(board, -1, -1, xValue, yValue));
+		
+		return possibleMoves;
 	}
 }

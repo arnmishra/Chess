@@ -4,8 +4,17 @@ import Framework.Board;
 import Framework.Move;
 import Framework.Pieces.*;
 
+/**
+ * The Game class runs the primary game including developing the UI.
+ * @author arnavmishra
+ *
+ */
 public class Game
 {
+	/**
+	 * Main function to set-up the game and then start the moves.
+	 * @param args
+	 */
 	public static void main(String args[])
 	{
 		Board board = new Board(8,8);
@@ -13,14 +22,28 @@ public class Game
 		Piece[][] positions = board.getPositions(); 
 		Scanner readInput = new Scanner(System.in);
 		int turnTeamNumber = 0;
-		while(true)
+		while(turnTeamNumber != -1)
 		{
 			turnTeamNumber = playMove(board, positions, readInput, turnTeamNumber);
 		}
 	}
 	
+	/**
+	 * Method to run each move including checking for check, checkmate, stalemate, and validity of move.
+	 * @param board
+	 * @param positions
+	 * @param readInput
+	 * @param turnTeamNumber
+	 * @return which team's turn it is. -1 when the game is done.
+	 */
 	public static int playMove(Board board, Piece[][] positions, Scanner readInput, int turnTeamNumber)
 	{
+		boolean isStaleMate = board.getStaleMate(turnTeamNumber);
+		if(isStaleMate)
+		{
+			System.out.println("Stale Mate!");
+			return -1;
+		}
 		int[] inputs = getInputs(readInput);
 		if(positions[inputs[1]][inputs[0]] == null)
 		{
@@ -35,7 +58,7 @@ public class Game
 		}
 		Move move = new Move(inputs[0], inputs[1], inputs[2], inputs[3], turnTeamNumber);
 		
-		if(board.getCheck(move, board))
+		if(board.getCheck(move))
 		{
 			System.out.println("Invalid Move: Your King is in Check");
 			return turnTeamNumber;
@@ -48,9 +71,20 @@ public class Game
 		}
 		board.setPositions(move);
 		printBoard(board);
+		boolean isCheckMate = board.getCheckMate(turnTeamNumber);
+		if(isCheckMate)
+		{
+			System.out.println("Team " + turnTeamNumber + " wins!");
+			return -1;
+		}
 		return board.toggleTeam(turnTeamNumber);
 	}
-
+	
+	/**
+	 * Helper function to get the input start and end coordinates for a move.
+	 * @param readInput
+	 * @return the input values for the move.
+	 */
 	public static int[] getInputs(Scanner readInput)
 	{
 		System.out.print("StartX: ");
@@ -65,6 +99,10 @@ public class Game
 		return inputs;
 	}
 	
+	/**
+	 * Helper function to print out the board.
+	 * @param board
+	 */
 	public static void printBoard(Board board)
 	{
 		Piece[][] positions = board.getPositions();
@@ -84,6 +122,10 @@ public class Game
 		}
 	}
 	
+	/**
+	 * Helper function to print out each piece on the board.
+	 * @param piece
+	 */
 	public static void printPiece(Piece piece)
 	{
 		if(piece == null)

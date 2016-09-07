@@ -1,4 +1,7 @@
 package Framework.Pieces;
+import java.util.ArrayList;
+import java.util.List;
+
 import Framework.Board;
 import Framework.Move;
 import Framework.Team;
@@ -67,5 +70,23 @@ public class Queen extends Piece
 			}
 		}
 		return noLeaps;
+	}
+	
+	@Override
+	public List<Move> findAllMoves(Board board) {
+		int xValue = this.getXValue();
+		int yValue = this.getYValue();
+		
+		List<Move> possibleMoves = new ArrayList<Move>();
+		possibleMoves.addAll(getMoves(board, 1, 0, xValue, yValue));
+		possibleMoves.addAll(getMoves(board, -1, 0, xValue, yValue));
+		possibleMoves.addAll(getMoves(board, 0, 1, xValue, yValue));
+		possibleMoves.addAll(getMoves(board, 0, -1, xValue, yValue));
+		possibleMoves.addAll(getMoves(board, 1, 1, xValue, yValue));
+		possibleMoves.addAll(getMoves(board, 1, -1, xValue, yValue));
+		possibleMoves.addAll(getMoves(board, -1, 1, xValue, yValue));
+		possibleMoves.addAll(getMoves(board, -1, -1, xValue, yValue));
+		
+		return possibleMoves;
 	}
 }

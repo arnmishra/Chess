@@ -5,15 +5,26 @@ import Framework.Move;
 import Framework.Team;
 import Framework.Pieces.*;
 
+/**
+ * The board class describes the details about the board and a snapshot
+ * of the current game play including piece positions and team statuses.
+ * @author arnavmishra
+ *
+ */
 public class Board
 {
 	
 	private Piece[][] positions; // Holds positions of all pieces on the board.
-	private int width;
-	private int length;
-	private Team team0 = new Team(0);
-	private Team team1 = new Team(1);
+	private int width; // Holds the width of the board.
+	private int length; // Holds the length of the board.
+	private Team team0 = new Team(0); // Holds the team0 details (goes first).
+	private Team team1 = new Team(1); // Holds the team1 details (goes second).
 	
+	/**
+	 * Board constructor to set up initial board piece positions and the width and length.
+	 * @param width
+	 * @param length
+	 */
 	public Board(int width, int length)
 	{
 		this.width = width;
@@ -22,6 +33,10 @@ public class Board
 		
 	}
 	
+	/**
+	 * Function to put pieces in initial starting positions. 
+	 * @return 
+	 */
 	public Piece[][] setBoard()
 	{
 		Piece[][] positions = new Piece[this.length][this.width];
@@ -162,27 +177,17 @@ public class Board
 		positions[endY][endX] = removed;
 	}
 	
-	public boolean getCheck(Move move, Board board)
+	public boolean getCheck(Move move)
 	{
 		Piece removed = positions[move.getEndY()][move.getEndX()];
-		board.setPositions(move);
+		this.setPositions(move);
 		int turnTeamNumber = move.getTeam();
-		Team checkTeam = getTeam(turnTeamNumber);
+		List<Piece> checkPieces = getTeamPieces(turnTeamNumber);
 		int opposingTeamNumber = toggleTeam(turnTeamNumber);
-		Team opposingTeam = getTeam(opposingTeamNumber);
-		List<Piece> checkPieces = checkTeam.getPieces();
-		Piece checkKing = null;
-		for(int i = 0; i < checkPieces.size(); i++)
-		{
-			if(checkPieces.get(i) instanceof King)
-			{
-				checkKing = checkPieces.get(i);
-				break;
-			}
-		}
+		List<Piece> opposingPieces = getTeamPieces(opposingTeamNumber);
+		Piece checkKing = getKing(checkPieces);
 		int kingX = checkKing.getXValue();
 		int kingY = checkKing.getYValue();
-		List<Piece> opposingPieces = opposingTeam.getPieces();
 		boolean isCheck = false;
 		for(int i = 0; i < opposingPieces.size(); i++)
 		{
@@ -190,14 +195,62 @@ public class Board
 			int opposingX = opposingPiece.getXValue();
 			int opposingY = opposingPiece.getYValue();
 			Move checkMove = new Move(opposingX, opposingY, kingX, kingY, opposingTeamNumber);
-			isCheck = opposingPiece.isValidMove(checkMove, board);
+			isCheck = opposingPiece.isValidMove(checkMove, this);
 			if(isCheck)
 			{
 				break;
 			}
 		}
-		board.unsetPositions(move, removed);
+		this.unsetPositions(move, removed);
 		return isCheck;
+	}
+	
+	public boolean getCheckMate(int turnTeamNumber)
+	{
+		List<Piece> checkPieces = getTeamPieces(toggleTeam(turnTeamNumber));
+		boolean isCheck = false;
+		for(int i = 0; i < checkPieces.size(); i++)
+		{
+			Piece checkPiece = checkPieces.get(i);
+			List<Move> possibleMoves = checkPiece.findAllMoves(this);
+			for(int j = 0; j < possibleMoves.size(); j++)
+			{
+				isCheck = getCheck(possibleMoves.get(j));
+				if(!isCheck)
+				{
+					return false;
+				}
+			}
+		}
+		
+		return true;
+	}
+	
+	public boolean getStaleMate(int turnTeamNumber)
+	{
+		List<Piece> checkPieces = getTeamPieces(turnTeamNumber);
+		for(int i = 0; i < checkPieces.size(); i++)
+		{
+			Piece checkPiece = checkPieces.get(i);
+			List<Move> possibleMoves = checkPiece.findAllMoves(this);
+			if(!possibleMoves.isEmpty())
+			{
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	public Piece getKing(List<Piece> pieces)
+	{
+		for(int i = 0; i < pieces.size(); i++)
+		{
+			if(pieces.get(i) instanceof King)
+			{
+				return pieces.get(i);
+			}
+		}
+		return null;
 	}
 	
 	public int toggleTeam(int turnTeamNumber)
@@ -213,15 +266,15 @@ public class Board
 		return turnTeamNumber;
 	}
 	
-	public Team getTeam(int turnTeamNumber)
+	public List<Piece> getTeamPieces(int turnTeamNumber)
 	{
 		if(turnTeamNumber == 0)
 		{
-			return this.team0;
+			return this.team0.getPieces();
 		}
 		else
 		{
-			return this.team1;
+			return this.team1.getPieces();
 		}
 	}
 }
