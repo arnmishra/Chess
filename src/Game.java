@@ -58,7 +58,7 @@ public class Game
 		}
 		Move move = new Move(inputs[0], inputs[1], inputs[2], inputs[3], turnTeamNumber);
 		
-		if(board.getCheck(move))
+		if(board.isKingInCheck(move))
 		{
 			System.out.println("Invalid Move: Your King is in Check");
 			return turnTeamNumber;
@@ -108,18 +108,19 @@ public class Game
 		Piece[][] positions = board.getPositions();
 		System.out.println("   0  1  2  3  4  5  6  7 ");
 		System.out.println("  - - - - - - - - - - - - -");
-		for(int i = 0; i < board.getLength(); i++)
+		for(int i = board.getLength() - 1; i >= 0; i--)
 		{
-			System.out.print(i);
-			System.out.print(" |");
+			System.out.print(i + " |");
 			for(int j = 0; j < board.getWidth(); j++)
 			{
 				printPiece(positions[i][j]);
 				System.out.print("|");
 			}
+			System.out.print(" " + i);
 			System.out.println("");
 			System.out.println("  - - - - - - - - - - - - -");
 		}
+		System.out.println("   0  1  2  3  4  5  6  7 ");
 	}
 	
 	/**

@@ -35,7 +35,7 @@ public class Board
 	
 	/**
 	 * Function to put pieces in initial starting positions. 
-	 * @return 
+	 * @return a Piece double array with all the current positions.
 	 */
 	public Piece[][] setBoard()
 	{
@@ -44,10 +44,8 @@ public class Board
 		positions[7] = setPrimaryPieces(positions, 7, team1);
 		for(int i = 0; i < 8; i++)
 		{
-			positions[1][i] = new Pawn(team0);
-			setCoordinates(positions[1][i], i, 1);
-			positions[6][i] = new Pawn(team1);
-			setCoordinates(positions[6][i], i, 6);
+			positions[1][i] = new Pawn(team0, i, 1);
+			positions[6][i] = new Pawn(team1, i, 6);
 		}
 		team0.addPieces(positions[0]);
 		team0.addPieces(positions[1]);
@@ -56,36 +54,28 @@ public class Board
 		return positions;
 	}
 	
-	
+	/**
+	 * Helper function to initialize all the non-pawns and put them in the right places.
+	 * @param positions
+	 * @param yValue
+	 * @param team
+	 * @return Pieces 1-d array with the primary non-pawn pieces for a team.
+	 */
 	public Piece[] setPrimaryPieces(Piece[][] positions, int yValue, Team team)
 	{
-		positions[yValue][0] = new Rook(team);
-		setCoordinates(positions[yValue][0], 0, yValue);
-		positions[yValue][1] = new Knight(team);
-		setCoordinates(positions[yValue][1], 1, yValue);
-		positions[yValue][2] = new Bishop(team);
-		setCoordinates(positions[yValue][2], 2, yValue);
-		positions[yValue][3] = new King(team);
-		setCoordinates(positions[yValue][3], 3, yValue);
-		positions[yValue][4] = new Queen(team);
-		setCoordinates(positions[yValue][4], 4, yValue);
-		positions[yValue][5] = new Bishop(team);
-		setCoordinates(positions[yValue][5], 5, yValue);
-		positions[yValue][6] = new Knight(team);
-		setCoordinates(positions[yValue][6], 6, yValue);
-		positions[yValue][7] = new Rook(team);
-		setCoordinates(positions[yValue][7], 7, yValue);
+		positions[yValue][0] = new Rook(team, 0, yValue);
+		positions[yValue][1] = new Knight(team, 1, yValue);
+		positions[yValue][2] = new Bishop(team, 2, yValue);
+		positions[yValue][3] = new Queen(team, 3, yValue);
+		positions[yValue][4] = new King(team, 4, yValue);
+		positions[yValue][5] = new Bishop(team, 5, yValue);
+		positions[yValue][6] = new Knight(team, 6, yValue);
+		positions[yValue][7] = new Rook(team, 7, yValue);
 		return positions[yValue];
 	}
 	
-	public void setCoordinates(Piece piece, int xValue, int yValue)
-	{
-		piece.setXValue(xValue);
-		piece.setYValue(yValue);
-	}
-	
 	/**
-	 * Get width of board
+	 * Get width of board.
 	 * @return width
 	 */
 	public int getWidth()
@@ -94,7 +84,7 @@ public class Board
 	}
 	
 	/**
-	 * Set width of board
+	 * Set width of board.
 	 * @param width
 	 */
 	public void setWidth(int width)
@@ -103,7 +93,7 @@ public class Board
 	}
 	
 	/**
-	 * Get length of board
+	 * Get length of board.
 	 * @return length
 	 */
 	public int getLength()
@@ -112,7 +102,7 @@ public class Board
 	}
 	
 	/**
-	 * Set length of board
+	 * Set length of board.
 	 * @param length
 	 */
 	public void setLength(int length)
@@ -121,7 +111,7 @@ public class Board
 	}
 	
 	/**
-	 * Get positions on entire chess board
+	 * Get positions on entire chess board.
 	 * @return positions
 	 */
 	
@@ -131,7 +121,7 @@ public class Board
 	}
 	
 	/**
-	 * Set the new positions of a chess board after a move
+	 * Set the new positions of a chess board after a move.
 	 * @param move
 	 */
 	public void setPositions(Move move)
@@ -148,12 +138,18 @@ public class Board
 			team.removePiece(replaced);
 		}
 		Piece moved = positions[startY][startX];
-		moved.setXValue(endX);
-		moved.setYValue(endY);
+		moved.setCoordinates(endX, endY);
 		positions[endY][endX] = positions[startY][startX];
 		positions[startY][startX] = null;
 	}
 	
+	/**
+	 * Undo the last move. This method is used to reverse a move after checking if it
+	 * protects the King from a check. This is relevant when checking for checkmates
+	 * to ensure that there is at least one move available for the team.
+	 * @param move
+	 * @param removed
+	 */
 	public void unsetPositions(Move move, Piece removed)
 	{
 		int startX = move.getStartX();
@@ -170,14 +166,19 @@ public class Board
 		}
 		
 		Piece moved = positions[endY][endX];
-		moved.setXValue(startX);
-		moved.setYValue(startY);
+		moved.setCoordinates(startX, startY);
 		
 		positions[startY][startX] = moved;
 		positions[endY][endX] = removed;
 	}
 	
-	public boolean getCheck(Move move)
+	/**
+	 * Method to see if the king will still be in check after the move is made. 
+	 * Undo the move after.
+	 * @param move
+	 * @return whether the king is in check after the move.
+	 */
+	public boolean isKingInCheck(Move move)
 	{
 		Piece removed = positions[move.getEndY()][move.getEndX()];
 		this.setPositions(move);
@@ -205,6 +206,11 @@ public class Board
 		return isCheck;
 	}
 	
+	/**
+	 * Method to see if a move called a checkmate.
+	 * @param turnTeamNumber
+	 * @return whether the team is in checkmate.
+	 */
 	public boolean getCheckMate(int turnTeamNumber)
 	{
 		List<Piece> checkPieces = getTeamPieces(toggleTeam(turnTeamNumber));
@@ -215,7 +221,7 @@ public class Board
 			List<Move> possibleMoves = checkPiece.findAllMoves(this);
 			for(int j = 0; j < possibleMoves.size(); j++)
 			{
-				isCheck = getCheck(possibleMoves.get(j));
+				isCheck = isKingInCheck(possibleMoves.get(j));
 				if(!isCheck)
 				{
 					return false;
@@ -226,6 +232,12 @@ public class Board
 		return true;
 	}
 	
+	/**
+	 * Method to see if a team cannot move any piece in which case
+	 * the game is in a stale mate.
+	 * @param turnTeamNumber
+	 * @return
+	 */
 	public boolean getStaleMate(int turnTeamNumber)
 	{
 		List<Piece> checkPieces = getTeamPieces(turnTeamNumber);
@@ -241,6 +253,11 @@ public class Board
 		return true;
 	}
 	
+	/**
+	 * Helper function to get the King from a list of pieces.
+	 * @param pieces
+	 * @return King's piece
+	 */
 	public Piece getKing(List<Piece> pieces)
 	{
 		for(int i = 0; i < pieces.size(); i++)
@@ -253,6 +270,11 @@ public class Board
 		return null;
 	}
 	
+	/**
+	 * Helper function to change the team number.
+	 * @param turnTeamNumber
+	 * @return opposite team number.
+	 */
 	public int toggleTeam(int turnTeamNumber)
 	{
 		if(turnTeamNumber == 0)
@@ -266,6 +288,11 @@ public class Board
 		return turnTeamNumber;
 	}
 	
+	/**
+	 * Helper function to return the remaining pieces of a team.
+	 * @param turnTeamNumber
+	 * @return team's active pieces.
+	 */
 	public List<Piece> getTeamPieces(int turnTeamNumber)
 	{
 		if(turnTeamNumber == 0)

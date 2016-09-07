@@ -6,12 +6,27 @@ import Framework.Board;
 import Framework.Move;
 import Framework.Team;
 
+/**
+ * Knight class to describe Knight's possible moves.
+ * @author arnavmishra
+ *
+ */
 public class Knight extends Piece
 {
-	public Knight(Team team) {
-		super(team);
+	/**
+	 * Constructor to initialize Knight on a team and coordinate.
+	 * @param team
+	 */
+	public Knight(Team team, int xValue, int yValue) {
+		super(team, xValue, yValue);
 	}
 
+	/**
+	 * Function to check whether a knight's move is valid.
+	 * @param move
+	 * @param board
+	 * @return Whether the move is valid.
+	 */
 	public boolean isValidMove(Move move, Board board)
 	{
 		boolean isOnBoard = onAvailableSquare(move, board);
@@ -26,33 +41,43 @@ public class Knight extends Piece
 		}
 	}
 
+	/**
+	 * The knight is allowed to jump over pieces.
+	 * @param move
+	 * @param board
+	 * @return whether the knight leaps over pieces.
+	 */
 	@Override
 	public boolean hasNoLeaps(Move move, Board board) {
 		// Leaps are allowed for Knights
 		return true;
 	}
 	
+	/**
+	 * Function to get all valid possible moves for the Knight in any direction.
+	 * @param board
+	 * @return all possible valid moves.
+	 */
 	@Override
 	public List<Move> findAllMoves(Board board) {
 		int xValue = this.getXValue();
 		int yValue = this.getYValue();
 		List<Move> possibleMoves = new ArrayList<Move>();
 		
-		int [] possibleXChanges = new int[]{1, 1, -1, -1, 2, 2, -2, -2};
-		int [] possibleYChanges = new int[]{2, -2, 2, -2, 1, -1, 1, -1};
+		// Knights have 8 possible moves that have to be validated.
+		int [][] possibleMovementDeltas = new int[][]{{1, 2}, {1, -2}, {-1, 2}, {-1, -2}, {2, 1}, {2, -1}, {-2, 1}, {-2, -1}};
 		
-		for(int i = 0; i < possibleXChanges.length; i++)
+		for(int i = 0; i < possibleMovementDeltas.length; i++)
 		{
-			int changeX = xValue + possibleXChanges[i];
-			int changeY = yValue + possibleYChanges[i];
+			int changeX = xValue + possibleMovementDeltas[i][0];
+			int changeY = yValue + possibleMovementDeltas[i][1];
 			Move newMove = new Move(xValue, yValue, changeX, changeY, this.getTeamNumber());
-			boolean isValid = isValidMove(newMove, board);
+			boolean isValid = isValidMove(newMove, board); // Check if this move is valid, if so, add to list of moves.
 			if(isValid)
 			{
 				possibleMoves.add(newMove);
 			}
 		}
-		
 		
 		return possibleMoves;
 	}

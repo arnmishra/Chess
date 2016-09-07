@@ -6,54 +6,69 @@ import Framework.Move;
 import Framework.Team;
 
 /**
-Parent Piece Class
+Parent Piece Class to hold metadata
 */
 public abstract class Piece
 {
 	private Team team; // Team number 0 or 1.
-	private int xValue;
-	private int yValue;
+	private int xValue; // Hold the x coordinate of the piece.
+	private int yValue; // Hold the y coordinate of the piece.
 	
 	/**
 	 * Constructor that sets piece's team
 	 * 
 	 * @param teamNumber
 	 */
-	public Piece(Team team)
+	public Piece(Team team, int xValue, int yValue)
 	{
 		this.team = team;
+		this.xValue = xValue;
+		this.yValue = yValue;
 	}
 	
+	/**
+	 * Getter for the x coordinate of the piece.
+	 * @return X-coordinate
+	 */
 	public int getXValue()
 	{
 		return this.xValue;
 	}
 	
-	public void setXValue(int xValue)
+	/**
+	 * Setter for both x and y coordinate of the piece after movement.
+	 * @param xValue
+	 * @param yValue
+	 */
+	public void setCoordinates(int xValue, int yValue)
 	{
 		this.xValue = xValue;
+		this.yValue = yValue;
 	}
 	
+	/** 
+	 * Getter for the y coordinate of the piece.
+	 * @return Y-Coordinate
+	 */
 	public int getYValue()
 	{
 		return this.yValue;
 	}
 	
-	public void setYValue(int yValue)
-	{
-		this.yValue = yValue;
-	}
-	
 	/**
-	 * Get what team this piece is on
+	 * Get what team this piece is on.
 	 * 
-	 * @return team number
+	 * @return team object
 	 */
 	public Team getTeam()
 	{
 		return this.team;
 	}
 	
+	/**
+	 * Get the piece's team number.
+	 * @return team number
+	 */
 	public int getTeamNumber()
 	{
 		return this.team.getTeamNumber();
@@ -93,12 +108,20 @@ public abstract class Piece
 			if(replacedPieceTeam == currentPieceTeam)
 			{
 				//System.out.print("End coordinates occupied by same team: ");
-				return false;
+				return false; // Ensure that the piece doesn't take another piece of its own team
 			}
 		}
 		return true;
 	}
 	
+	/**
+	 * Function to check that there are no pieces being jumped over in the row.
+	 * @param row
+	 * @param smallX
+	 * @param bigX
+	 * @param positions
+	 * @return if there are leaps
+	 */
 	public boolean traverseRow(int row, int smallX, int bigX, Piece[][] positions)
 	{
 		for(int i = smallX + 1; i < bigX; i++)
@@ -111,6 +134,14 @@ public abstract class Piece
 		return true;
 	}
 	
+	/**
+	 * Function to check that there are no pieces being jumped over in the column.
+	 * @param row
+	 * @param smallX
+	 * @param bigX
+	 * @param positions
+	 * @return if there are leaps
+	 */
 	public boolean traverseColumn(int column, int smallY, int bigY, Piece[][] positions)
 	{
 		for(int i = smallY + 1; i < bigY; i++)
@@ -123,6 +154,14 @@ public abstract class Piece
 		return true;
 	}
 	
+	/**
+	 * Function to check that there are no pieces being jumped over in the diagonal.
+	 * @param row
+	 * @param smallX
+	 * @param bigX
+	 * @param positions
+	 * @return if there are leaps
+	 */
 	public boolean traverseDiagonal(int startX, int endX, int startY, int endY, Piece[][] positions)
 	{
 		int xDirection = getDirection(startX, endX);
@@ -141,6 +180,12 @@ public abstract class Piece
 		return true;
 	}
 	
+	/**
+	 * Check what direction the movement is in.
+	 * @param start
+	 * @param end
+	 * @return 1 for increasing coordinate, -1 for decreasing coordinate
+	 */
 	public int getDirection(int start, int end)
 	{
 		if(start - end < 0)
@@ -153,10 +198,30 @@ public abstract class Piece
 		}
 	}
 	
+	/**
+	 * Abstract class for pieces to determine whether there is a piece in the way.
+	 * @param move
+	 * @param board
+	 * @return Whether the piece jumps over other pieces.
+	 */
 	public abstract boolean hasNoLeaps(Move move, Board board);
 	
+	/**
+	 * Abstract class for pieces to find all moves they can make.
+	 * @param board
+	 * @return List of all possible moves in any direction.
+	 */
 	public abstract List<Move> findAllMoves(Board board);
 	
+	/**
+	 * Function to get all possible moves for a piece in a specific direction according to the current board.
+	 * @param board
+	 * @param xDirection
+	 * @param yDirection
+	 * @param xValue
+	 * @param yValue
+	 * @return All moves possible by a piece in a direction.
+	 */
 	public List<Move> getMoves(Board board, int xDirection, int yDirection, int xValue, int yValue)
 	{
 		int width = board.getWidth();

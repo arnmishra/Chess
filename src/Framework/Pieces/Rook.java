@@ -6,12 +6,27 @@ import Framework.Board;
 import Framework.Move;
 import Framework.Team;
 
+/**
+ * Rook class to describe Rook's possible moves.
+ * @author arnavmishra
+ *
+ */
 public class Rook extends Piece
 {
-	public Rook(Team team) {
-		super(team);
+	/**
+	 * Constructor to initialize Rook on a team and coordinate.
+	 * @param team
+	 */
+	public Rook(Team team, int xValue, int yValue) {
+		super(team, xValue, yValue);
 	}
 
+	/**
+	 * Function to check whether a rook's move is valid.
+	 * @param move
+	 * @param board
+	 * @return Whether the move is valid.
+	 */
 	public boolean isValidMove(Move move, Board board)
 	{
 		boolean isOnBoard = onAvailableSquare(move, board);
@@ -26,6 +41,12 @@ public class Rook extends Piece
 		}
 	}
 
+	/**
+	 * The rook can't jump over any pieces since it only moves one space.
+	 * @param move
+	 * @param board
+	 * @return whether the rook leaps over pieces.
+	 */
 	@Override
 	public boolean hasNoLeaps(Move move, Board board)  {
 		Piece[][] positions = board.getPositions();
@@ -51,16 +72,21 @@ public class Rook extends Piece
 		}
 	}
 
+	/**
+	 * Function to get all valid possible moves for the King in any direction.
+	 * @param board
+	 * @return all possible valid moves.
+	 */
 	@Override
 	public List<Move> findAllMoves(Board board) {
 		int xValue = this.getXValue();
 		int yValue = this.getYValue();
 		
 		List<Move> possibleMoves = new ArrayList<Move>();
-		possibleMoves.addAll(getMoves(board, 1, 0, xValue, yValue));
-		possibleMoves.addAll(getMoves(board, -1, 0, xValue, yValue));
-		possibleMoves.addAll(getMoves(board, 0, 1, xValue, yValue));
-		possibleMoves.addAll(getMoves(board, 0, -1, xValue, yValue));
+		possibleMoves.addAll(getMoves(board, 1, 0, xValue, yValue)); // Check right movement.
+		possibleMoves.addAll(getMoves(board, -1, 0, xValue, yValue)); // Check left movement.
+		possibleMoves.addAll(getMoves(board, 0, 1, xValue, yValue));  // Check downward movement.
+		possibleMoves.addAll(getMoves(board, 0, -1, xValue, yValue)); // Check upward movement.
 		
 		return possibleMoves;
 	}
