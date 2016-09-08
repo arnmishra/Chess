@@ -69,7 +69,7 @@ public class Game
 			System.out.println("Invalid Move");
 			return turnTeamNumber;
 		}
-		board.setPositions(move);
+		Piece removedPiece = board.setPositions(move);
 		board.printBoard();
 		boolean isCheckMate = board.getCheckMate(board.toggleTeam(turnTeamNumber)); // Check if the opposing team lost
 		if(isCheckMate)
@@ -77,7 +77,7 @@ public class Game
 			System.out.println("Team " + turnTeamNumber + " wins!");
 			return -1;
 		}
-		return board.toggleTeam(turnTeamNumber);
+		return promptForUndoMove(board, removedPiece, move, readInput, turnTeamNumber);
 	}
 	
 	/**
@@ -97,6 +97,36 @@ public class Game
 		int endY = readInput.nextInt();
 		int[] inputs = {startX, startY, endX, endY};
 		return inputs;
+	}
+	
+	/**
+	 * Helper function to undo a move that a player makes.
+	 * @param board
+	 * @param removedPiece
+	 * @param undoMove
+	 * @param readInput
+	 * @param turnTeamNumber
+	 * @return the TeamNumber for who's turn it currently is.
+	 */
+	public static int promptForUndoMove(Board board, Piece removedPiece, Move undoMove, Scanner readInput, int turnTeamNumber)
+	{
+		String undo = "";
+		while(!undo.equals("no") && !undo.equals("yes"))
+		{
+			System.out.print("Undo Move? (Yes/No) ");
+			undo = readInput.next();
+			undo = undo.toLowerCase();
+		}
+		if(undo.equals("no"))
+		{
+			return board.toggleTeam(turnTeamNumber); // If the team won't undo, it's the other team's turn
+		}
+		else
+		{
+			board.unsetPositions(undoMove, removedPiece);
+			board.printBoard();
+			return turnTeamNumber;
+		}
 	}
 	
 }

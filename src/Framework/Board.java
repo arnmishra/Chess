@@ -124,7 +124,7 @@ public class Board
 	 * Set the new positions of a chess board after a move.
 	 * @param move
 	 */
-	public void setPositions(Move move)
+	public Piece setPositions(Move move)
 	{
 		int startX = move.getStartX();
 		int startY = move.getStartY();
@@ -138,9 +138,11 @@ public class Board
 			team.removePiece(replaced);
 		}
 		Piece moved = positions[startY][startX];
+		Piece removed = positions[endY][endX];
 		moved.setCoordinates(endX, endY);
 		positions[endY][endX] = positions[startY][startX];
 		positions[startY][startX] = null;
+		return removed;
 	}
 	
 	/**
