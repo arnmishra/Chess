@@ -12,8 +12,18 @@ import Framework.Team;
 import Framework.Pieces.Pawn;
 import Framework.Pieces.Piece;
 
+/**
+ * Tests for the Team class.
+ * @author arnavmishra
+ *
+ */
 public class TeamTest {
 
+	/**
+	 * Test to check the constructor by ensuring that a Team's teamNumber
+	 * is set properly.
+	 * @throws Exception
+	 */
 	@Test
 	public void validConstructor() throws Exception {
 		int teamNumber = 0;
@@ -21,6 +31,12 @@ public class TeamTest {
 		assertEquals(team.getTeamNumber(), teamNumber);
 	}
 	
+	/**
+	 * Test to confirm that when an opposing team takes a piece from a Team,
+	 * the list of pieces works updates accordingly. In this situation, a pawn
+	 * is taken from the team and there are only 7 pawns left after.
+	 * @throws Exception
+	 */
 	@Test
 	public void takeAPiece() throws Exception {
 		Board board = new Board(8, 8);
@@ -53,6 +69,11 @@ public class TeamTest {
 		assertEquals(numberOfPawns, 7); // After one of it's pawns are taken, Team1 should only have 7 pawns left.
 	}
 	
+	/**
+	 * Test of adding a new piece to a team. The test adds a pawn and 
+	 * confirms that there are now 9 pawns instead of 8.
+	 * @throws Exception
+	 */
 	@Test
 	public void addAPiece() throws Exception {
 		Board board = new Board(8, 8);

@@ -12,8 +12,17 @@ import Framework.Move;
 import Framework.Pieces.*;
 import Tests.Common;
 
+/**
+ * Tests for the Knight class.
+ * @author arnavmishra
+ *
+ */
 public class KnightTest {
 
+	/**
+	 * Test to confirm valid knight movement by moving a knight up two, left one.
+	 * @throws Exception
+	 */
 	@Test
 	public void validKnightMovement() throws Exception {
 		Board board = new Board(8, 8);
@@ -29,6 +38,10 @@ public class KnightTest {
 		assertTrue(knight.isValidMove(move, board));
 	}
 	
+	/**
+	 * Test to check invalid knight movement by moving a knight diagonally.
+	 * @throws Exception
+	 */
 	@Test
 	public void invalidKnightMovement() throws Exception {
 		Board board = new Board(8, 8);
@@ -44,6 +57,11 @@ public class KnightTest {
 		assertFalse(knight.isValidMove(move, board));
 	}
 	
+	/**
+	 * Test to confirm that all possible knight moves are available by checking
+	 * that the knight has all starting moves listed.
+	 * @throws Exception
+	 */
 	@Test
 	public void correctAllStartingKnightMoves() throws Exception {
 		Board board = new Board(8, 8);

@@ -12,8 +12,18 @@ import Framework.Move;
 import Framework.Pieces.*;
 import Tests.Common;
 
+/**
+ * Tests for the queen class.
+ * @author arnavmishra
+ *
+ */
 public class QueenTest {
 
+	/**
+	 * Tests the queen's forward movement by moving the pawn in front of
+	 * it and then moving the queen forward from there.
+	 * @throws Exception
+	 */
 	@Test
 	public void validQueenForwardMovement() throws Exception {
 		Board board = new Board(8, 8);
@@ -33,6 +43,11 @@ public class QueenTest {
 		
 	}
 	
+	/**
+	 * Tests the queen's diagonal movement by moving the pawn that is diagonal
+	 * to it (up right) and then moving the queen in that direction.
+	 * @throws Exception
+	 */
 	@Test
 	public void validQueenDiagonalMovement() throws Exception {
 		Board board = new Board(8, 8);
@@ -51,6 +66,11 @@ public class QueenTest {
 		assertTrue(queen.isValidMove(queenMoveDiagonal, board)); // Validate queen's diagonal movement
 	}
 	
+	/**
+	 * Tests the queen's invalid movement by trying a knight's move for the
+	 * queen and ensuring that the movement returns as invalid.
+	 * @throws Exception
+	 */
 	@Test
 	public void invalidQueenMovement() throws Exception {
 		Board board = new Board(8, 8);
@@ -71,6 +91,13 @@ public class QueenTest {
 		assertFalse(queen.isValidMove(move, board));
 	}
 	
+	/**
+	 * Tests the queen's list of all possible moves by moving both the pawn
+	 * in front and the pawn diagonal (up right) out of the way and then 
+	 * checking that the queen can move to all the appropriate locations
+	 * from there.
+	 * @throws Exception
+	 */
 	@Test
 	public void correctAllStartingQueenMoves() throws Exception {
 		Board board = new Board(8, 8);

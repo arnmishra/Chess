@@ -12,8 +12,18 @@ import Framework.Move;
 import Framework.Pieces.*;
 import Tests.Common;
 
+/**
+ * Tests for the King class.
+ * @author arnavmishra
+ *
+ */
 public class KingTest {
 
+	/**
+	 * Test to check the king's forward movement by moving the pawn ahead of
+	 * it out of the way and ensuring that the King can move forward.
+	 * @throws Exception
+	 */
 	@Test
 	public void validKingForwardMovement() throws Exception {
 		Board board = new Board(8, 8);
@@ -33,6 +43,11 @@ public class KingTest {
 		
 	}
 	
+	/**
+	 * Test to check the King's diagonal movement by moving the pawn diagonally 
+	 * (left up) ahead out of the way and moving the King in that direction.
+	 * @throws Exception
+	 */
 	@Test
 	public void validKingDiagonalMovement() throws Exception {
 		Board board = new Board(8, 8);
@@ -51,6 +66,11 @@ public class KingTest {
 		assertTrue(king.isValidMove(kingMoveDiagonal, board)); // Validate king's diagonal movement
 	}
 	
+	/**
+	 * Test to check the King's invalid movement by moving the King
+	 * forward 2 spaces.
+	 * @throws Exception
+	 */
 	@Test
 	public void invalidKingMovement() throws Exception {
 		Board board = new Board(8, 8);
@@ -69,6 +89,12 @@ public class KingTest {
 		assertFalse(king.isValidMove(move, board));
 	}
 	
+	/**
+	 * Test to check the possible moves for the King by moving the pawn ahead
+	 * and diagonal out of the way and ensuring the King can move to the open
+	 * spots.
+	 * @throws Exception
+	 */
 	@Test
 	public void correctAllStartingKingMoves() throws Exception {
 		Board board = new Board(8, 8);

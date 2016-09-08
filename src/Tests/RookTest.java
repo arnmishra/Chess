@@ -12,8 +12,18 @@ import Framework.Move;
 import Framework.Pieces.*;
 import Tests.Common;
 
+/**
+ * Tests for the Rook class.
+ * @author arnavmishra
+ *
+ */
 public class RookTest {
 
+	/**
+	 * Test to check the rook's vertical movement by moving the pawn in front 
+	 * of it out of the way and then moving the rook forward.
+	 * @throws Exception
+	 */
 	@Test
 	public void validVerticalRookMovement() throws Exception {
 		Board board = new Board(8, 8);
@@ -32,6 +42,12 @@ public class RookTest {
 		assertTrue(rook.isValidMove(rookMove, board));
 	}
 	
+	/**
+	 * Test to check rook's horizontal movement by moving the pawn in front of
+	 * it out of the way, moving the rook forward, and then moving the rook
+	 * to the right for the horizontal movement.
+	 * @throws Exception
+	 */
 	@Test
 	public void validHorizontalRookMovement() throws Exception {
 		Board board = new Board(8, 8);
@@ -54,6 +70,11 @@ public class RookTest {
 		assertTrue(rook.isValidMove(rookMove, board));
 	}
 	
+	/**
+	 * Test to check the rook's invalid movement by attempting to move it diagonally 
+	 * and checking that this returns false.
+	 * @throws Exception
+	 */
 	@Test
 	public void invalidRookMovement() throws Exception {
 		Board board = new Board(8, 8);
@@ -72,6 +93,11 @@ public class RookTest {
 		assertFalse(rook.isValidMove(move, board));
 	}
 	
+	/**
+	 * Test to check all possible moves by the rook by moving the pawn in front of it
+	 * out of the way and ensuring that the rook can move to the open positions.
+	 * @throws Exception
+	 */
 	@Test
 	public void correctAllStartingRookMoves() throws Exception {
 		Board board = new Board(8, 8);

@@ -12,8 +12,19 @@ import Framework.Move;
 import Framework.Pieces.*;
 import Tests.Common;
 
+/**
+ * Tests for the Bishop Class.
+ * @author arnavmishra
+ *
+ */
 public class BishopTest {
 
+	/**
+	 * Test to check the bishop's valid movement by moving the pawn that is
+	 * diagonally to the left up from it and then moving the bishop in that
+	 * direction.
+	 * @throws Exception
+	 */
 	@Test
 	public void validBishopMovement() throws Exception {
 		Board board = new Board(8, 8);
@@ -32,6 +43,11 @@ public class BishopTest {
 		assertTrue(bishop.isValidMove(bishopMove, board));
 	}
 	
+	/**
+	 * Test to check bishop's invalid movement by moving the pawn in front of it
+	 * and testing to ensure the bishop cannot move forward.
+	 * @throws Exception
+	 */
 	@Test
 	public void invalidBishopMovement() throws Exception {
 		Board board = new Board(8, 8);
@@ -50,6 +66,12 @@ public class BishopTest {
 		assertFalse(bishop.isValidMove(move, board));
 	}
 	
+	/**
+	 * Test to check the bishop's possible movements by moving the pawn diagonally
+	 * up left from it out of the way and testing to ensure that the bishop can move
+	 * to all diagonal positions.
+	 * @throws Exception
+	 */
 	@Test
 	public void correctAllStartingBishopMoves() throws Exception {
 		Board board = new Board(8, 8);
