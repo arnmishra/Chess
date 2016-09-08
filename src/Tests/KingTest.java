@@ -78,7 +78,7 @@ public class KingTest {
 		board.setPositions(pawnMove);
 		pawnMove = new Move(4, 1, 4, 3, teamNumber); // Move the pawn out of the way
 		board.setPositions(pawnMove);
-		
+		board.printBoard();
 		int xCoordinate = 4;
 		int yCoordinate = 0;
 		Piece king = board.getPositions()[yCoordinate][xCoordinate];
@@ -90,7 +90,6 @@ public class KingTest {
 		List<Move> actualMoves = new ArrayList<Move>();
 		actualMoves.add(new Move(xCoordinate, yCoordinate, 4, 1, 0));
 		actualMoves.add(new Move(xCoordinate, yCoordinate, 3, 1, 0));
-		
 		assertTrue(Common.checkIfMoveListsAreEqual(expectedMoves, actualMoves));
 	}
 

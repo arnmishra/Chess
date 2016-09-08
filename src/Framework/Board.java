@@ -175,7 +175,7 @@ public class Board
 	 * @param move
 	 * @return whether the king is in check after the move.
 	 */
-	public boolean isKingInCheck(Move move)
+	public boolean isTeamInCheck(Move move)
 	{
 		Piece removed = positions[move.getEndY()][move.getEndX()];
 		this.setPositions(move);
@@ -196,6 +196,11 @@ public class Board
 			isCheck = opposingPiece.isValidMove(checkMove, this);
 			if(isCheck)
 			{
+				System.out.println(opposingPiece);
+				System.out.println(opposingX);
+				System.out.println(opposingY);
+				System.out.println(kingX);
+				System.out.println(kingY);
 				break;
 			}
 		}
@@ -210,7 +215,7 @@ public class Board
 	 */
 	public boolean getCheckMate(int turnTeamNumber)
 	{
-		List<Piece> checkPieces = getTeamPieces(toggleTeam(turnTeamNumber));
+		List<Piece> checkPieces = getTeamPieces(turnTeamNumber);
 		boolean isCheck = false;
 		for(int i = 0; i < checkPieces.size(); i++)
 		{
@@ -218,7 +223,7 @@ public class Board
 			List<Move> possibleMoves = checkPiece.findAllMoves(this);
 			for(int j = 0; j < possibleMoves.size(); j++)
 			{
-				isCheck = isKingInCheck(possibleMoves.get(j));
+				isCheck = isTeamInCheck(possibleMoves.get(j));
 				if(!isCheck)
 				{
 					return false;

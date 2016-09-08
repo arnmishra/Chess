@@ -32,7 +32,10 @@ public class King extends Piece
 		boolean isOnBoard = onAvailableSquare(move, board);
 		int xMovement = Math.abs(move.getEndX() - move.getStartX());
 		int yMovement = Math.abs(move.getEndY() - move.getStartY());
-		if(isOnBoard && (xMovement == 1 || yMovement == 1))
+		boolean moveHorizontal = (xMovement == 1 && yMovement == 0);
+		boolean moveVertical = (yMovement == 1 && xMovement == 0);
+		boolean moveDiagonal = (xMovement == 1 && yMovement == 1);
+		if(isOnBoard && (moveHorizontal || moveVertical || moveDiagonal))
 		{
 			return hasNoLeaps(move, board); //Check that the King only moved 1 space
 		}
@@ -81,7 +84,11 @@ public class King extends Piece
 		Move newMove = new Move(xValue, yValue, xValue + xDiff, yValue + yDiff, this.getTeamNumber());
 		if(isValidMove(newMove, board))
 		{
-			possibleMoves.add(newMove);
+			boolean isCheck = board.isTeamInCheck(newMove);
+			if(!isCheck)
+			{
+				possibleMoves.add(newMove);
+			}
 		}
 		return possibleMoves;
 	}

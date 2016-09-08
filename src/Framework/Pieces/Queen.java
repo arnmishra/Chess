@@ -54,7 +54,7 @@ public class Queen extends Piece
 		int endX = move.getEndX();
 		int startY = move.getStartY();
 		int endY = move.getEndY();
-		boolean noLeaps;
+		boolean noLeaps = false;
 		if(endX > startX)
 		{
 			if(endY == startY) // For right straight movement.
@@ -85,7 +85,7 @@ public class Queen extends Piece
 			{
 				noLeaps = traverseColumn(startX, startY, endY, positions);
 			}
-			else // For upward straight movement.
+			else if(endY < startY) // For upward straight movement.
 			{
 				noLeaps = traverseColumn(startX, endY, startY, positions);
 			}

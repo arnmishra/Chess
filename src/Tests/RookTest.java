@@ -15,7 +15,7 @@ import Tests.Common;
 public class RookTest {
 
 	@Test
-	public void validRookMovement() throws Exception {
+	public void validVerticalRookMovement() throws Exception {
 		Board board = new Board(8, 8);
 		int teamNumber = 0;
 		Move pawnMove = new Move(0, 1, 0, 3, teamNumber); // Move the pawn out of the way to test the rook
@@ -29,6 +29,28 @@ public class RookTest {
 			fail("Incorrect piece type");
 		}
 		Move rookMove = new Move(xCoordinate, yCoordinate, xCoordinate, yCoordinate + 2, teamNumber);
+		assertTrue(rook.isValidMove(rookMove, board));
+	}
+	
+	@Test
+	public void validHorizontalRookMovement() throws Exception {
+		Board board = new Board(8, 8);
+		int teamNumber = 0;
+		Move pawnMove;
+		Move rookMove;
+		pawnMove = new Move(0, 1, 0, 3, teamNumber); // Move the pawn out of the way to test the rook
+		board.setPositions(pawnMove);
+		rookMove = new Move(0, 0, 0, 2, teamNumber); // Move rook up to open horizontal movement 
+		board.setPositions(rookMove);
+		
+		int xCoordinate = 0;
+		int yCoordinate = 2;
+		Piece rook = board.getPositions()[yCoordinate][xCoordinate];
+		if(!(rook instanceof Rook))
+		{
+			fail("Incorrect piece type");
+		}
+		rookMove = new Move(xCoordinate, yCoordinate, xCoordinate + 2, yCoordinate, teamNumber);
 		assertTrue(rook.isValidMove(rookMove, board));
 	}
 	

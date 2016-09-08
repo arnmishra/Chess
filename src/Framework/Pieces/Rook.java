@@ -32,7 +32,11 @@ public class Rook extends Piece
 		boolean isOnBoard = onAvailableSquare(move, board);
 		int xMovement = Math.abs(move.getEndX() - move.getStartX());
 		int yMovement = Math.abs(move.getEndY() - move.getStartY());
-		if(isOnBoard && (xMovement == 0 ^ yMovement == 0))
+		if((xMovement == 0 && yMovement == 0) || (xMovement != 0 && yMovement != 0))
+		{
+			return false; //Not valid if rook doesn't move or if it moves diagonally
+		}
+		else if(isOnBoard)
 		{
 			return hasNoLeaps(move, board); //Check that the Rook only moved in one direction
 		}
@@ -66,10 +70,11 @@ public class Rook extends Piece
 		{
 			return traverseColumn(startX, startY, endY, positions);
 		}
-		else
+		else if(endY < startY)
 		{
 			return traverseColumn(startX, endY, startY, positions);
 		}
+		return false;
 	}
 
 	/**
@@ -81,13 +86,11 @@ public class Rook extends Piece
 	public List<Move> findAllMoves(Board board) {
 		int xValue = this.getXValue();
 		int yValue = this.getYValue();
-		
 		List<Move> possibleMoves = new ArrayList<Move>();
 		possibleMoves.addAll(getMoves(board, 1, 0, xValue, yValue)); // Check right movement.
 		possibleMoves.addAll(getMoves(board, -1, 0, xValue, yValue)); // Check left movement.
 		possibleMoves.addAll(getMoves(board, 0, 1, xValue, yValue));  // Check downward movement.
 		possibleMoves.addAll(getMoves(board, 0, -1, xValue, yValue)); // Check upward movement.
-		
 		return possibleMoves;
 	}
 }

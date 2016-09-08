@@ -128,10 +128,11 @@ public class Pawn extends Piece
 		{
 			return traverseColumn(column, startY, endY, positions);
 		}
-		else
+		else if(endY < startY)
 		{
 			return traverseColumn(column, endY, startY, positions);
 		}
+		return false;
 	}
 	
 	/**

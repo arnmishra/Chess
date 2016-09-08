@@ -58,7 +58,7 @@ public class Game
 		}
 		Move move = new Move(inputs[0], inputs[1], inputs[2], inputs[3], turnTeamNumber);
 		
-		if(board.isKingInCheck(move))
+		if(board.isTeamInCheck(move))
 		{
 			System.out.println("Invalid Move: Your King is in Check");
 			return turnTeamNumber;
@@ -71,7 +71,7 @@ public class Game
 		}
 		board.setPositions(move);
 		board.printBoard();
-		boolean isCheckMate = board.getCheckMate(turnTeamNumber);
+		boolean isCheckMate = board.getCheckMate(board.toggleTeam(turnTeamNumber)); // Check if the opposing team lost
 		if(isCheckMate)
 		{
 			System.out.println("Team " + turnTeamNumber + " wins!");

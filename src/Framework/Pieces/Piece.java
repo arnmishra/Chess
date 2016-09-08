@@ -235,7 +235,11 @@ public abstract class Piece
 			boolean isValid = isValidMove(newMove, board);
 			if(isValid)
 			{
-				possibleMoves.add(newMove);
+				boolean isCheck = board.isTeamInCheck(newMove);
+				if(!isCheck)
+				{
+					possibleMoves.add(newMove);
+				}
 			}
 			changeX += xDirection;
 			changeY += yDirection;

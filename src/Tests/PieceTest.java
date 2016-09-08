@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import Framework.Board;
+import Framework.Move;
 import Framework.Team;
 import Framework.Pieces.*;
 
@@ -24,11 +26,25 @@ public class PieceTest {
 	
 	@Test
 	public void moveOffBoard() throws Exception {
-		fail("Not yet implemented");
+		Board board = new Board(8, 8);
+		int teamNumber = 0;
+		
+		int xCoordinate = 0;
+		int yCoordinate = 0;
+		Piece piece = board.getPositions()[yCoordinate][xCoordinate];
+		Move move = new Move(xCoordinate, yCoordinate, xCoordinate - 1, yCoordinate, teamNumber);
+		assertFalse(piece.isValidMove(move, board));
 	}
 	
 	@Test
 	public void spaceOccupiedBySameTeam() throws Exception {
-		fail("Not yet implemented");
+		Board board = new Board(8, 8);
+		int teamNumber = 0;
+		
+		int xCoordinate = 0;
+		int yCoordinate = 0;
+		Piece piece = board.getPositions()[yCoordinate][xCoordinate];
+		Move move = new Move(xCoordinate, yCoordinate, xCoordinate + 1, yCoordinate, teamNumber);
+		assertFalse(piece.isValidMove(move, board));
 	}
 }
