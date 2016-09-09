@@ -13,7 +13,7 @@ import Framework.Pieces.*;
 import Tests.Common;
 
 /**
- * Tests for the Pawn calss.
+ * Tests for the Pawn class.
  * @author arnavmishra
  *
  */
@@ -78,9 +78,7 @@ public class PawnTest {
 		{
 			fail("Incorrect piece type");
 		}
-		Move pawnMoveOneSpaces = new Move(xCoordinate, yCoordinate, xCoordinate, yCoordinate + 1, teamNumber);
-		board.setPositions(pawnMoveOneSpaces);
-		board.printBoard();
+		Common.movePiece(board, xCoordinate, yCoordinate, xCoordinate, yCoordinate + 1, teamNumber);
 		Move pawnMoveTwoSpaces = new Move(xCoordinate, yCoordinate + 1, xCoordinate, yCoordinate + 3, teamNumber);
 		assertFalse(pawn.isValidMove(pawnMoveTwoSpaces, board));
 	}
@@ -102,10 +100,8 @@ public class PawnTest {
 		{
 			fail("Incorrect piece type");
 		}
-		Move team0PawnMove = new Move(4, 1, 4, 3, 0); // Move Team 0's Pawn closer to test taking a piece
-		board.setPositions(team0PawnMove);
-		Move team1PawnMove = new Move(3, 6, 3, 4, 1); // Move Team 1's Pawn closer to test taking a piece
-		board.setPositions(team1PawnMove);
+		Common.movePiece(board, 4, 1, 4, 3, 0); // Move Team 0's Pawn closer to test taking a piece
+		Common.movePiece(board, 3, 6, 3, 4, 1); // Move Team 1's Pawn closer to test taking a piece
 		Move pawnMoveDiagonal = new Move(4, 3, 3, 4, 0); // Move Team 1's Pawn closer to test taking a piece
 		assertTrue(pawn.isValidMove(pawnMoveDiagonal, board));
 	}

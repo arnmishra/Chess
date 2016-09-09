@@ -198,11 +198,6 @@ public class Board
 			isCheck = opposingPiece.isValidMove(checkMove, this);
 			if(isCheck)
 			{
-				System.out.println(opposingPiece);
-				System.out.println(opposingX);
-				System.out.println(opposingY);
-				System.out.println(kingX);
-				System.out.println(kingY);
 				break;
 			}
 		}

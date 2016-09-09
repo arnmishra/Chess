@@ -28,8 +28,7 @@ public class RookTest {
 	public void validVerticalRookMovement() throws Exception {
 		Board board = new Board(8, 8);
 		int teamNumber = 0;
-		Move pawnMove = new Move(0, 1, 0, 3, teamNumber); // Move the pawn out of the way to test the rook
-		board.setPositions(pawnMove);
+		Common.movePiece(board, 0, 1, 0, 3, teamNumber); // Move the pawn out of the way to test the rook
 		
 		int xCoordinate = 0;
 		int yCoordinate = 0;
@@ -52,12 +51,8 @@ public class RookTest {
 	public void validHorizontalRookMovement() throws Exception {
 		Board board = new Board(8, 8);
 		int teamNumber = 0;
-		Move pawnMove;
-		Move rookMove;
-		pawnMove = new Move(0, 1, 0, 3, teamNumber); // Move the pawn out of the way to test the rook
-		board.setPositions(pawnMove);
-		rookMove = new Move(0, 0, 0, 2, teamNumber); // Move rook up to open horizontal movement 
-		board.setPositions(rookMove);
+		Common.movePiece(board, 0, 1, 0, 3, teamNumber); // Move the pawn out of the way to test the rook
+		Common.movePiece(board, 0, 0, 0, 2, teamNumber); // Move rook up to open horizontal movement 
 		
 		int xCoordinate = 0;
 		int yCoordinate = 2;
@@ -66,7 +61,7 @@ public class RookTest {
 		{
 			fail("Incorrect piece type");
 		}
-		rookMove = new Move(xCoordinate, yCoordinate, xCoordinate + 2, yCoordinate, teamNumber);
+		Move rookMove = new Move(xCoordinate, yCoordinate, xCoordinate + 2, yCoordinate, teamNumber);
 		assertTrue(rook.isValidMove(rookMove, board));
 	}
 	
@@ -79,8 +74,7 @@ public class RookTest {
 	public void invalidRookMovement() throws Exception {
 		Board board = new Board(8, 8);
 		int teamNumber = 0;
-		Move pawnMove = new Move(1, 1, 1, 3, teamNumber); // Move the pawn out of the way to test the rook
-		board.setPositions(pawnMove);
+		Common.movePiece(board, 1, 1, 1, 3, teamNumber); // Move the pawn out of the way to test the rook
 		
 		int xCoordinate = 0;
 		int yCoordinate = 0;
@@ -102,8 +96,7 @@ public class RookTest {
 	public void correctAllStartingRookMoves() throws Exception {
 		Board board = new Board(8, 8);
 		int teamNumber = 0;
-		Move pawnMove = new Move(0, 1, 0, 3, teamNumber); // Move the pawn out of the way to test the rook
-		board.setPositions(pawnMove);
+		Common.movePiece(board, 0, 1, 0, 3, teamNumber); // Move the pawn out of the way to test the rook
 		
 		int xCoordinate = 0;
 		int yCoordinate = 0;

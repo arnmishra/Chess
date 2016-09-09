@@ -7,7 +7,6 @@ import java.util.List;
 import org.junit.Test;
 
 import Framework.Board;
-import Framework.Move;
 import Framework.Team;
 import Framework.Pieces.Pawn;
 import Framework.Pieces.Piece;
@@ -48,12 +47,9 @@ public class TeamTest {
 		{
 			fail("Incorrect piece type");
 		}
-		Move team0PawnMove = new Move(4, 1, 4, 3, 0); // Move Team 0's Pawn closer to test taking a piece
-		board.setPositions(team0PawnMove);
-		Move team1PawnMove = new Move(3, 6, 3, 4, 1); // Move Team 1's Pawn closer to test taking a piece
-		board.setPositions(team1PawnMove);
-		Move pawnMoveDiagonal = new Move(4, 3, 3, 4, 0); // Move Team 1's Pawn closer to test taking a piece
-		board.setPositions(pawnMoveDiagonal);
+		Common.movePiece(board, 4, 1, 4, 3, 0); // Move Team 0's Pawn closer to test taking a piece
+		Common.movePiece(board, 3, 6, 3, 4, 1); // Move Team 1's Pawn closer to test taking a piece
+		Common.movePiece(board, 4, 3, 3, 4, 0); // Move Team 1's Pawn closer to test taking a piece
 		
 		Team team1 = board.getTeam(1);
 		List<Piece> pieces = team1.getPieces();

@@ -1,6 +1,8 @@
 package Tests;
 
 import java.util.List;
+
+import Framework.Board;
 import Framework.Move;
 
 /**
@@ -52,5 +54,20 @@ public class Common
 			}
 		}
 		return true;
+	}
+	
+	/**
+	 * Helper Function to move coordinates on a board.
+	 * @param board
+	 * @param startX
+	 * @param startY
+	 * @param endX
+	 * @param endY
+	 * @param teamNumber
+	 */
+	public static void movePiece(Board board, int startX, int startY, int endX, int endY, int teamNumber)
+	{
+		Move move = new Move(startX, startY, endX, endY, teamNumber);
+		board.setPositions(move);
 	}
 }

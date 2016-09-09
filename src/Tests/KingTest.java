@@ -28,8 +28,7 @@ public class KingTest {
 	public void validKingForwardMovement() throws Exception {
 		Board board = new Board(8, 8);
 		int teamNumber = 0;
-		Move pawnMove = new Move(4, 1, 4, 3, teamNumber); // Move the pawn out of the way to test the king forward
-		board.setPositions(pawnMove);
+		Common.movePiece(board, 4, 1, 4, 3, teamNumber); // Move the pawn out of the way to test the king forward
 		
 		int xCoordinate = 4;
 		int yCoordinate = 0;
@@ -52,8 +51,7 @@ public class KingTest {
 	public void validKingDiagonalMovement() throws Exception {
 		Board board = new Board(8, 8);
 		int teamNumber = 0;
-		Move pawnMove = new Move(3, 1, 3, 3, teamNumber); // Move the pawn out of the way to test the king diagonal
-		board.setPositions(pawnMove);
+		Common.movePiece(board, 3, 1, 3, 3, teamNumber); // Move the pawn out of the way to test the king diagonal
 		
 		int xCoordinate = 4;
 		int yCoordinate = 0;
@@ -75,8 +73,7 @@ public class KingTest {
 	public void invalidKingMovement() throws Exception {
 		Board board = new Board(8, 8);
 		int teamNumber = 0;
-		Move pawnMove = new Move(4, 1, 4, 3, teamNumber); // Move the pawn out of the way
-		board.setPositions(pawnMove);
+		Common.movePiece(board, 4, 1, 4, 3, teamNumber); // Move the pawn out of the way
 		
 		int xCoordinate = 4;
 		int yCoordinate = 0;
@@ -98,13 +95,9 @@ public class KingTest {
 	@Test
 	public void correctAllStartingKingMoves() throws Exception {
 		Board board = new Board(8, 8);
-		board.printBoard();
 		int teamNumber = 0;
-		Move pawnMove = new Move(3, 1, 3, 3, teamNumber); // Move the pawn out of the way
-		board.setPositions(pawnMove);
-		pawnMove = new Move(4, 1, 4, 3, teamNumber); // Move the pawn out of the way
-		board.setPositions(pawnMove);
-		board.printBoard();
+		Common.movePiece(board, 3, 1, 3, 3, teamNumber); // Move the pawn out of the way
+		Common.movePiece(board, 4, 1, 4, 3, teamNumber); // Move the pawn out of the way
 		int xCoordinate = 4;
 		int yCoordinate = 0;
 		Piece king = board.getPositions()[yCoordinate][xCoordinate];

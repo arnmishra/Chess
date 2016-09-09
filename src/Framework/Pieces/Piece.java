@@ -83,13 +83,19 @@ public abstract class Piece
 	 */
 	public abstract boolean isValidMove(Move move, Board board);
 	
+	/**
+	 * Check if the move goes to an available square that is on the board.
+	 * @param move
+	 * @param board
+	 * @return true/false whether it is available
+	 */
 	public boolean onAvailableSquare(Move move, Board board)
 	{
 		int endX = move.getEndX();
 		int endY = move.getEndY();
 		if(board.getWidth() <= endX || endX < 0)
 		{
-			//System.out.print("Off width of board: ");
+			//\System.out.print("Off width of board: ");
 			return false; // Ensure that this move doesn't put the piece off the board. 
 		}
 		else if(board.getLength() <= endY || endY < 0)
