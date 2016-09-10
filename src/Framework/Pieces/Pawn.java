@@ -32,11 +32,14 @@ public class Pawn extends Piece
 		boolean isValid;
 		boolean isOnBoard = onAvailableSquare(move, board);
 		int yDelta = move.getEndY() - move.getStartY();
+		
 		boolean isForward = checkForward(move, yDelta); // Check that the movement is forward.
 		boolean firstMove = (move.getStartY() == 1 || move.getStartY() == board.getLength()-2); // Check row for first move.
 		boolean noPiece = checkNoPiece(move, board); // Check if there is a piece already on the position being moved to.
+		
 		int xMovement = Math.abs(move.getEndX() - move.getStartX());
 		int yMovement = Math.abs(yDelta);
+		
 		if(!isOnBoard || !isForward) // Check if pawn is on the board and is moving forward.
 		{
 			isValid = false;

@@ -34,6 +34,42 @@ public class Board
 	}
 	
 	/**
+	 * Get width of board.
+	 * @return width
+	 */
+	public int getWidth()
+	{
+		return this.width;
+	}
+	
+	/**
+	 * Set width of board.
+	 * @param width
+	 */
+	public void setWidth(int width)
+	{
+		this.width = width;
+	}
+	
+	/**
+	 * Get length of board.
+	 * @return length
+	 */
+	public int getLength()
+	{
+		return this.length;
+	}
+	
+	/**
+	 * Set length of board.
+	 * @param length
+	 */
+	public void setLength(int length)
+	{
+		this.length = length;
+	}
+	
+	/**
 	 * Function to put pieces in initial starting positions. 
 	 * @return a Piece double array with all the current positions.
 	 */
@@ -72,42 +108,6 @@ public class Board
 		positions[yValue][6] = new Knight(team, 6, yValue);
 		positions[yValue][7] = new Rook(team, 7, yValue);
 		return positions[yValue];
-	}
-	
-	/**
-	 * Get width of board.
-	 * @return width
-	 */
-	public int getWidth()
-	{
-		return this.width;
-	}
-	
-	/**
-	 * Set width of board.
-	 * @param width
-	 */
-	public void setWidth(int width)
-	{
-		this.width = width;
-	}
-	
-	/**
-	 * Get length of board.
-	 * @return length
-	 */
-	public int getLength()
-	{
-		return this.length;
-	}
-	
-	/**
-	 * Set length of board.
-	 * @param length
-	 */
-	public void setLength(int length)
-	{
-		this.length = length;
 	}
 	
 	/**

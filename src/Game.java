@@ -7,7 +7,7 @@ import Framework.Pieces.*;
 /**
  * The Game class runs the primary game including developing the UI.
  * @author arnavmishra
- *
+ * Fastest check mate: 5153, 4645, 6163, 3773
  */
 public class Game
 {

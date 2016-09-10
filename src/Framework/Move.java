@@ -1,4 +1,5 @@
 package Framework;
+
 public class Move
 {
 	private int startX; // Move's starting X coordinate.

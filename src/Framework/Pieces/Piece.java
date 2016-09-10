@@ -95,12 +95,10 @@ public abstract class Piece
 		int endY = move.getEndY();
 		if(board.getWidth() <= endX || endX < 0)
 		{
-			//\System.out.print("Off width of board: ");
 			return false; // Ensure that this move doesn't put the piece off the board. 
 		}
 		else if(board.getLength() <= endY || endY < 0)
 		{
-			//System.out.print("Off length of board: ");
 			return false; // Ensure that this move doesn't put the piece off the board. 
 		}
 		
@@ -113,7 +111,6 @@ public abstract class Piece
 			int currentPieceTeam = positions[startY][startX].getTeamNumber();
 			if(replacedPieceTeam == currentPieceTeam)
 			{
-				//System.out.print("End coordinates occupied by same team: ");
 				return false; // Ensure that the piece doesn't take another piece of its own team
 			}
 		}
