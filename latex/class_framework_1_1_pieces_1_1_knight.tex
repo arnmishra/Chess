@@ -1,0 +1,93 @@
+\hypertarget{class_framework_1_1_pieces_1_1_knight}{}\section{Framework.\+Pieces.\+Knight Class Reference}
+\label{class_framework_1_1_pieces_1_1_knight}\index{Framework.\+Pieces.\+Knight@{Framework.\+Pieces.\+Knight}}
+Inheritance diagram for Framework.\+Pieces.\+Knight\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_framework_1_1_pieces_1_1_knight}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_framework_1_1_pieces_1_1_knight_ac232462b30d8b736259c7f552436468b}{Knight} (\hyperlink{class_framework_1_1_team}{Team} team, int x\+Value, int y\+Value)
+\item 
+boolean \hyperlink{class_framework_1_1_pieces_1_1_knight_ae483ea0bcaf3af8a6450532497165eb4}{is\+Valid\+Move} (\hyperlink{class_framework_1_1_move}{Move} move, \hyperlink{class_framework_1_1_board}{Board} board)
+\item 
+boolean \hyperlink{class_framework_1_1_pieces_1_1_knight_a7dd994749014c4f3f3d5f48c4701fd1b}{has\+No\+Leaps} (\hyperlink{class_framework_1_1_move}{Move} move, \hyperlink{class_framework_1_1_board}{Board} board)
+\item 
+List$<$ \hyperlink{class_framework_1_1_move}{Move} $>$ \hyperlink{class_framework_1_1_pieces_1_1_knight_a0c01ddd9a78ca639d5ee87dc28ef5584}{find\+All\+Moves} (\hyperlink{class_framework_1_1_board}{Board} board)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{class_framework_1_1_pieces_1_1_knight}{Knight} class to describe \hyperlink{class_framework_1_1_pieces_1_1_knight}{Knight}\textquotesingle{}s possible moves. \begin{DoxyAuthor}{Author}
+arnavmishra 
+\end{DoxyAuthor}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_framework_1_1_pieces_1_1_knight_ac232462b30d8b736259c7f552436468b}{}\label{class_framework_1_1_pieces_1_1_knight_ac232462b30d8b736259c7f552436468b} 
+\index{Framework\+::\+Pieces\+::\+Knight@{Framework\+::\+Pieces\+::\+Knight}!Knight@{Knight}}
+\index{Knight@{Knight}!Framework\+::\+Pieces\+::\+Knight@{Framework\+::\+Pieces\+::\+Knight}}
+\subsubsection{\texorpdfstring{Knight()}{Knight()}}
+{\footnotesize\ttfamily Framework.\+Pieces.\+Knight.\+Knight (\begin{DoxyParamCaption}\item[{\hyperlink{class_framework_1_1_team}{Team}}]{team,  }\item[{int}]{x\+Value,  }\item[{int}]{y\+Value }\end{DoxyParamCaption})}
+
+Constructor to initialize \hyperlink{class_framework_1_1_pieces_1_1_knight}{Knight} on a team and coordinate. 
+\begin{DoxyParams}{Parameters}
+{\em team} & \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_framework_1_1_pieces_1_1_knight_a0c01ddd9a78ca639d5ee87dc28ef5584}{}\label{class_framework_1_1_pieces_1_1_knight_a0c01ddd9a78ca639d5ee87dc28ef5584} 
+\index{Framework\+::\+Pieces\+::\+Knight@{Framework\+::\+Pieces\+::\+Knight}!find\+All\+Moves@{find\+All\+Moves}}
+\index{find\+All\+Moves@{find\+All\+Moves}!Framework\+::\+Pieces\+::\+Knight@{Framework\+::\+Pieces\+::\+Knight}}
+\subsubsection{\texorpdfstring{find\+All\+Moves()}{findAllMoves()}}
+{\footnotesize\ttfamily List$<$\hyperlink{class_framework_1_1_move}{Move}$>$ Framework.\+Pieces.\+Knight.\+find\+All\+Moves (\begin{DoxyParamCaption}\item[{\hyperlink{class_framework_1_1_board}{Board}}]{board }\end{DoxyParamCaption})}
+
+Function to get all valid possible moves for the \hyperlink{class_framework_1_1_pieces_1_1_knight}{Knight} in any direction. 
+\begin{DoxyParams}{Parameters}
+{\em board} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+all possible valid moves. 
+\end{DoxyReturn}
+\hypertarget{class_framework_1_1_pieces_1_1_knight_a7dd994749014c4f3f3d5f48c4701fd1b}{}\label{class_framework_1_1_pieces_1_1_knight_a7dd994749014c4f3f3d5f48c4701fd1b} 
+\index{Framework\+::\+Pieces\+::\+Knight@{Framework\+::\+Pieces\+::\+Knight}!has\+No\+Leaps@{has\+No\+Leaps}}
+\index{has\+No\+Leaps@{has\+No\+Leaps}!Framework\+::\+Pieces\+::\+Knight@{Framework\+::\+Pieces\+::\+Knight}}
+\subsubsection{\texorpdfstring{has\+No\+Leaps()}{hasNoLeaps()}}
+{\footnotesize\ttfamily boolean Framework.\+Pieces.\+Knight.\+has\+No\+Leaps (\begin{DoxyParamCaption}\item[{\hyperlink{class_framework_1_1_move}{Move}}]{move,  }\item[{\hyperlink{class_framework_1_1_board}{Board}}]{board }\end{DoxyParamCaption})}
+
+The knight is allowed to jump over pieces. 
+\begin{DoxyParams}{Parameters}
+{\em move} & \\
+\hline
+{\em board} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+whether the knight leaps over pieces. 
+\end{DoxyReturn}
+\hypertarget{class_framework_1_1_pieces_1_1_knight_ae483ea0bcaf3af8a6450532497165eb4}{}\label{class_framework_1_1_pieces_1_1_knight_ae483ea0bcaf3af8a6450532497165eb4} 
+\index{Framework\+::\+Pieces\+::\+Knight@{Framework\+::\+Pieces\+::\+Knight}!is\+Valid\+Move@{is\+Valid\+Move}}
+\index{is\+Valid\+Move@{is\+Valid\+Move}!Framework\+::\+Pieces\+::\+Knight@{Framework\+::\+Pieces\+::\+Knight}}
+\subsubsection{\texorpdfstring{is\+Valid\+Move()}{isValidMove()}}
+{\footnotesize\ttfamily boolean Framework.\+Pieces.\+Knight.\+is\+Valid\+Move (\begin{DoxyParamCaption}\item[{\hyperlink{class_framework_1_1_move}{Move}}]{move,  }\item[{\hyperlink{class_framework_1_1_board}{Board}}]{board }\end{DoxyParamCaption})}
+
+Function to check whether a knight\textquotesingle{}s move is valid. 
+\begin{DoxyParams}{Parameters}
+{\em move} & \\
+\hline
+{\em board} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Whether the move is valid. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Framework/\+Pieces/\hyperlink{_knight_8java}{Knight.\+java}\end{DoxyCompactItemize}

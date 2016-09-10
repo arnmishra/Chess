@@ -1,0 +1,93 @@
+\hypertarget{class_framework_1_1_pieces_1_1_bishop}{}\section{Framework.\+Pieces.\+Bishop Class Reference}
+\label{class_framework_1_1_pieces_1_1_bishop}\index{Framework.\+Pieces.\+Bishop@{Framework.\+Pieces.\+Bishop}}
+Inheritance diagram for Framework.\+Pieces.\+Bishop\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_framework_1_1_pieces_1_1_bishop}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_framework_1_1_pieces_1_1_bishop_a3396bd8dc296ef4648567b18fdc23639}{Bishop} (\hyperlink{class_framework_1_1_team}{Team} team, int x\+Value, int y\+Value)
+\item 
+boolean \hyperlink{class_framework_1_1_pieces_1_1_bishop_aaec1c58dd8488e1f3c139a1a99ac67c7}{is\+Valid\+Move} (\hyperlink{class_framework_1_1_move}{Move} move, \hyperlink{class_framework_1_1_board}{Board} board)
+\item 
+boolean \hyperlink{class_framework_1_1_pieces_1_1_bishop_a62bca5b0d1b6318f91deed40edf0a8fb}{has\+No\+Leaps} (\hyperlink{class_framework_1_1_move}{Move} move, \hyperlink{class_framework_1_1_board}{Board} board)
+\item 
+List$<$ \hyperlink{class_framework_1_1_move}{Move} $>$ \hyperlink{class_framework_1_1_pieces_1_1_bishop_a0f8de4fc5aad49e30d1bb08c87d67d86}{find\+All\+Moves} (\hyperlink{class_framework_1_1_board}{Board} board)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{class_framework_1_1_pieces_1_1_bishop}{Bishop} class to describe \hyperlink{class_framework_1_1_pieces_1_1_bishop}{Bishop}\textquotesingle{}s possible moves. \begin{DoxyAuthor}{Author}
+arnavmishra 
+\end{DoxyAuthor}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_framework_1_1_pieces_1_1_bishop_a3396bd8dc296ef4648567b18fdc23639}{}\label{class_framework_1_1_pieces_1_1_bishop_a3396bd8dc296ef4648567b18fdc23639} 
+\index{Framework\+::\+Pieces\+::\+Bishop@{Framework\+::\+Pieces\+::\+Bishop}!Bishop@{Bishop}}
+\index{Bishop@{Bishop}!Framework\+::\+Pieces\+::\+Bishop@{Framework\+::\+Pieces\+::\+Bishop}}
+\subsubsection{\texorpdfstring{Bishop()}{Bishop()}}
+{\footnotesize\ttfamily Framework.\+Pieces.\+Bishop.\+Bishop (\begin{DoxyParamCaption}\item[{\hyperlink{class_framework_1_1_team}{Team}}]{team,  }\item[{int}]{x\+Value,  }\item[{int}]{y\+Value }\end{DoxyParamCaption})}
+
+Constructor to initialize \hyperlink{class_framework_1_1_pieces_1_1_bishop}{Bishop} on a team and coordinate. 
+\begin{DoxyParams}{Parameters}
+{\em team} & \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_framework_1_1_pieces_1_1_bishop_a0f8de4fc5aad49e30d1bb08c87d67d86}{}\label{class_framework_1_1_pieces_1_1_bishop_a0f8de4fc5aad49e30d1bb08c87d67d86} 
+\index{Framework\+::\+Pieces\+::\+Bishop@{Framework\+::\+Pieces\+::\+Bishop}!find\+All\+Moves@{find\+All\+Moves}}
+\index{find\+All\+Moves@{find\+All\+Moves}!Framework\+::\+Pieces\+::\+Bishop@{Framework\+::\+Pieces\+::\+Bishop}}
+\subsubsection{\texorpdfstring{find\+All\+Moves()}{findAllMoves()}}
+{\footnotesize\ttfamily List$<$\hyperlink{class_framework_1_1_move}{Move}$>$ Framework.\+Pieces.\+Bishop.\+find\+All\+Moves (\begin{DoxyParamCaption}\item[{\hyperlink{class_framework_1_1_board}{Board}}]{board }\end{DoxyParamCaption})}
+
+Function to get all valid possible moves for the bishop in any direction. 
+\begin{DoxyParams}{Parameters}
+{\em board} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+all possible valid moves. 
+\end{DoxyReturn}
+\hypertarget{class_framework_1_1_pieces_1_1_bishop_a62bca5b0d1b6318f91deed40edf0a8fb}{}\label{class_framework_1_1_pieces_1_1_bishop_a62bca5b0d1b6318f91deed40edf0a8fb} 
+\index{Framework\+::\+Pieces\+::\+Bishop@{Framework\+::\+Pieces\+::\+Bishop}!has\+No\+Leaps@{has\+No\+Leaps}}
+\index{has\+No\+Leaps@{has\+No\+Leaps}!Framework\+::\+Pieces\+::\+Bishop@{Framework\+::\+Pieces\+::\+Bishop}}
+\subsubsection{\texorpdfstring{has\+No\+Leaps()}{hasNoLeaps()}}
+{\footnotesize\ttfamily boolean Framework.\+Pieces.\+Bishop.\+has\+No\+Leaps (\begin{DoxyParamCaption}\item[{\hyperlink{class_framework_1_1_move}{Move}}]{move,  }\item[{\hyperlink{class_framework_1_1_board}{Board}}]{board }\end{DoxyParamCaption})}
+
+Function to check whether the bishop jumps over any pieces when it moves diagonally. 
+\begin{DoxyParams}{Parameters}
+{\em move} & \\
+\hline
+{\em board} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+whether the bishop leaps over pieces. 
+\end{DoxyReturn}
+\hypertarget{class_framework_1_1_pieces_1_1_bishop_aaec1c58dd8488e1f3c139a1a99ac67c7}{}\label{class_framework_1_1_pieces_1_1_bishop_aaec1c58dd8488e1f3c139a1a99ac67c7} 
+\index{Framework\+::\+Pieces\+::\+Bishop@{Framework\+::\+Pieces\+::\+Bishop}!is\+Valid\+Move@{is\+Valid\+Move}}
+\index{is\+Valid\+Move@{is\+Valid\+Move}!Framework\+::\+Pieces\+::\+Bishop@{Framework\+::\+Pieces\+::\+Bishop}}
+\subsubsection{\texorpdfstring{is\+Valid\+Move()}{isValidMove()}}
+{\footnotesize\ttfamily boolean Framework.\+Pieces.\+Bishop.\+is\+Valid\+Move (\begin{DoxyParamCaption}\item[{\hyperlink{class_framework_1_1_move}{Move}}]{move,  }\item[{\hyperlink{class_framework_1_1_board}{Board}}]{board }\end{DoxyParamCaption})}
+
+Function to check whether a bishop\textquotesingle{}s move is valid. 
+\begin{DoxyParams}{Parameters}
+{\em move} & \\
+\hline
+{\em board} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Whether the move is valid. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Framework/\+Pieces/\hyperlink{_bishop_8java}{Bishop.\+java}\end{DoxyCompactItemize}

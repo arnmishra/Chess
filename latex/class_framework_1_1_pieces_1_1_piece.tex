@@ -1,0 +1,281 @@
+\hypertarget{class_framework_1_1_pieces_1_1_piece}{}\section{Framework.\+Pieces.\+Piece Class Reference}
+\label{class_framework_1_1_pieces_1_1_piece}\index{Framework.\+Pieces.\+Piece@{Framework.\+Pieces.\+Piece}}
+Inheritance diagram for Framework.\+Pieces.\+Piece\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.117764cm]{class_framework_1_1_pieces_1_1_piece}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_framework_1_1_pieces_1_1_piece_a799b53db9458526b312ab23ac7f10700}{Piece} (\hyperlink{class_framework_1_1_team}{Team} team, int x\+Value, int y\+Value)
+\item 
+int \hyperlink{class_framework_1_1_pieces_1_1_piece_a4a7de4220140072732c013bb7c880022}{get\+X\+Value} ()
+\item 
+void \hyperlink{class_framework_1_1_pieces_1_1_piece_a62edc25d1604d7103c8f69ffe35700bd}{set\+Coordinates} (int x\+Value, int y\+Value)
+\item 
+int \hyperlink{class_framework_1_1_pieces_1_1_piece_a2c82ab150512df66e2e970f4a67553a0}{get\+Y\+Value} ()
+\item 
+\hyperlink{class_framework_1_1_team}{Team} \hyperlink{class_framework_1_1_pieces_1_1_piece_a2ad31621a379f060d2870e0ee20fdf82}{get\+Team} ()
+\item 
+int \hyperlink{class_framework_1_1_pieces_1_1_piece_a89cb4d3e939ba869775df9b10845ec9f}{get\+Team\+Number} ()
+\item 
+abstract boolean \hyperlink{class_framework_1_1_pieces_1_1_piece_afefa777905d65bca60e0954386549b84}{is\+Valid\+Move} (\hyperlink{class_framework_1_1_move}{Move} move, \hyperlink{class_framework_1_1_board}{Board} board)
+\item 
+boolean \hyperlink{class_framework_1_1_pieces_1_1_piece_a37f5106b3aae8a2b13857f6ce6bec328}{on\+Available\+Square} (\hyperlink{class_framework_1_1_move}{Move} move, \hyperlink{class_framework_1_1_board}{Board} board)
+\item 
+boolean \hyperlink{class_framework_1_1_pieces_1_1_piece_a4af002459d579221084a086acb86b3c5}{traverse\+Row} (int row, int smallX, int bigX, \hyperlink{class_framework_1_1_pieces_1_1_piece}{Piece}\mbox{[}$\,$\mbox{]}\mbox{[}$\,$\mbox{]} positions)
+\item 
+boolean \hyperlink{class_framework_1_1_pieces_1_1_piece_a0dbc47d481279fa4133546d5f0abe0ff}{traverse\+Column} (int column, int smallY, int bigY, \hyperlink{class_framework_1_1_pieces_1_1_piece}{Piece}\mbox{[}$\,$\mbox{]}\mbox{[}$\,$\mbox{]} positions)
+\item 
+boolean \hyperlink{class_framework_1_1_pieces_1_1_piece_acabfbee23b9c84fa70cc7b885b5e3a58}{traverse\+Diagonal} (int startX, int endX, int startY, int endY, \hyperlink{class_framework_1_1_pieces_1_1_piece}{Piece}\mbox{[}$\,$\mbox{]}\mbox{[}$\,$\mbox{]} positions)
+\item 
+int \hyperlink{class_framework_1_1_pieces_1_1_piece_ac9f72701fd35b1bef9ea3e42f648936b}{get\+Direction} (int start, int end)
+\item 
+abstract boolean \hyperlink{class_framework_1_1_pieces_1_1_piece_a6a7d6f6cf39ebc83927c5f3912163191}{has\+No\+Leaps} (\hyperlink{class_framework_1_1_move}{Move} move, \hyperlink{class_framework_1_1_board}{Board} board)
+\item 
+abstract List$<$ \hyperlink{class_framework_1_1_move}{Move} $>$ \hyperlink{class_framework_1_1_pieces_1_1_piece_a1572fe9000efc0a075e143dea8cba7c2}{find\+All\+Moves} (\hyperlink{class_framework_1_1_board}{Board} board)
+\item 
+List$<$ \hyperlink{class_framework_1_1_move}{Move} $>$ \hyperlink{class_framework_1_1_pieces_1_1_piece_a40e63d34544fb609fa5380b5d1664353}{get\+Moves} (\hyperlink{class_framework_1_1_board}{Board} board, int x\+Direction, int y\+Direction, int x\+Value, int y\+Value)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Parent \hyperlink{class_framework_1_1_pieces_1_1_piece}{Piece} Class to hold metadata 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_framework_1_1_pieces_1_1_piece_a799b53db9458526b312ab23ac7f10700}{}\label{class_framework_1_1_pieces_1_1_piece_a799b53db9458526b312ab23ac7f10700} 
+\index{Framework\+::\+Pieces\+::\+Piece@{Framework\+::\+Pieces\+::\+Piece}!Piece@{Piece}}
+\index{Piece@{Piece}!Framework\+::\+Pieces\+::\+Piece@{Framework\+::\+Pieces\+::\+Piece}}
+\subsubsection{\texorpdfstring{Piece()}{Piece()}}
+{\footnotesize\ttfamily Framework.\+Pieces.\+Piece.\+Piece (\begin{DoxyParamCaption}\item[{\hyperlink{class_framework_1_1_team}{Team}}]{team,  }\item[{int}]{x\+Value,  }\item[{int}]{y\+Value }\end{DoxyParamCaption})}
+
+Constructor that sets piece\textquotesingle{}s team
+
+
+\begin{DoxyParams}{Parameters}
+{\em team\+Number} & \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_framework_1_1_pieces_1_1_piece_a1572fe9000efc0a075e143dea8cba7c2}{}\label{class_framework_1_1_pieces_1_1_piece_a1572fe9000efc0a075e143dea8cba7c2} 
+\index{Framework\+::\+Pieces\+::\+Piece@{Framework\+::\+Pieces\+::\+Piece}!find\+All\+Moves@{find\+All\+Moves}}
+\index{find\+All\+Moves@{find\+All\+Moves}!Framework\+::\+Pieces\+::\+Piece@{Framework\+::\+Pieces\+::\+Piece}}
+\subsubsection{\texorpdfstring{find\+All\+Moves()}{findAllMoves()}}
+{\footnotesize\ttfamily abstract List$<$\hyperlink{class_framework_1_1_move}{Move}$>$ Framework.\+Pieces.\+Piece.\+find\+All\+Moves (\begin{DoxyParamCaption}\item[{\hyperlink{class_framework_1_1_board}{Board}}]{board }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [abstract]}}
+
+Abstract class for pieces to find all moves they can make. 
+\begin{DoxyParams}{Parameters}
+{\em board} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+List of all possible moves in any direction. 
+\end{DoxyReturn}
+\hypertarget{class_framework_1_1_pieces_1_1_piece_ac9f72701fd35b1bef9ea3e42f648936b}{}\label{class_framework_1_1_pieces_1_1_piece_ac9f72701fd35b1bef9ea3e42f648936b} 
+\index{Framework\+::\+Pieces\+::\+Piece@{Framework\+::\+Pieces\+::\+Piece}!get\+Direction@{get\+Direction}}
+\index{get\+Direction@{get\+Direction}!Framework\+::\+Pieces\+::\+Piece@{Framework\+::\+Pieces\+::\+Piece}}
+\subsubsection{\texorpdfstring{get\+Direction()}{getDirection()}}
+{\footnotesize\ttfamily int Framework.\+Pieces.\+Piece.\+get\+Direction (\begin{DoxyParamCaption}\item[{int}]{start,  }\item[{int}]{end }\end{DoxyParamCaption})}
+
+Check what direction the movement is in. 
+\begin{DoxyParams}{Parameters}
+{\em start} & \\
+\hline
+{\em end} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 for increasing coordinate, -\/1 for decreasing coordinate 
+\end{DoxyReturn}
+\hypertarget{class_framework_1_1_pieces_1_1_piece_a40e63d34544fb609fa5380b5d1664353}{}\label{class_framework_1_1_pieces_1_1_piece_a40e63d34544fb609fa5380b5d1664353} 
+\index{Framework\+::\+Pieces\+::\+Piece@{Framework\+::\+Pieces\+::\+Piece}!get\+Moves@{get\+Moves}}
+\index{get\+Moves@{get\+Moves}!Framework\+::\+Pieces\+::\+Piece@{Framework\+::\+Pieces\+::\+Piece}}
+\subsubsection{\texorpdfstring{get\+Moves()}{getMoves()}}
+{\footnotesize\ttfamily List$<$\hyperlink{class_framework_1_1_move}{Move}$>$ Framework.\+Pieces.\+Piece.\+get\+Moves (\begin{DoxyParamCaption}\item[{\hyperlink{class_framework_1_1_board}{Board}}]{board,  }\item[{int}]{x\+Direction,  }\item[{int}]{y\+Direction,  }\item[{int}]{x\+Value,  }\item[{int}]{y\+Value }\end{DoxyParamCaption})}
+
+Function to get all possible moves for a piece in a specific direction according to the current board. 
+\begin{DoxyParams}{Parameters}
+{\em board} & \\
+\hline
+{\em x\+Direction} & \\
+\hline
+{\em y\+Direction} & \\
+\hline
+{\em x\+Value} & \\
+\hline
+{\em y\+Value} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+All moves possible by a piece in a direction. 
+\end{DoxyReturn}
+\hypertarget{class_framework_1_1_pieces_1_1_piece_a2ad31621a379f060d2870e0ee20fdf82}{}\label{class_framework_1_1_pieces_1_1_piece_a2ad31621a379f060d2870e0ee20fdf82} 
+\index{Framework\+::\+Pieces\+::\+Piece@{Framework\+::\+Pieces\+::\+Piece}!get\+Team@{get\+Team}}
+\index{get\+Team@{get\+Team}!Framework\+::\+Pieces\+::\+Piece@{Framework\+::\+Pieces\+::\+Piece}}
+\subsubsection{\texorpdfstring{get\+Team()}{getTeam()}}
+{\footnotesize\ttfamily \hyperlink{class_framework_1_1_team}{Team} Framework.\+Pieces.\+Piece.\+get\+Team (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get what team this piece is on.
+
+\begin{DoxyReturn}{Returns}
+team object 
+\end{DoxyReturn}
+\hypertarget{class_framework_1_1_pieces_1_1_piece_a89cb4d3e939ba869775df9b10845ec9f}{}\label{class_framework_1_1_pieces_1_1_piece_a89cb4d3e939ba869775df9b10845ec9f} 
+\index{Framework\+::\+Pieces\+::\+Piece@{Framework\+::\+Pieces\+::\+Piece}!get\+Team\+Number@{get\+Team\+Number}}
+\index{get\+Team\+Number@{get\+Team\+Number}!Framework\+::\+Pieces\+::\+Piece@{Framework\+::\+Pieces\+::\+Piece}}
+\subsubsection{\texorpdfstring{get\+Team\+Number()}{getTeamNumber()}}
+{\footnotesize\ttfamily int Framework.\+Pieces.\+Piece.\+get\+Team\+Number (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get the piece\textquotesingle{}s team number. \begin{DoxyReturn}{Returns}
+team number 
+\end{DoxyReturn}
+\hypertarget{class_framework_1_1_pieces_1_1_piece_a4a7de4220140072732c013bb7c880022}{}\label{class_framework_1_1_pieces_1_1_piece_a4a7de4220140072732c013bb7c880022} 
+\index{Framework\+::\+Pieces\+::\+Piece@{Framework\+::\+Pieces\+::\+Piece}!get\+X\+Value@{get\+X\+Value}}
+\index{get\+X\+Value@{get\+X\+Value}!Framework\+::\+Pieces\+::\+Piece@{Framework\+::\+Pieces\+::\+Piece}}
+\subsubsection{\texorpdfstring{get\+X\+Value()}{getXValue()}}
+{\footnotesize\ttfamily int Framework.\+Pieces.\+Piece.\+get\+X\+Value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Getter for the x coordinate of the piece. \begin{DoxyReturn}{Returns}
+X-\/coordinate 
+\end{DoxyReturn}
+\hypertarget{class_framework_1_1_pieces_1_1_piece_a2c82ab150512df66e2e970f4a67553a0}{}\label{class_framework_1_1_pieces_1_1_piece_a2c82ab150512df66e2e970f4a67553a0} 
+\index{Framework\+::\+Pieces\+::\+Piece@{Framework\+::\+Pieces\+::\+Piece}!get\+Y\+Value@{get\+Y\+Value}}
+\index{get\+Y\+Value@{get\+Y\+Value}!Framework\+::\+Pieces\+::\+Piece@{Framework\+::\+Pieces\+::\+Piece}}
+\subsubsection{\texorpdfstring{get\+Y\+Value()}{getYValue()}}
+{\footnotesize\ttfamily int Framework.\+Pieces.\+Piece.\+get\+Y\+Value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Getter for the y coordinate of the piece. \begin{DoxyReturn}{Returns}
+Y-\/\+Coordinate 
+\end{DoxyReturn}
+\hypertarget{class_framework_1_1_pieces_1_1_piece_a6a7d6f6cf39ebc83927c5f3912163191}{}\label{class_framework_1_1_pieces_1_1_piece_a6a7d6f6cf39ebc83927c5f3912163191} 
+\index{Framework\+::\+Pieces\+::\+Piece@{Framework\+::\+Pieces\+::\+Piece}!has\+No\+Leaps@{has\+No\+Leaps}}
+\index{has\+No\+Leaps@{has\+No\+Leaps}!Framework\+::\+Pieces\+::\+Piece@{Framework\+::\+Pieces\+::\+Piece}}
+\subsubsection{\texorpdfstring{has\+No\+Leaps()}{hasNoLeaps()}}
+{\footnotesize\ttfamily abstract boolean Framework.\+Pieces.\+Piece.\+has\+No\+Leaps (\begin{DoxyParamCaption}\item[{\hyperlink{class_framework_1_1_move}{Move}}]{move,  }\item[{\hyperlink{class_framework_1_1_board}{Board}}]{board }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [abstract]}}
+
+Abstract class for pieces to determine whether there is a piece in the way. 
+\begin{DoxyParams}{Parameters}
+{\em move} & \\
+\hline
+{\em board} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Whether the piece jumps over other pieces. 
+\end{DoxyReturn}
+\hypertarget{class_framework_1_1_pieces_1_1_piece_afefa777905d65bca60e0954386549b84}{}\label{class_framework_1_1_pieces_1_1_piece_afefa777905d65bca60e0954386549b84} 
+\index{Framework\+::\+Pieces\+::\+Piece@{Framework\+::\+Pieces\+::\+Piece}!is\+Valid\+Move@{is\+Valid\+Move}}
+\index{is\+Valid\+Move@{is\+Valid\+Move}!Framework\+::\+Pieces\+::\+Piece@{Framework\+::\+Pieces\+::\+Piece}}
+\subsubsection{\texorpdfstring{is\+Valid\+Move()}{isValidMove()}}
+{\footnotesize\ttfamily abstract boolean Framework.\+Pieces.\+Piece.\+is\+Valid\+Move (\begin{DoxyParamCaption}\item[{\hyperlink{class_framework_1_1_move}{Move}}]{move,  }\item[{\hyperlink{class_framework_1_1_board}{Board}}]{board }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [abstract]}}
+
+Check if move is valid
+
+
+\begin{DoxyParams}{Parameters}
+{\em move} & \\
+\hline
+{\em board} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+whether it is valid 
+\end{DoxyReturn}
+\hypertarget{class_framework_1_1_pieces_1_1_piece_a37f5106b3aae8a2b13857f6ce6bec328}{}\label{class_framework_1_1_pieces_1_1_piece_a37f5106b3aae8a2b13857f6ce6bec328} 
+\index{Framework\+::\+Pieces\+::\+Piece@{Framework\+::\+Pieces\+::\+Piece}!on\+Available\+Square@{on\+Available\+Square}}
+\index{on\+Available\+Square@{on\+Available\+Square}!Framework\+::\+Pieces\+::\+Piece@{Framework\+::\+Pieces\+::\+Piece}}
+\subsubsection{\texorpdfstring{on\+Available\+Square()}{onAvailableSquare()}}
+{\footnotesize\ttfamily boolean Framework.\+Pieces.\+Piece.\+on\+Available\+Square (\begin{DoxyParamCaption}\item[{\hyperlink{class_framework_1_1_move}{Move}}]{move,  }\item[{\hyperlink{class_framework_1_1_board}{Board}}]{board }\end{DoxyParamCaption})}
+
+Check if the move goes to an available square that is on the board. 
+\begin{DoxyParams}{Parameters}
+{\em move} & \\
+\hline
+{\em board} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true/false whether it is available 
+\end{DoxyReturn}
+\hypertarget{class_framework_1_1_pieces_1_1_piece_a62edc25d1604d7103c8f69ffe35700bd}{}\label{class_framework_1_1_pieces_1_1_piece_a62edc25d1604d7103c8f69ffe35700bd} 
+\index{Framework\+::\+Pieces\+::\+Piece@{Framework\+::\+Pieces\+::\+Piece}!set\+Coordinates@{set\+Coordinates}}
+\index{set\+Coordinates@{set\+Coordinates}!Framework\+::\+Pieces\+::\+Piece@{Framework\+::\+Pieces\+::\+Piece}}
+\subsubsection{\texorpdfstring{set\+Coordinates()}{setCoordinates()}}
+{\footnotesize\ttfamily void Framework.\+Pieces.\+Piece.\+set\+Coordinates (\begin{DoxyParamCaption}\item[{int}]{x\+Value,  }\item[{int}]{y\+Value }\end{DoxyParamCaption})}
+
+Setter for both x and y coordinate of the piece after movement. 
+\begin{DoxyParams}{Parameters}
+{\em x\+Value} & \\
+\hline
+{\em y\+Value} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_framework_1_1_pieces_1_1_piece_a0dbc47d481279fa4133546d5f0abe0ff}{}\label{class_framework_1_1_pieces_1_1_piece_a0dbc47d481279fa4133546d5f0abe0ff} 
+\index{Framework\+::\+Pieces\+::\+Piece@{Framework\+::\+Pieces\+::\+Piece}!traverse\+Column@{traverse\+Column}}
+\index{traverse\+Column@{traverse\+Column}!Framework\+::\+Pieces\+::\+Piece@{Framework\+::\+Pieces\+::\+Piece}}
+\subsubsection{\texorpdfstring{traverse\+Column()}{traverseColumn()}}
+{\footnotesize\ttfamily boolean Framework.\+Pieces.\+Piece.\+traverse\+Column (\begin{DoxyParamCaption}\item[{int}]{column,  }\item[{int}]{smallY,  }\item[{int}]{bigY,  }\item[{\hyperlink{class_framework_1_1_pieces_1_1_piece}{Piece}}]{positions\mbox{[}$\,$\mbox{]}\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+Function to check that there are no pieces being jumped over in the column. 
+\begin{DoxyParams}{Parameters}
+{\em row} & \\
+\hline
+{\em smallX} & \\
+\hline
+{\em bigX} & \\
+\hline
+{\em positions} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+if there are leaps 
+\end{DoxyReturn}
+\hypertarget{class_framework_1_1_pieces_1_1_piece_acabfbee23b9c84fa70cc7b885b5e3a58}{}\label{class_framework_1_1_pieces_1_1_piece_acabfbee23b9c84fa70cc7b885b5e3a58} 
+\index{Framework\+::\+Pieces\+::\+Piece@{Framework\+::\+Pieces\+::\+Piece}!traverse\+Diagonal@{traverse\+Diagonal}}
+\index{traverse\+Diagonal@{traverse\+Diagonal}!Framework\+::\+Pieces\+::\+Piece@{Framework\+::\+Pieces\+::\+Piece}}
+\subsubsection{\texorpdfstring{traverse\+Diagonal()}{traverseDiagonal()}}
+{\footnotesize\ttfamily boolean Framework.\+Pieces.\+Piece.\+traverse\+Diagonal (\begin{DoxyParamCaption}\item[{int}]{startX,  }\item[{int}]{endX,  }\item[{int}]{startY,  }\item[{int}]{endY,  }\item[{\hyperlink{class_framework_1_1_pieces_1_1_piece}{Piece}}]{positions\mbox{[}$\,$\mbox{]}\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+Function to check that there are no pieces being jumped over in the diagonal. 
+\begin{DoxyParams}{Parameters}
+{\em row} & \\
+\hline
+{\em smallX} & \\
+\hline
+{\em bigX} & \\
+\hline
+{\em positions} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+if there are leaps 
+\end{DoxyReturn}
+\hypertarget{class_framework_1_1_pieces_1_1_piece_a4af002459d579221084a086acb86b3c5}{}\label{class_framework_1_1_pieces_1_1_piece_a4af002459d579221084a086acb86b3c5} 
+\index{Framework\+::\+Pieces\+::\+Piece@{Framework\+::\+Pieces\+::\+Piece}!traverse\+Row@{traverse\+Row}}
+\index{traverse\+Row@{traverse\+Row}!Framework\+::\+Pieces\+::\+Piece@{Framework\+::\+Pieces\+::\+Piece}}
+\subsubsection{\texorpdfstring{traverse\+Row()}{traverseRow()}}
+{\footnotesize\ttfamily boolean Framework.\+Pieces.\+Piece.\+traverse\+Row (\begin{DoxyParamCaption}\item[{int}]{row,  }\item[{int}]{smallX,  }\item[{int}]{bigX,  }\item[{\hyperlink{class_framework_1_1_pieces_1_1_piece}{Piece}}]{positions\mbox{[}$\,$\mbox{]}\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+Function to check that there are no pieces being jumped over in the row. 
+\begin{DoxyParams}{Parameters}
+{\em row} & \\
+\hline
+{\em smallX} & \\
+\hline
+{\em bigX} & \\
+\hline
+{\em positions} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+if there are leaps 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Framework/\+Pieces/\hyperlink{_piece_8java}{Piece.\+java}\end{DoxyCompactItemize}

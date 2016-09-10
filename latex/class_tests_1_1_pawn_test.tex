@@ -1,0 +1,97 @@
+\hypertarget{class_tests_1_1_pawn_test}{}\section{Tests.\+Pawn\+Test Class Reference}
+\label{class_tests_1_1_pawn_test}\index{Tests.\+Pawn\+Test@{Tests.\+Pawn\+Test}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_tests_1_1_pawn_test_afc62c7df60ea48714139aa3b1fdec002}{valid\+Pawn\+Single\+Space\+Movement} ()  throws Exception 
+\item 
+void \hyperlink{class_tests_1_1_pawn_test_a609983048db9ea8be85c1a0eca1a4c64}{valid\+Pawn\+Double\+Space\+Movement\+From\+Start} ()  throws Exception 
+\item 
+void \hyperlink{class_tests_1_1_pawn_test_a62b592bc182e06d091c635fd46cf835b}{invalid\+Pawn\+Double\+Space\+Movement\+From\+Other\+Position} ()  throws Exception 
+\item 
+void \hyperlink{class_tests_1_1_pawn_test_aee76762875ad44ca3a078618467f4e87}{valid\+Pawn\+Diagonal\+Movement} ()  throws Exception 
+\item 
+void \hyperlink{class_tests_1_1_pawn_test_a5de98c4a33ad5690dda92cebdf5612a4}{invalid\+Pawn\+Diagonal\+Movement} ()  throws Exception 
+\item 
+void \hyperlink{class_tests_1_1_pawn_test_abddfebe793102a67725109bbe1a3ca31}{correct\+All\+Starting\+Pawn\+Moves} ()  throws Exception 
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{namespace_tests}{Tests} for the Pawn class. \begin{DoxyAuthor}{Author}
+arnavmishra 
+\end{DoxyAuthor}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_tests_1_1_pawn_test_abddfebe793102a67725109bbe1a3ca31}{}\label{class_tests_1_1_pawn_test_abddfebe793102a67725109bbe1a3ca31} 
+\index{Tests\+::\+Pawn\+Test@{Tests\+::\+Pawn\+Test}!correct\+All\+Starting\+Pawn\+Moves@{correct\+All\+Starting\+Pawn\+Moves}}
+\index{correct\+All\+Starting\+Pawn\+Moves@{correct\+All\+Starting\+Pawn\+Moves}!Tests\+::\+Pawn\+Test@{Tests\+::\+Pawn\+Test}}
+\subsubsection{\texorpdfstring{correct\+All\+Starting\+Pawn\+Moves()}{correctAllStartingPawnMoves()}}
+{\footnotesize\ttfamily void Tests.\+Pawn\+Test.\+correct\+All\+Starting\+Pawn\+Moves (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) throws Exception}
+
+Test to confirm that all possible movements for a pawn are found from starting position. 
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_tests_1_1_pawn_test_a5de98c4a33ad5690dda92cebdf5612a4}{}\label{class_tests_1_1_pawn_test_a5de98c4a33ad5690dda92cebdf5612a4} 
+\index{Tests\+::\+Pawn\+Test@{Tests\+::\+Pawn\+Test}!invalid\+Pawn\+Diagonal\+Movement@{invalid\+Pawn\+Diagonal\+Movement}}
+\index{invalid\+Pawn\+Diagonal\+Movement@{invalid\+Pawn\+Diagonal\+Movement}!Tests\+::\+Pawn\+Test@{Tests\+::\+Pawn\+Test}}
+\subsubsection{\texorpdfstring{invalid\+Pawn\+Diagonal\+Movement()}{invalidPawnDiagonalMovement()}}
+{\footnotesize\ttfamily void Tests.\+Pawn\+Test.\+invalid\+Pawn\+Diagonal\+Movement (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) throws Exception}
+
+Test to ensure a pawn cannot move diagonally if the diagonal position doesn\textquotesingle{}t have an opposing team. 
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_tests_1_1_pawn_test_a62b592bc182e06d091c635fd46cf835b}{}\label{class_tests_1_1_pawn_test_a62b592bc182e06d091c635fd46cf835b} 
+\index{Tests\+::\+Pawn\+Test@{Tests\+::\+Pawn\+Test}!invalid\+Pawn\+Double\+Space\+Movement\+From\+Other\+Position@{invalid\+Pawn\+Double\+Space\+Movement\+From\+Other\+Position}}
+\index{invalid\+Pawn\+Double\+Space\+Movement\+From\+Other\+Position@{invalid\+Pawn\+Double\+Space\+Movement\+From\+Other\+Position}!Tests\+::\+Pawn\+Test@{Tests\+::\+Pawn\+Test}}
+\subsubsection{\texorpdfstring{invalid\+Pawn\+Double\+Space\+Movement\+From\+Other\+Position()}{invalidPawnDoubleSpaceMovementFromOtherPosition()}}
+{\footnotesize\ttfamily void Tests.\+Pawn\+Test.\+invalid\+Pawn\+Double\+Space\+Movement\+From\+Other\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) throws Exception}
+
+Test to check a Pawn cannot move forward two spaces from a non-\/starting space by moving a Pawn up one space and then trying to move it up two spaces. 
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_tests_1_1_pawn_test_aee76762875ad44ca3a078618467f4e87}{}\label{class_tests_1_1_pawn_test_aee76762875ad44ca3a078618467f4e87} 
+\index{Tests\+::\+Pawn\+Test@{Tests\+::\+Pawn\+Test}!valid\+Pawn\+Diagonal\+Movement@{valid\+Pawn\+Diagonal\+Movement}}
+\index{valid\+Pawn\+Diagonal\+Movement@{valid\+Pawn\+Diagonal\+Movement}!Tests\+::\+Pawn\+Test@{Tests\+::\+Pawn\+Test}}
+\subsubsection{\texorpdfstring{valid\+Pawn\+Diagonal\+Movement()}{validPawnDiagonalMovement()}}
+{\footnotesize\ttfamily void Tests.\+Pawn\+Test.\+valid\+Pawn\+Diagonal\+Movement (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) throws Exception}
+
+Test to check a pawn\textquotesingle{}s diagonal movement by setting up the board with two opposing pawns diagonal from each other and ensuring the movement is allowed. 
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_tests_1_1_pawn_test_a609983048db9ea8be85c1a0eca1a4c64}{}\label{class_tests_1_1_pawn_test_a609983048db9ea8be85c1a0eca1a4c64} 
+\index{Tests\+::\+Pawn\+Test@{Tests\+::\+Pawn\+Test}!valid\+Pawn\+Double\+Space\+Movement\+From\+Start@{valid\+Pawn\+Double\+Space\+Movement\+From\+Start}}
+\index{valid\+Pawn\+Double\+Space\+Movement\+From\+Start@{valid\+Pawn\+Double\+Space\+Movement\+From\+Start}!Tests\+::\+Pawn\+Test@{Tests\+::\+Pawn\+Test}}
+\subsubsection{\texorpdfstring{valid\+Pawn\+Double\+Space\+Movement\+From\+Start()}{validPawnDoubleSpaceMovementFromStart()}}
+{\footnotesize\ttfamily void Tests.\+Pawn\+Test.\+valid\+Pawn\+Double\+Space\+Movement\+From\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) throws Exception}
+
+Test to check a Pawn\textquotesingle{}s forward double space movement by moving a pawn up two spaces from initial position. 
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{class_tests_1_1_pawn_test_afc62c7df60ea48714139aa3b1fdec002}{}\label{class_tests_1_1_pawn_test_afc62c7df60ea48714139aa3b1fdec002} 
+\index{Tests\+::\+Pawn\+Test@{Tests\+::\+Pawn\+Test}!valid\+Pawn\+Single\+Space\+Movement@{valid\+Pawn\+Single\+Space\+Movement}}
+\index{valid\+Pawn\+Single\+Space\+Movement@{valid\+Pawn\+Single\+Space\+Movement}!Tests\+::\+Pawn\+Test@{Tests\+::\+Pawn\+Test}}
+\subsubsection{\texorpdfstring{valid\+Pawn\+Single\+Space\+Movement()}{validPawnSingleSpaceMovement()}}
+{\footnotesize\ttfamily void Tests.\+Pawn\+Test.\+valid\+Pawn\+Single\+Space\+Movement (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) throws Exception}
+
+Test to check a Pawn\textquotesingle{}s forward single space movement by moving a pawn up one space. 
+\begin{DoxyExceptions}{Exceptions}
+{\em Exception} & \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Tests/\hyperlink{_pawn_test_8java}{Pawn\+Test.\+java}\end{DoxyCompactItemize}
