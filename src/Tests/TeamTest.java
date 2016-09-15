@@ -6,10 +6,10 @@ import java.util.List;
 
 import org.junit.Test;
 
-import Framework.Board;
-import Framework.Team;
-import Framework.Pieces.Pawn;
-import Framework.Pieces.Piece;
+import Model.Board;
+import Model.Team;
+import Model.Pieces.Pawn;
+import Model.Pieces.Piece;
 
 /**
  * Tests for the Team class.

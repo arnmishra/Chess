@@ -4,10 +4,10 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import Framework.Board;
-import Framework.Move;
-import Framework.Team;
-import Framework.Pieces.*;
+import Model.Board;
+import Model.Move;
+import Model.Team;
+import Model.Pieces.*;
 
 /**
  * Tests for the Piece class.

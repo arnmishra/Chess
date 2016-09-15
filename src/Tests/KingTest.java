@@ -7,9 +7,9 @@ import java.util.List;
 
 import org.junit.Test;
 
-import Framework.Board;
-import Framework.Move;
-import Framework.Pieces.*;
+import Model.Board;
+import Model.Move;
+import Model.Pieces.*;
 import Tests.Common;
 
 /**

@@ -2,8 +2,8 @@ package Tests;
 
 import java.util.List;
 
-import Framework.Board;
-import Framework.Move;
+import Model.Board;
+import Model.Move;
 
 /**
  * Common class to hold any common methods across the tests.

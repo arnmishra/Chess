@@ -4,9 +4,9 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import Framework.Board;
-import Framework.Move;
-import Framework.Pieces.*;
+import Model.Board;
+import Model.Move;
+import Model.Pieces.*;
 
 /**
  * Tests for the Board class.
