@@ -26,6 +26,7 @@ public class KnightTest {
 	@Test
 	public void validKnightMovement() throws Exception {
 		Board board = new Board(8, 8);
+		board.setInitialBoard();
 		int teamNumber = 0;
 		int xCoordinate = 1;
 		int yCoordinate = 0;
@@ -45,6 +46,7 @@ public class KnightTest {
 	@Test
 	public void invalidKnightMovement() throws Exception {
 		Board board = new Board(8, 8);
+		board.setInitialBoard();
 		int teamNumber = 0;
 		int xCoordinate = 1;
 		int yCoordinate = 0;
@@ -65,6 +67,7 @@ public class KnightTest {
 	@Test
 	public void correctAllStartingKnightMoves() throws Exception {
 		Board board = new Board(8, 8);
+		board.setInitialBoard();
 		int xCoordinate = 1;
 		int yCoordinate = 0;
 		Piece knight = board.getPositions()[yCoordinate][xCoordinate];

@@ -37,6 +37,7 @@ public class BoardTest {
 	@Test
 	public void movingPiece() throws Exception {
 		Board board = new Board(8, 8);
+		board.setInitialBoard();
 		int teamNumber = 0;
 		Common.movePiece(board, 1, 1, 1, 2, teamNumber);
 		Piece[][] positions = board.getPositions();
@@ -52,6 +53,7 @@ public class BoardTest {
 	@Test
 	public void notInCheck() throws Exception {
 		Board board = new Board(8, 8);
+		board.setInitialBoard();
 		int teamNumber = 0;
 		Move move = new Move(1, 1, 1, 2, teamNumber); // Move a pawn up from starting position
 		assertFalse(board.isTeamInCheck(move));
@@ -65,6 +67,7 @@ public class BoardTest {
 	@Test
 	public void notProtectingCheck() throws Exception {
 		Board board = new Board(8,8);
+		board.setInitialBoard();
 		setUpCheck(board);
 		Move move = new Move(6, 1, 6, 3, 0);
 		boolean inCheck = board.isTeamInCheck(move);
@@ -79,6 +82,7 @@ public class BoardTest {
 	@Test
 	public void protectingCheck() throws Exception {
 		Board board = new Board(8,8);
+		board.setInitialBoard();
 		setUpCheck(board);
 		Move move = new Move(6, 1, 6, 2, 0);
 		boolean inCheck = board.isTeamInCheck(move);
@@ -92,6 +96,7 @@ public class BoardTest {
 	@Test
 	public void notInCheckMate() throws Exception {
 		Board board = new Board(8, 8);
+		board.setInitialBoard();
 		assertFalse(board.getCheckMate(0));
 	}
 	
@@ -102,6 +107,7 @@ public class BoardTest {
 	@Test
 	public void inCheckMate() throws Exception {
 		Board board = new Board(8, 8);
+		board.setInitialBoard();
 		setUpCheck(board);
 		Common.movePiece(board, 6, 1, 6, 2, 0);
 		Common.movePiece(board, 7, 3, 6, 2, 1);
@@ -131,6 +137,7 @@ public class BoardTest {
 	@Test
 	public void notInStaleMate() throws Exception {
 		Board board = new Board(8, 8);
+		board.setInitialBoard();
 		boolean isStaleMate = board.getStaleMate(0);
 		assertFalse(isStaleMate);
 	}
@@ -143,6 +150,7 @@ public class BoardTest {
 	@Test
 	public void inStaleMate() throws Exception {
 		Board board = new Board(8,8);
+		board.setInitialBoard();
 		setUpStaleMate(board);
 		boolean isStaleMate = board.getStaleMate(1);
 		assertTrue(isStaleMate);

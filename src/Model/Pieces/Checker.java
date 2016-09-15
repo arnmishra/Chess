@@ -10,7 +10,7 @@ import Model.Team;
  * Pawn class to describe Checker's possible moves.
  * A Checker can move 1 space diagonally in any direction or if there is a piece 
  * diagonally adjacent to it, it can jump over that piece, thus moving 2 diagonally 
- * (as a Checker would in the game Checkers)
+ * (similar to a Checker would in the game Checkers)
  * @author arnavmishra
  *
  */
@@ -44,7 +44,8 @@ public class Checker extends Piece
 		}
 		else if(isOnBoard && yMovement == 2 && xMovement == 2)
 		{
-			isValid = !hasNoLeaps(move, board); // Check to make sure a piece is being jumped over
+			 // Check to make sure a piece is being jumped over and there is no opponent piece at the destination
+			isValid = !hasNoLeaps(move, board) && checkNoPiece(move, board);
 		}
 		else
 		{
@@ -83,18 +84,11 @@ public class Checker extends Piece
 	@Override
 	public boolean hasNoLeaps(Move move, Board board) {
 		Piece[][] positions = board.getPositions();
+		int startX = move.getStartX();
+		int endX = move.getEndX();
 		int startY = move.getStartY();
 		int endY = move.getEndY();
-		int column = move.getStartX();
-		if(endY > startY)
-		{
-			return traverseColumn(column, startY, endY, positions);
-		}
-		else if(endY < startY)
-		{
-			return traverseColumn(column, endY, startY, positions);
-		}
-		return false;
+		return traverseDiagonal(startX, endX, startY, endY, positions);
 	}
 	
 	/**

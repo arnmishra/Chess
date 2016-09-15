@@ -28,6 +28,7 @@ public class BishopTest {
 	@Test
 	public void validBishopMovement() throws Exception {
 		Board board = new Board(8, 8);
+		board.setInitialBoard();
 		int teamNumber = 0;
 		Common.movePiece(board, 1, 1, 1, 2, teamNumber); // Move the pawn out of the way to test the bishop
 		
@@ -50,6 +51,7 @@ public class BishopTest {
 	@Test
 	public void invalidBishopMovement() throws Exception {
 		Board board = new Board(8, 8);
+		board.setInitialBoard();
 		int teamNumber = 0;
 		Common.movePiece(board, 2, 1, 2, 3, teamNumber); // Move the pawn out of the way to test the bishop
 		
@@ -73,6 +75,7 @@ public class BishopTest {
 	@Test
 	public void correctAllStartingBishopMoves() throws Exception {
 		Board board = new Board(8, 8);
+		board.setInitialBoard();
 		int teamNumber = 0;
 		Common.movePiece(board, 1, 1, 1, 2, teamNumber); // Move the pawn out of the way to test the bishop
 		

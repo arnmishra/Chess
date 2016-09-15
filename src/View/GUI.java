@@ -8,8 +8,9 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 /**
+ * Sources: 
  * http://stackoverflow.com/questions/299495/how-to-add-an-image-to-a-jpanel
- * https://ashikuzzaman.wordpress.com/2007/02/27/developing-simple-chess-board-with-swing-in-java-se-6/
+ * https://wiki.illinois.edu/wiki/pages/viewpage.action?spaceKey=cs242&title=Assignment+1.1
  * @author arnavmishra
  *
  */

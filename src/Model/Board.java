@@ -28,9 +28,8 @@ public class Board
 	public Board(int width, int length)
 	{
 		this.width = width;
-		this.length = length;
-		this.positions = setBoard();
-		
+		this.length = length;	
+		this.positions = new Piece[length][width];
 	}
 	
 	/**
@@ -73,9 +72,8 @@ public class Board
 	 * Function to put pieces in initial starting positions. 
 	 * @return a Piece double array with all the current positions.
 	 */
-	public Piece[][] setBoard()
+	public void setInitialBoard()
 	{
-		Piece[][] positions = new Piece[this.length][this.width];
 		positions[0] = setPrimaryPieces(positions, 0, team0);
 		positions[7] = setPrimaryPieces(positions, 7, team1);
 		for(int i = 0; i < 8; i++)
@@ -87,7 +85,18 @@ public class Board
 		team0.addPieces(positions[1]);
 		team1.addPieces(positions[7]);
 		team1.addPieces(positions[6]);
-		return positions;
+	}
+	
+	/**
+	 * Function to add a new piece to a specified coordinate on the board
+	 * regardless of whether or not another piece exists there.
+	 * @param piece
+	 */
+	public void addPieceToBoard(Piece piece)
+	{
+		int xCoordinate = piece.getXValue();
+		int yCoordinate = piece.getYValue();
+		positions[yCoordinate][xCoordinate] = piece;
 	}
 	
 	/**
@@ -186,6 +195,11 @@ public class Board
 		int opposingTeamNumber = toggleTeam(turnTeamNumber);
 		List<Piece> opposingPieces = getTeamPieces(opposingTeamNumber);
 		Piece checkKing = getKing(checkPieces);
+		if(checkKing == null) // If board is set-up for testing with no King, no check possible
+		{
+			this.unsetPositions(move, removed);
+			return false;
+		}
 		int kingX = checkKing.getXValue();
 		int kingY = checkKing.getYValue();
 		boolean isCheck = false;
@@ -316,7 +330,8 @@ public class Board
 	}
 	
 	/**
-	 * Helper function to print out the board.
+	 * Function to print out board. Everything below this is simply
+	 * for testing purposes and will be removed when the GUI is done.
 	 * @param board
 	 */
 	public void printBoard()
@@ -375,6 +390,14 @@ public class Board
 			else if(piece instanceof Pawn)
 			{
 				System.out.print(team + "P");
+			}
+			else if(piece instanceof Ferz)
+			{
+				System.out.print(team + "F");
+			}
+			else if(piece instanceof Checker)
+			{
+				System.out.print(team + "C");
 			}
 		}
 	}

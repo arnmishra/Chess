@@ -27,6 +27,7 @@ public class QueenTest {
 	@Test
 	public void validQueenForwardMovement() throws Exception {
 		Board board = new Board(8, 8);
+		board.setInitialBoard();
 		int teamNumber = 0;
 		Common.movePiece(board, 3, 1, 3, 3, teamNumber); // Move the pawn out of the way to test the queen forward
 		
@@ -50,6 +51,7 @@ public class QueenTest {
 	@Test
 	public void validQueenDiagonalMovement() throws Exception {
 		Board board = new Board(8, 8);
+		board.setInitialBoard();
 		int teamNumber = 0;
 		Common.movePiece(board, 4, 1, 4, 3, teamNumber); // Move the pawn out of the way to test the queen diagonal
 		
@@ -72,6 +74,7 @@ public class QueenTest {
 	@Test
 	public void invalidQueenMovement() throws Exception {
 		Board board = new Board(8, 8);
+		board.setInitialBoard();
 		int teamNumber = 0;
 		Common.movePiece(board, 3, 1, 3, 3, teamNumber); // Move the pawn out of the way
 		Common.movePiece(board, 4, 1, 4, 3, teamNumber); // Move the pawn out of the way
@@ -97,6 +100,7 @@ public class QueenTest {
 	@Test
 	public void correctAllStartingQueenMoves() throws Exception {
 		Board board = new Board(8, 8);
+		board.setInitialBoard();
 		int teamNumber = 0;
 		Common.movePiece(board, 3, 1, 3, 3, teamNumber); // Move the pawn out of the way to test forward movement
 		Common.movePiece(board, 4, 1, 4, 3, teamNumber); // Move the pawn out of the way to test diagonal movement

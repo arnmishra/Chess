@@ -27,6 +27,7 @@ public class KingTest {
 	@Test
 	public void validKingForwardMovement() throws Exception {
 		Board board = new Board(8, 8);
+		board.setInitialBoard();
 		int teamNumber = 0;
 		Common.movePiece(board, 4, 1, 4, 3, teamNumber); // Move the pawn out of the way to test the king forward
 		
@@ -50,6 +51,7 @@ public class KingTest {
 	@Test
 	public void validKingDiagonalMovement() throws Exception {
 		Board board = new Board(8, 8);
+		board.setInitialBoard();
 		int teamNumber = 0;
 		Common.movePiece(board, 3, 1, 3, 3, teamNumber); // Move the pawn out of the way to test the king diagonal
 		
@@ -72,6 +74,7 @@ public class KingTest {
 	@Test
 	public void invalidKingMovement() throws Exception {
 		Board board = new Board(8, 8);
+		board.setInitialBoard();
 		int teamNumber = 0;
 		Common.movePiece(board, 4, 1, 4, 3, teamNumber); // Move the pawn out of the way
 		
@@ -95,6 +98,7 @@ public class KingTest {
 	@Test
 	public void correctAllStartingKingMoves() throws Exception {
 		Board board = new Board(8, 8);
+		board.setInitialBoard();
 		int teamNumber = 0;
 		Common.movePiece(board, 3, 1, 3, 3, teamNumber); // Move the pawn out of the way
 		Common.movePiece(board, 4, 1, 4, 3, teamNumber); // Move the pawn out of the way

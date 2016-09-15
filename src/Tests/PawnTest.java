@@ -27,6 +27,7 @@ public class PawnTest {
 	@Test
 	public void validPawnSingleSpaceMovement() throws Exception {
 		Board board = new Board(8, 8);
+		board.setInitialBoard();
 		int teamNumber = 0;
 		
 		int xCoordinate = 0;
@@ -48,6 +49,7 @@ public class PawnTest {
 	@Test
 	public void validPawnDoubleSpaceMovementFromStart() throws Exception {
 		Board board = new Board(8, 8);
+		board.setInitialBoard();
 		int teamNumber = 0;
 		
 		int xCoordinate = 0;
@@ -69,6 +71,7 @@ public class PawnTest {
 	@Test
 	public void invalidPawnDoubleSpaceMovementFromOtherPosition() throws Exception {
 		Board board = new Board(8, 8);
+		board.setInitialBoard();
 		int teamNumber = 0;
 		
 		int xCoordinate = 0;
@@ -92,6 +95,7 @@ public class PawnTest {
 	@Test
 	public void validPawnDiagonalMovement() throws Exception {
 		Board board = new Board(8, 8);
+		board.setInitialBoard();
 		
 		int xCoordinate = 4;
 		int yCoordinate = 1;
@@ -114,6 +118,7 @@ public class PawnTest {
 	@Test
 	public void invalidPawnDiagonalMovement() throws Exception {
 		Board board = new Board(8, 8);
+		board.setInitialBoard();
 		int teamNumber = 0;
 		
 		int xCoordinate = 0;
@@ -136,6 +141,7 @@ public class PawnTest {
 	@Test
 	public void correctAllStartingPawnMoves() throws Exception {
 		Board board = new Board(8, 8);
+		board.setInitialBoard();
 		
 		int xCoordinate = 0;
 		int yCoordinate = 1;

@@ -27,6 +27,7 @@ public class RookTest {
 	@Test
 	public void validVerticalRookMovement() throws Exception {
 		Board board = new Board(8, 8);
+		board.setInitialBoard();
 		int teamNumber = 0;
 		Common.movePiece(board, 0, 1, 0, 3, teamNumber); // Move the pawn out of the way to test the rook
 		
@@ -50,6 +51,7 @@ public class RookTest {
 	@Test
 	public void validHorizontalRookMovement() throws Exception {
 		Board board = new Board(8, 8);
+		board.setInitialBoard();
 		int teamNumber = 0;
 		Common.movePiece(board, 0, 1, 0, 3, teamNumber); // Move the pawn out of the way to test the rook
 		Common.movePiece(board, 0, 0, 0, 2, teamNumber); // Move rook up to open horizontal movement 
@@ -73,6 +75,7 @@ public class RookTest {
 	@Test
 	public void invalidRookMovement() throws Exception {
 		Board board = new Board(8, 8);
+		board.setInitialBoard();
 		int teamNumber = 0;
 		Common.movePiece(board, 1, 1, 1, 3, teamNumber); // Move the pawn out of the way to test the rook
 		
@@ -95,6 +98,7 @@ public class RookTest {
 	@Test
 	public void correctAllStartingRookMoves() throws Exception {
 		Board board = new Board(8, 8);
+		board.setInitialBoard();
 		int teamNumber = 0;
 		Common.movePiece(board, 0, 1, 0, 3, teamNumber); // Move the pawn out of the way to test the rook
 		
