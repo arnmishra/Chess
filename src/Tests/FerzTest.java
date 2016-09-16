@@ -36,9 +36,14 @@ public class FerzTest {
 		Ferz ferz = new Ferz(team0, xValue, yValue);
 		board.addPieceToBoard(ferz);
 		
-		Move move = new Move(xValue, yValue, 2, 2, teamNumber);
-		
-		assertTrue(ferz.isValidMove(move, board));
+		Move ferzMoveUpRight = new Move(xValue, yValue, 2, 2, teamNumber);
+		assertTrue(ferz.isValidMove(ferzMoveUpRight, board));
+		Move ferzMoveDownRight = new Move(xValue, yValue, 2, 0, teamNumber);
+		assertTrue(ferz.isValidMove(ferzMoveDownRight, board));
+		Move ferzMoveUpLeft = new Move(xValue, yValue, 0, 2, teamNumber);
+		assertTrue(ferz.isValidMove(ferzMoveUpLeft, board));
+		Move ferzMoveDownLeft = new Move(xValue, yValue, 0, 0, teamNumber);
+		assertTrue(ferz.isValidMove(ferzMoveDownLeft, board));
 	}
 	
 	/**

@@ -1,0 +1,93 @@
+\hypertarget{class_model_1_1_pieces_1_1_rook}{}\section{Model.\+Pieces.\+Rook Class Reference}
+\label{class_model_1_1_pieces_1_1_rook}\index{Model.\+Pieces.\+Rook@{Model.\+Pieces.\+Rook}}
+Inheritance diagram for Model.\+Pieces.\+Rook\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_model_1_1_pieces_1_1_rook}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_model_1_1_pieces_1_1_rook_a3e60b56c0706a1a9bb3e02649cc91182}{Rook} (\hyperlink{class_model_1_1_team}{Team} team, int x\+Value, int y\+Value)
+\item 
+boolean \hyperlink{class_model_1_1_pieces_1_1_rook_a1558998b7bfff64ecd855c210978e1e9}{is\+Valid\+Move} (\hyperlink{class_model_1_1_move}{Move} move, \hyperlink{class_model_1_1_board}{Board} board)
+\item 
+boolean \hyperlink{class_model_1_1_pieces_1_1_rook_abcd57b340e1eb48e1eca37461373d067}{has\+No\+Piece\+In\+Movement\+Route} (\hyperlink{class_model_1_1_move}{Move} move, \hyperlink{class_model_1_1_board}{Board} board)
+\item 
+List$<$ \hyperlink{class_model_1_1_move}{Move} $>$ \hyperlink{class_model_1_1_pieces_1_1_rook_adf3f76fc3283bbe0b357e05fd0b3ffb8}{find\+All\+Moves} (\hyperlink{class_model_1_1_board}{Board} board)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{class_model_1_1_pieces_1_1_rook}{Rook} class to describe \hyperlink{class_model_1_1_pieces_1_1_rook}{Rook}\textquotesingle{}s possible moves. \begin{DoxyAuthor}{Author}
+arnavmishra 
+\end{DoxyAuthor}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_model_1_1_pieces_1_1_rook_a3e60b56c0706a1a9bb3e02649cc91182}{}\label{class_model_1_1_pieces_1_1_rook_a3e60b56c0706a1a9bb3e02649cc91182} 
+\index{Model\+::\+Pieces\+::\+Rook@{Model\+::\+Pieces\+::\+Rook}!Rook@{Rook}}
+\index{Rook@{Rook}!Model\+::\+Pieces\+::\+Rook@{Model\+::\+Pieces\+::\+Rook}}
+\subsubsection{\texorpdfstring{Rook()}{Rook()}}
+{\footnotesize\ttfamily Model.\+Pieces.\+Rook.\+Rook (\begin{DoxyParamCaption}\item[{\hyperlink{class_model_1_1_team}{Team}}]{team,  }\item[{int}]{x\+Value,  }\item[{int}]{y\+Value }\end{DoxyParamCaption})}
+
+Constructor to initialize \hyperlink{class_model_1_1_pieces_1_1_rook}{Rook} on a team and coordinate. 
+\begin{DoxyParams}{Parameters}
+{\em team} & \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_model_1_1_pieces_1_1_rook_adf3f76fc3283bbe0b357e05fd0b3ffb8}{}\label{class_model_1_1_pieces_1_1_rook_adf3f76fc3283bbe0b357e05fd0b3ffb8} 
+\index{Model\+::\+Pieces\+::\+Rook@{Model\+::\+Pieces\+::\+Rook}!find\+All\+Moves@{find\+All\+Moves}}
+\index{find\+All\+Moves@{find\+All\+Moves}!Model\+::\+Pieces\+::\+Rook@{Model\+::\+Pieces\+::\+Rook}}
+\subsubsection{\texorpdfstring{find\+All\+Moves()}{findAllMoves()}}
+{\footnotesize\ttfamily List$<$\hyperlink{class_model_1_1_move}{Move}$>$ Model.\+Pieces.\+Rook.\+find\+All\+Moves (\begin{DoxyParamCaption}\item[{\hyperlink{class_model_1_1_board}{Board}}]{board }\end{DoxyParamCaption})}
+
+Function to get all valid possible moves for the \hyperlink{class_model_1_1_pieces_1_1_king}{King} in any direction. 
+\begin{DoxyParams}{Parameters}
+{\em board} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+all possible valid moves. 
+\end{DoxyReturn}
+\hypertarget{class_model_1_1_pieces_1_1_rook_abcd57b340e1eb48e1eca37461373d067}{}\label{class_model_1_1_pieces_1_1_rook_abcd57b340e1eb48e1eca37461373d067} 
+\index{Model\+::\+Pieces\+::\+Rook@{Model\+::\+Pieces\+::\+Rook}!has\+No\+Piece\+In\+Movement\+Route@{has\+No\+Piece\+In\+Movement\+Route}}
+\index{has\+No\+Piece\+In\+Movement\+Route@{has\+No\+Piece\+In\+Movement\+Route}!Model\+::\+Pieces\+::\+Rook@{Model\+::\+Pieces\+::\+Rook}}
+\subsubsection{\texorpdfstring{has\+No\+Piece\+In\+Movement\+Route()}{hasNoPieceInMovementRoute()}}
+{\footnotesize\ttfamily boolean Model.\+Pieces.\+Rook.\+has\+No\+Piece\+In\+Movement\+Route (\begin{DoxyParamCaption}\item[{\hyperlink{class_model_1_1_move}{Move}}]{move,  }\item[{\hyperlink{class_model_1_1_board}{Board}}]{board }\end{DoxyParamCaption})}
+
+The rook can\textquotesingle{}t jump over any pieces since it only moves one space. 
+\begin{DoxyParams}{Parameters}
+{\em move} & \\
+\hline
+{\em board} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+whether the rook leaps over pieces. 
+\end{DoxyReturn}
+\hypertarget{class_model_1_1_pieces_1_1_rook_a1558998b7bfff64ecd855c210978e1e9}{}\label{class_model_1_1_pieces_1_1_rook_a1558998b7bfff64ecd855c210978e1e9} 
+\index{Model\+::\+Pieces\+::\+Rook@{Model\+::\+Pieces\+::\+Rook}!is\+Valid\+Move@{is\+Valid\+Move}}
+\index{is\+Valid\+Move@{is\+Valid\+Move}!Model\+::\+Pieces\+::\+Rook@{Model\+::\+Pieces\+::\+Rook}}
+\subsubsection{\texorpdfstring{is\+Valid\+Move()}{isValidMove()}}
+{\footnotesize\ttfamily boolean Model.\+Pieces.\+Rook.\+is\+Valid\+Move (\begin{DoxyParamCaption}\item[{\hyperlink{class_model_1_1_move}{Move}}]{move,  }\item[{\hyperlink{class_model_1_1_board}{Board}}]{board }\end{DoxyParamCaption})}
+
+Function to check whether a rook\textquotesingle{}s move is valid. 
+\begin{DoxyParams}{Parameters}
+{\em move} & \\
+\hline
+{\em board} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Whether the move is valid. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Model/\+Pieces/Rook.\+java\end{DoxyCompactItemize}

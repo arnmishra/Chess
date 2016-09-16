@@ -45,7 +45,7 @@ public class Checker extends Piece
 		else if(isOnBoard && yMovement == 2 && xMovement == 2)
 		{
 			 // Check to make sure a piece is being jumped over and there is no opponent piece at the destination
-			isValid = !hasNoLeaps(move, board) && checkNoPiece(move, board);
+			isValid = !hasNoPieceInMovementRoute(move, board) && checkNoPiece(move, board);
 		}
 		else
 		{
@@ -82,7 +82,7 @@ public class Checker extends Piece
 	 * @return whether the pawn leaps over pieces.
 	 */
 	@Override
-	public boolean hasNoLeaps(Move move, Board board) {
+	public boolean hasNoPieceInMovementRoute(Move move, Board board) {
 		Piece[][] positions = board.getPositions();
 		int startX = move.getStartX();
 		int endX = move.getEndX();

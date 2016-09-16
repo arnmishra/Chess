@@ -1,12 +1,12 @@
 var searchData=
 [
-  ['setboard',['setBoard',['../class_framework_1_1_board.html#aa2f8d03b279e53a5a75762667d9b9f9f',1,'Framework::Board']]],
-  ['setcoordinates',['setCoordinates',['../class_framework_1_1_pieces_1_1_piece.html#a62edc25d1604d7103c8f69ffe35700bd',1,'Framework::Pieces::Piece']]],
-  ['setlength',['setLength',['../class_framework_1_1_board.html#a769180cd9bd18fb08aa47a31892714e2',1,'Framework::Board']]],
-  ['setpositions',['setPositions',['../class_framework_1_1_board.html#a1253153abd89d5ec2556dda59497fa43',1,'Framework::Board']]],
-  ['setprimarypieces',['setPrimaryPieces',['../class_framework_1_1_board.html#a4763df9b54c84113603faf7cf0372b83',1,'Framework::Board']]],
+  ['setcoordinates',['setCoordinates',['../class_model_1_1_pieces_1_1_piece.html#ae4b44d64ae344e87088a8a36f8742df2',1,'Model::Pieces::Piece']]],
+  ['setinitialboard',['setInitialBoard',['../class_model_1_1_board.html#aae76066ac44573318ad06038bcd1cf8e',1,'Model::Board']]],
+  ['setlength',['setLength',['../class_model_1_1_board.html#a189aa2f23e52d961f2cb7f39f584e0a6',1,'Model::Board']]],
+  ['setpositions',['setPositions',['../class_model_1_1_board.html#aec81a53097f16fadf2d64dab72cf6d47',1,'Model::Board']]],
+  ['setprimarypieces',['setPrimaryPieces',['../class_model_1_1_board.html#a2a1d724b1cfaa4ec61b22e6d6b769cab',1,'Model::Board']]],
   ['setupcheck',['setUpCheck',['../class_tests_1_1_board_test.html#a33895f492ce1d7dfba81b325fa351da0',1,'Tests::BoardTest']]],
   ['setupstalemate',['setUpStaleMate',['../class_tests_1_1_board_test.html#a6e66cbfe15e55e7f65f37a85fd8126b2',1,'Tests::BoardTest']]],
-  ['setwidth',['setWidth',['../class_framework_1_1_board.html#a64aa58f14e9a19bb896861976fbeff2a',1,'Framework::Board']]],
+  ['setwidth',['setWidth',['../class_model_1_1_board.html#a57a6550786751e1b80fee7552a9355b6',1,'Model::Board']]],
   ['spaceoccupiedbysameteam',['spaceOccupiedBySameTeam',['../class_tests_1_1_piece_test.html#af08d686557ed19d88e13e3b3e387ab39',1,'Tests::PieceTest']]]
 ];

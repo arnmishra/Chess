@@ -17,18 +17,18 @@ void \hyperlink{class_tests_1_1_board_test_a2e13dc59ccbbdb6535ed634b612b2fb1}{no
 \item 
 void \hyperlink{class_tests_1_1_board_test_a39bdcd7eb309f039104f07d042d0678f}{in\+Check\+Mate} ()  throws Exception 
 \item 
-void \hyperlink{class_tests_1_1_board_test_a33895f492ce1d7dfba81b325fa351da0}{set\+Up\+Check} (\hyperlink{class_framework_1_1_board}{Board} board)
+void \hyperlink{class_tests_1_1_board_test_a33895f492ce1d7dfba81b325fa351da0}{set\+Up\+Check} (\hyperlink{class_model_1_1_board}{Board} board)
 \item 
 void \hyperlink{class_tests_1_1_board_test_a403efc830e97a274bc65ea131dfb0e5f}{not\+In\+Stale\+Mate} ()  throws Exception 
 \item 
 void \hyperlink{class_tests_1_1_board_test_aaa8c24159f5ef9acbb15b47ae83f8d88}{in\+Stale\+Mate} ()  throws Exception 
 \item 
-void \hyperlink{class_tests_1_1_board_test_a6e66cbfe15e55e7f65f37a85fd8126b2}{set\+Up\+Stale\+Mate} (\hyperlink{class_framework_1_1_board}{Board} board)
+void \hyperlink{class_tests_1_1_board_test_a6e66cbfe15e55e7f65f37a85fd8126b2}{set\+Up\+Stale\+Mate} (\hyperlink{class_model_1_1_board}{Board} board)
 \end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-\hyperlink{namespace_tests}{Tests} for the Board class. \begin{DoxyAuthor}{Author}
+Tests for the Board class. \begin{DoxyAuthor}{Author}
 arnavmishra 
 \end{DoxyAuthor}
 
@@ -62,7 +62,7 @@ Test to check stalemate to confirm that when no piece can move, the board stops 
 \subsubsection{\texorpdfstring{moving\+Piece()}{movingPiece()}}
 {\footnotesize\ttfamily void Tests.\+Board\+Test.\+moving\+Piece (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) throws Exception}
 
-Test for piece movement where a pawn is moved forward and then the board is checked to confirm that the pawn is now in the new location. 
+Test for general piece movement where a pawn is moved forward and then the board is checked to confirm that the pawn is now in the new location. 
 \begin{DoxyExceptions}{Exceptions}
 {\em Exception} & \\
 \hline
@@ -126,7 +126,7 @@ Test to confirm that after moving a piece in the way of a check, the check is no
 \index{Tests\+::\+Board\+Test@{Tests\+::\+Board\+Test}!set\+Up\+Check@{set\+Up\+Check}}
 \index{set\+Up\+Check@{set\+Up\+Check}!Tests\+::\+Board\+Test@{Tests\+::\+Board\+Test}}
 \subsubsection{\texorpdfstring{set\+Up\+Check()}{setUpCheck()}}
-{\footnotesize\ttfamily void Tests.\+Board\+Test.\+set\+Up\+Check (\begin{DoxyParamCaption}\item[{\hyperlink{class_framework_1_1_board}{Board}}]{board }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Tests.\+Board\+Test.\+set\+Up\+Check (\begin{DoxyParamCaption}\item[{\hyperlink{class_model_1_1_board}{Board}}]{board }\end{DoxyParamCaption})}
 
 Helper function to set up a board into a check situation. 
 \begin{DoxyParams}{Parameters}
@@ -137,7 +137,7 @@ Helper function to set up a board into a check situation.
 \index{Tests\+::\+Board\+Test@{Tests\+::\+Board\+Test}!set\+Up\+Stale\+Mate@{set\+Up\+Stale\+Mate}}
 \index{set\+Up\+Stale\+Mate@{set\+Up\+Stale\+Mate}!Tests\+::\+Board\+Test@{Tests\+::\+Board\+Test}}
 \subsubsection{\texorpdfstring{set\+Up\+Stale\+Mate()}{setUpStaleMate()}}
-{\footnotesize\ttfamily void Tests.\+Board\+Test.\+set\+Up\+Stale\+Mate (\begin{DoxyParamCaption}\item[{\hyperlink{class_framework_1_1_board}{Board}}]{board }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Tests.\+Board\+Test.\+set\+Up\+Stale\+Mate (\begin{DoxyParamCaption}\item[{\hyperlink{class_model_1_1_board}{Board}}]{board }\end{DoxyParamCaption})}
 
 Helper function to set up a stalemate. 
 \begin{DoxyParams}{Parameters}
@@ -159,4 +159,4 @@ Test for the Board constructor to ensure that the width and length are properly 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-src/\+Tests/\hyperlink{_board_test_8java}{Board\+Test.\+java}\end{DoxyCompactItemize}
+src/\+Tests/Board\+Test.\+java\end{DoxyCompactItemize}

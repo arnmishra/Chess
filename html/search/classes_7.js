@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['rook',['Rook',['../class_framework_1_1_pieces_1_1_rook.html',1,'Framework::Pieces']]],
-  ['rooktest',['RookTest',['../class_tests_1_1_rook_test.html',1,'Tests']]]
+  ['queen',['Queen',['../class_model_1_1_pieces_1_1_queen.html',1,'Model::Pieces']]],
+  ['queentest',['QueenTest',['../class_tests_1_1_queen_test.html',1,'Tests']]]
 ];

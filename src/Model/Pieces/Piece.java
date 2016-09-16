@@ -207,7 +207,7 @@ public abstract class Piece
 	 * @param board
 	 * @return Whether the piece jumps over other pieces.
 	 */
-	public abstract boolean hasNoLeaps(Move move, Board board);
+	public abstract boolean hasNoPieceInMovementRoute(Move move, Board board);
 	
 	/**
 	 * Abstract class for pieces to find all moves they can make.

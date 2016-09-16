@@ -37,7 +37,7 @@ public class King extends Piece
 		boolean moveDiagonal = (xMovement == 1 && yMovement == 1);
 		if(isOnBoard && (moveHorizontal || moveVertical || moveDiagonal))
 		{
-			return hasNoLeaps(move, board); //Check that the King only moved 1 space
+			return hasNoPieceInMovementRoute(move, board); //Check that the King only moved 1 space
 		}
 		else{
 			return false;
@@ -51,7 +51,7 @@ public class King extends Piece
 	 * @return whether the king leaps over pieces.
 	 */
 	@Override
-	public boolean hasNoLeaps(Move move, Board board) {
+	public boolean hasNoPieceInMovementRoute(Move move, Board board) {
 		return true;
 	}
 	

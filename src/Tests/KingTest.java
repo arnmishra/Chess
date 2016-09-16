@@ -40,7 +40,12 @@ public class KingTest {
 		}
 		Move kingMoveForward = new Move(xCoordinate, yCoordinate, xCoordinate, yCoordinate + 1, teamNumber);
 		assertTrue(king.isValidMove(kingMoveForward, board)); // Validate king's forward movement
-		
+		Common.movePiece(board, xCoordinate,  yCoordinate, xCoordinate, yCoordinate + 1, teamNumber); //Move king to test
+		yCoordinate++; //Increment because the king has moved 1 forward.
+		Move kingMoveUpRight = new Move(xCoordinate, yCoordinate, xCoordinate + 1, yCoordinate + 1, teamNumber);
+		assertTrue(king.isValidMove(kingMoveUpRight, board)); // Validate king's forward movement
+		Move kingMoveUpLeft = new Move(xCoordinate, yCoordinate, xCoordinate - 1, yCoordinate + 1, teamNumber);
+		assertTrue(king.isValidMove(kingMoveUpLeft, board)); // Validate king's forward movement
 	}
 	
 	/**

@@ -46,7 +46,7 @@ public class Pawn extends Piece
 		}
 		else if(noPiece && xMovement == 0 && (yMovement == 1 || (yMovement == 2 && firstMove)))
 		{
-			isValid = hasNoLeaps(move, board); // Check that the Pawn only moves 1 or if its the first move, 2
+			isValid = hasNoPieceInMovementRoute(move, board); // Check that the Pawn only moves 1 or if its the first move, 2
 		}
 		else if(xMovement == 1 && yMovement == 1)
 		{
@@ -122,7 +122,7 @@ public class Pawn extends Piece
 	 * @return whether the pawn leaps over pieces.
 	 */
 	@Override
-	public boolean hasNoLeaps(Move move, Board board) {
+	public boolean hasNoPieceInMovementRoute(Move move, Board board) {
 		Piece[][] positions = board.getPositions();
 		int startY = move.getStartY();
 		int endY = move.getEndY();

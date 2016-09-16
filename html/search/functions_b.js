@@ -1,10 +1,10 @@
 var searchData=
 [
-  ['pawn',['Pawn',['../class_framework_1_1_pieces_1_1_pawn.html#a468f5a838c9a2f68365dc5060f92ce07',1,'Framework::Pieces::Pawn']]],
-  ['piece',['Piece',['../class_framework_1_1_pieces_1_1_piece.html#a799b53db9458526b312ab23ac7f10700',1,'Framework::Pieces::Piece']]],
-  ['playmove',['playMove',['../class_game.html#acc3e92decaf7544e911092ae1f666b5f',1,'Game']]],
-  ['printboard',['printBoard',['../class_framework_1_1_board.html#ae18508acc0c51e9b9b1af6a3d52a6860',1,'Framework::Board']]],
-  ['printpiece',['printPiece',['../class_framework_1_1_board.html#a656f19360facc6e1ebcc013fe4c59b5a',1,'Framework::Board']]],
-  ['promptforundomove',['promptForUndoMove',['../class_game.html#a6d1a68f89cf7dc6ad0f27bc437a34890',1,'Game']]],
+  ['pawn',['Pawn',['../class_model_1_1_pieces_1_1_pawn.html#ad3d3d740e79b02e16c5cc4b2da2f25bf',1,'Model::Pieces::Pawn']]],
+  ['piece',['Piece',['../class_model_1_1_pieces_1_1_piece.html#ad2e15ca4e0598c0ff8db23e61bf40ef2',1,'Model::Pieces::Piece']]],
+  ['playmove',['playMove',['../class_controller_1_1_game.html#a805721bee4d26c4809276e9a0730cbee',1,'Controller::Game']]],
+  ['printboard',['printBoard',['../class_model_1_1_board.html#a07633635c4378b1824a69deddfb521d5',1,'Model::Board']]],
+  ['printpiece',['printPiece',['../class_model_1_1_board.html#a79dabcf1688b67bac808be8c67364bce',1,'Model::Board']]],
+  ['promptforundomove',['promptForUndoMove',['../class_controller_1_1_game.html#ad1cc7d205bef9e3a36f071c8e158156c',1,'Controller::Game']]],
   ['protectingcheck',['protectingCheck',['../class_tests_1_1_board_test.html#a59084580ebe6a2c112887b13c1fa63ee',1,'Tests::BoardTest']]]
 ];

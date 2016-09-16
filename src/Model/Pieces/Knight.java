@@ -34,7 +34,7 @@ public class Knight extends Piece
 		int yMovement = Math.abs(move.getEndY() - move.getStartY());
 		if(isOnBoard && ((xMovement == 1 && yMovement == 2) || (xMovement == 2 && yMovement == 1)))
 		{
-			return hasNoLeaps(move, board); //Check that the Knight moved appropriately
+			return hasNoPieceInMovementRoute(move, board); //Check that the Knight moved appropriately
 		}
 		else{
 			return false;
@@ -48,7 +48,7 @@ public class Knight extends Piece
 	 * @return whether the knight leaps over pieces.
 	 */
 	@Override
-	public boolean hasNoLeaps(Move move, Board board) {
+	public boolean hasNoPieceInMovementRoute(Move move, Board board) {
 		// Leaps are allowed for Knights
 		return true;
 	}

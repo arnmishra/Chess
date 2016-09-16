@@ -38,7 +38,7 @@ public class Rook extends Piece
 		}
 		else if(isOnBoard)
 		{
-			return hasNoLeaps(move, board); //Check that the Rook only moved in one direction
+			return hasNoPieceInMovementRoute(move, board); //Check that the Rook only moved in one direction
 		}
 		else{
 			return false;
@@ -52,7 +52,7 @@ public class Rook extends Piece
 	 * @return whether the rook leaps over pieces.
 	 */
 	@Override
-	public boolean hasNoLeaps(Move move, Board board)  {
+	public boolean hasNoPieceInMovementRoute(Move move, Board board)  {
 		Piece[][] positions = board.getPositions();
 		int startX = move.getStartX();
 		int endX = move.getEndX();

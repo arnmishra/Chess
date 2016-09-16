@@ -34,7 +34,7 @@ public class Queen extends Piece
 		int yMovement = Math.abs(move.getEndY() - move.getStartY());
 		if(isOnBoard && (xMovement == 0 || yMovement == 0 || xMovement == yMovement))
 		{
-			return hasNoLeaps(move, board); //Check that the Queen only moved in one direction or went diagonally
+			return hasNoPieceInMovementRoute(move, board); //Check that the Queen only moved in one direction or went diagonally
 		}
 		else{
 			return false;
@@ -48,7 +48,7 @@ public class Queen extends Piece
 	 * @return whether the queen leaps over pieces.
 	 */
 	@Override
-	public boolean hasNoLeaps(Move move, Board board) {
+	public boolean hasNoPieceInMovementRoute(Move move, Board board) {
 		Piece[][] positions = board.getPositions();
 		int startX = move.getStartX();
 		int endX = move.getEndX();

@@ -35,8 +35,15 @@ public class KnightTest {
 		{
 			fail("Incorrect piece type");
 		}
-		Move move = new Move(xCoordinate, yCoordinate, xCoordinate + 1, yCoordinate + 2, teamNumber);
-		assertTrue(knight.isValidMove(move, board));
+		Move knightMoveUpRight = new Move(xCoordinate, yCoordinate, xCoordinate + 1, yCoordinate + 2, teamNumber);
+		assertTrue(knight.isValidMove(knightMoveUpRight, board));
+		Move knightMoveUpLeft = new Move(xCoordinate, yCoordinate, xCoordinate - 1, yCoordinate + 2, teamNumber);
+		assertTrue(knight.isValidMove(knightMoveUpLeft, board));
+		Common.movePiece(board, xCoordinate, yCoordinate, xCoordinate - 1, yCoordinate + 2, teamNumber);//Move knight to test
+		xCoordinate--;
+		yCoordinate += 2;
+		Move knightMoveRightUp = new Move(xCoordinate, yCoordinate, xCoordinate + 2, yCoordinate + 1, teamNumber);
+		assertTrue(knight.isValidMove(knightMoveRightUp, board));
 	}
 	
 	/**

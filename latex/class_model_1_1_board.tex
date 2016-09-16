@@ -1,0 +1,306 @@
+\hypertarget{class_model_1_1_board}{}\section{Model.\+Board Class Reference}
+\label{class_model_1_1_board}\index{Model.\+Board@{Model.\+Board}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_model_1_1_board_a9deb765ab1477d72b1674de48a9a6584}{Board} (int width, int length)
+\item 
+int \hyperlink{class_model_1_1_board_ab6dc3bc9760045e82fa57053f816649f}{get\+Width} ()
+\item 
+void \hyperlink{class_model_1_1_board_a57a6550786751e1b80fee7552a9355b6}{set\+Width} (int width)
+\item 
+int \hyperlink{class_model_1_1_board_a35e5cb89e9ade67a786764d0466adecf}{get\+Length} ()
+\item 
+void \hyperlink{class_model_1_1_board_a189aa2f23e52d961f2cb7f39f584e0a6}{set\+Length} (int length)
+\item 
+void \hyperlink{class_model_1_1_board_aae76066ac44573318ad06038bcd1cf8e}{set\+Initial\+Board} ()
+\item 
+void \hyperlink{class_model_1_1_board_aabff4443881dcd377b3a51b06ef5a757}{add\+Piece\+To\+Board} (\hyperlink{class_model_1_1_pieces_1_1_piece}{Piece} piece)
+\item 
+\hyperlink{class_model_1_1_pieces_1_1_piece}{Piece} \mbox{[}$\,$\mbox{]} \hyperlink{class_model_1_1_board_a2a1d724b1cfaa4ec61b22e6d6b769cab}{set\+Primary\+Pieces} (\hyperlink{class_model_1_1_pieces_1_1_piece}{Piece}\mbox{[}$\,$\mbox{]}\mbox{[}$\,$\mbox{]} positions, int y\+Value, \hyperlink{class_model_1_1_team}{Team} team)
+\item 
+\hyperlink{class_model_1_1_pieces_1_1_piece}{Piece} \mbox{[}$\,$\mbox{]}\mbox{[}$\,$\mbox{]} \hyperlink{class_model_1_1_board_a6d51fda7af5f561f6bd1478e2411d3bd}{get\+Positions} ()
+\item 
+\hyperlink{class_model_1_1_pieces_1_1_piece}{Piece} \hyperlink{class_model_1_1_board_aec81a53097f16fadf2d64dab72cf6d47}{set\+Positions} (\hyperlink{class_model_1_1_move}{Move} move)
+\item 
+void \hyperlink{class_model_1_1_board_a6c918896308d9752d1e81989766c6bee}{unset\+Positions} (\hyperlink{class_model_1_1_move}{Move} move, \hyperlink{class_model_1_1_pieces_1_1_piece}{Piece} removed)
+\item 
+boolean \hyperlink{class_model_1_1_board_a9d041c45865ca1db8ff39c9f4fce204e}{is\+Team\+In\+Check} (\hyperlink{class_model_1_1_move}{Move} move)
+\item 
+boolean \hyperlink{class_model_1_1_board_a16886f1ae73fae80ffbd439cda934e8a}{get\+Check\+Mate} (int turn\+Team\+Number)
+\item 
+boolean \hyperlink{class_model_1_1_board_a6a8d2dc192be22d581618ac2b3301966}{get\+Stale\+Mate} (int turn\+Team\+Number)
+\item 
+\hyperlink{class_model_1_1_pieces_1_1_piece}{Piece} \hyperlink{class_model_1_1_board_a0513468651fe1afccc197f700e2c760d}{get\+King} (List$<$ \hyperlink{class_model_1_1_pieces_1_1_piece}{Piece} $>$ pieces)
+\item 
+int \hyperlink{class_model_1_1_board_a6fac52f7cf767e242f6d202a9e52eb8c}{toggle\+Team} (int turn\+Team\+Number)
+\item 
+\hyperlink{class_model_1_1_team}{Team} \hyperlink{class_model_1_1_board_afbbd0336890f96410b94a622290db60d}{get\+Team} (int turn\+Team\+Number)
+\item 
+List$<$ \hyperlink{class_model_1_1_pieces_1_1_piece}{Piece} $>$ \hyperlink{class_model_1_1_board_abce1029b057dce2939f5dd78abad3cec}{get\+Team\+Pieces} (int turn\+Team\+Number)
+\item 
+void \hyperlink{class_model_1_1_board_a07633635c4378b1824a69deddfb521d5}{print\+Board} ()
+\item 
+void \hyperlink{class_model_1_1_board_a79dabcf1688b67bac808be8c67364bce}{print\+Piece} (\hyperlink{class_model_1_1_pieces_1_1_piece}{Piece} piece)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The board class describes the details about the board and a snapshot of the current game play including piece positions and team statuses. \begin{DoxyAuthor}{Author}
+arnavmishra 
+\end{DoxyAuthor}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_model_1_1_board_a9deb765ab1477d72b1674de48a9a6584}{}\label{class_model_1_1_board_a9deb765ab1477d72b1674de48a9a6584} 
+\index{Model\+::\+Board@{Model\+::\+Board}!Board@{Board}}
+\index{Board@{Board}!Model\+::\+Board@{Model\+::\+Board}}
+\subsubsection{\texorpdfstring{Board()}{Board()}}
+{\footnotesize\ttfamily Model.\+Board.\+Board (\begin{DoxyParamCaption}\item[{int}]{width,  }\item[{int}]{length }\end{DoxyParamCaption})}
+
+\hyperlink{class_model_1_1_board}{Board} constructor to set up initial board piece positions and the width and length. 
+\begin{DoxyParams}{Parameters}
+{\em width} & \\
+\hline
+{\em length} & \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_model_1_1_board_aabff4443881dcd377b3a51b06ef5a757}{}\label{class_model_1_1_board_aabff4443881dcd377b3a51b06ef5a757} 
+\index{Model\+::\+Board@{Model\+::\+Board}!add\+Piece\+To\+Board@{add\+Piece\+To\+Board}}
+\index{add\+Piece\+To\+Board@{add\+Piece\+To\+Board}!Model\+::\+Board@{Model\+::\+Board}}
+\subsubsection{\texorpdfstring{add\+Piece\+To\+Board()}{addPieceToBoard()}}
+{\footnotesize\ttfamily void Model.\+Board.\+add\+Piece\+To\+Board (\begin{DoxyParamCaption}\item[{\hyperlink{class_model_1_1_pieces_1_1_piece}{Piece}}]{piece }\end{DoxyParamCaption})}
+
+Function to add a new piece to a specified coordinate on the board regardless of whether or not another piece exists there. 
+\begin{DoxyParams}{Parameters}
+{\em piece} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_model_1_1_board_a16886f1ae73fae80ffbd439cda934e8a}{}\label{class_model_1_1_board_a16886f1ae73fae80ffbd439cda934e8a} 
+\index{Model\+::\+Board@{Model\+::\+Board}!get\+Check\+Mate@{get\+Check\+Mate}}
+\index{get\+Check\+Mate@{get\+Check\+Mate}!Model\+::\+Board@{Model\+::\+Board}}
+\subsubsection{\texorpdfstring{get\+Check\+Mate()}{getCheckMate()}}
+{\footnotesize\ttfamily boolean Model.\+Board.\+get\+Check\+Mate (\begin{DoxyParamCaption}\item[{int}]{turn\+Team\+Number }\end{DoxyParamCaption})}
+
+Method to see if a move called a checkmate. 
+\begin{DoxyParams}{Parameters}
+{\em turn\+Team\+Number} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+whether the team is in checkmate. 
+\end{DoxyReturn}
+\hypertarget{class_model_1_1_board_a0513468651fe1afccc197f700e2c760d}{}\label{class_model_1_1_board_a0513468651fe1afccc197f700e2c760d} 
+\index{Model\+::\+Board@{Model\+::\+Board}!get\+King@{get\+King}}
+\index{get\+King@{get\+King}!Model\+::\+Board@{Model\+::\+Board}}
+\subsubsection{\texorpdfstring{get\+King()}{getKing()}}
+{\footnotesize\ttfamily \hyperlink{class_model_1_1_pieces_1_1_piece}{Piece} Model.\+Board.\+get\+King (\begin{DoxyParamCaption}\item[{List$<$ \hyperlink{class_model_1_1_pieces_1_1_piece}{Piece} $>$}]{pieces }\end{DoxyParamCaption})}
+
+Helper function to get the King from a list of pieces. 
+\begin{DoxyParams}{Parameters}
+{\em pieces} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+King\textquotesingle{}s piece 
+\end{DoxyReturn}
+\hypertarget{class_model_1_1_board_a35e5cb89e9ade67a786764d0466adecf}{}\label{class_model_1_1_board_a35e5cb89e9ade67a786764d0466adecf} 
+\index{Model\+::\+Board@{Model\+::\+Board}!get\+Length@{get\+Length}}
+\index{get\+Length@{get\+Length}!Model\+::\+Board@{Model\+::\+Board}}
+\subsubsection{\texorpdfstring{get\+Length()}{getLength()}}
+{\footnotesize\ttfamily int Model.\+Board.\+get\+Length (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get length of board. \begin{DoxyReturn}{Returns}
+length 
+\end{DoxyReturn}
+\hypertarget{class_model_1_1_board_a6d51fda7af5f561f6bd1478e2411d3bd}{}\label{class_model_1_1_board_a6d51fda7af5f561f6bd1478e2411d3bd} 
+\index{Model\+::\+Board@{Model\+::\+Board}!get\+Positions@{get\+Positions}}
+\index{get\+Positions@{get\+Positions}!Model\+::\+Board@{Model\+::\+Board}}
+\subsubsection{\texorpdfstring{get\+Positions()}{getPositions()}}
+{\footnotesize\ttfamily \hyperlink{class_model_1_1_pieces_1_1_piece}{Piece} \mbox{[}$\,$\mbox{]}\mbox{[}$\,$\mbox{]} Model.\+Board.\+get\+Positions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get positions on entire chess board. \begin{DoxyReturn}{Returns}
+positions 
+\end{DoxyReturn}
+\hypertarget{class_model_1_1_board_a6a8d2dc192be22d581618ac2b3301966}{}\label{class_model_1_1_board_a6a8d2dc192be22d581618ac2b3301966} 
+\index{Model\+::\+Board@{Model\+::\+Board}!get\+Stale\+Mate@{get\+Stale\+Mate}}
+\index{get\+Stale\+Mate@{get\+Stale\+Mate}!Model\+::\+Board@{Model\+::\+Board}}
+\subsubsection{\texorpdfstring{get\+Stale\+Mate()}{getStaleMate()}}
+{\footnotesize\ttfamily boolean Model.\+Board.\+get\+Stale\+Mate (\begin{DoxyParamCaption}\item[{int}]{turn\+Team\+Number }\end{DoxyParamCaption})}
+
+Method to see if a team cannot move any piece in which case the game is in a stale mate. 
+\begin{DoxyParams}{Parameters}
+{\em turn\+Team\+Number} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{class_model_1_1_board_afbbd0336890f96410b94a622290db60d}{}\label{class_model_1_1_board_afbbd0336890f96410b94a622290db60d} 
+\index{Model\+::\+Board@{Model\+::\+Board}!get\+Team@{get\+Team}}
+\index{get\+Team@{get\+Team}!Model\+::\+Board@{Model\+::\+Board}}
+\subsubsection{\texorpdfstring{get\+Team()}{getTeam()}}
+{\footnotesize\ttfamily \hyperlink{class_model_1_1_team}{Team} Model.\+Board.\+get\+Team (\begin{DoxyParamCaption}\item[{int}]{turn\+Team\+Number }\end{DoxyParamCaption})}
+
+Helper function to return a team object given a team number. 
+\begin{DoxyParams}{Parameters}
+{\em turn\+Team\+Number} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+team\textquotesingle{}s active pieces. 
+\end{DoxyReturn}
+\hypertarget{class_model_1_1_board_abce1029b057dce2939f5dd78abad3cec}{}\label{class_model_1_1_board_abce1029b057dce2939f5dd78abad3cec} 
+\index{Model\+::\+Board@{Model\+::\+Board}!get\+Team\+Pieces@{get\+Team\+Pieces}}
+\index{get\+Team\+Pieces@{get\+Team\+Pieces}!Model\+::\+Board@{Model\+::\+Board}}
+\subsubsection{\texorpdfstring{get\+Team\+Pieces()}{getTeamPieces()}}
+{\footnotesize\ttfamily List$<$\hyperlink{class_model_1_1_pieces_1_1_piece}{Piece}$>$ Model.\+Board.\+get\+Team\+Pieces (\begin{DoxyParamCaption}\item[{int}]{turn\+Team\+Number }\end{DoxyParamCaption})}
+
+Helper function to return the remaining pieces of a team 
+\begin{DoxyParams}{Parameters}
+{\em turn\+Team\+Number} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{class_model_1_1_board_ab6dc3bc9760045e82fa57053f816649f}{}\label{class_model_1_1_board_ab6dc3bc9760045e82fa57053f816649f} 
+\index{Model\+::\+Board@{Model\+::\+Board}!get\+Width@{get\+Width}}
+\index{get\+Width@{get\+Width}!Model\+::\+Board@{Model\+::\+Board}}
+\subsubsection{\texorpdfstring{get\+Width()}{getWidth()}}
+{\footnotesize\ttfamily int Model.\+Board.\+get\+Width (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get width of board. \begin{DoxyReturn}{Returns}
+width 
+\end{DoxyReturn}
+\hypertarget{class_model_1_1_board_a9d041c45865ca1db8ff39c9f4fce204e}{}\label{class_model_1_1_board_a9d041c45865ca1db8ff39c9f4fce204e} 
+\index{Model\+::\+Board@{Model\+::\+Board}!is\+Team\+In\+Check@{is\+Team\+In\+Check}}
+\index{is\+Team\+In\+Check@{is\+Team\+In\+Check}!Model\+::\+Board@{Model\+::\+Board}}
+\subsubsection{\texorpdfstring{is\+Team\+In\+Check()}{isTeamInCheck()}}
+{\footnotesize\ttfamily boolean Model.\+Board.\+is\+Team\+In\+Check (\begin{DoxyParamCaption}\item[{\hyperlink{class_model_1_1_move}{Move}}]{move }\end{DoxyParamCaption})}
+
+Method to see if the king will still be in check after the move is made. Undo the move after. 
+\begin{DoxyParams}{Parameters}
+{\em move} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+whether the king is in check after the move. 
+\end{DoxyReturn}
+\hypertarget{class_model_1_1_board_a07633635c4378b1824a69deddfb521d5}{}\label{class_model_1_1_board_a07633635c4378b1824a69deddfb521d5} 
+\index{Model\+::\+Board@{Model\+::\+Board}!print\+Board@{print\+Board}}
+\index{print\+Board@{print\+Board}!Model\+::\+Board@{Model\+::\+Board}}
+\subsubsection{\texorpdfstring{print\+Board()}{printBoard()}}
+{\footnotesize\ttfamily void Model.\+Board.\+print\+Board (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Function to print out board. Everything below this is simply for testing purposes and will be removed when the G\+UI is done. 
+\begin{DoxyParams}{Parameters}
+{\em board} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_model_1_1_board_a79dabcf1688b67bac808be8c67364bce}{}\label{class_model_1_1_board_a79dabcf1688b67bac808be8c67364bce} 
+\index{Model\+::\+Board@{Model\+::\+Board}!print\+Piece@{print\+Piece}}
+\index{print\+Piece@{print\+Piece}!Model\+::\+Board@{Model\+::\+Board}}
+\subsubsection{\texorpdfstring{print\+Piece()}{printPiece()}}
+{\footnotesize\ttfamily void Model.\+Board.\+print\+Piece (\begin{DoxyParamCaption}\item[{\hyperlink{class_model_1_1_pieces_1_1_piece}{Piece}}]{piece }\end{DoxyParamCaption})}
+
+Helper function to print out each piece on the board. 
+\begin{DoxyParams}{Parameters}
+{\em piece} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_model_1_1_board_aae76066ac44573318ad06038bcd1cf8e}{}\label{class_model_1_1_board_aae76066ac44573318ad06038bcd1cf8e} 
+\index{Model\+::\+Board@{Model\+::\+Board}!set\+Initial\+Board@{set\+Initial\+Board}}
+\index{set\+Initial\+Board@{set\+Initial\+Board}!Model\+::\+Board@{Model\+::\+Board}}
+\subsubsection{\texorpdfstring{set\+Initial\+Board()}{setInitialBoard()}}
+{\footnotesize\ttfamily void Model.\+Board.\+set\+Initial\+Board (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Function to put pieces in initial starting positions. \begin{DoxyReturn}{Returns}
+a Piece double array with all the current positions. 
+\end{DoxyReturn}
+\hypertarget{class_model_1_1_board_a189aa2f23e52d961f2cb7f39f584e0a6}{}\label{class_model_1_1_board_a189aa2f23e52d961f2cb7f39f584e0a6} 
+\index{Model\+::\+Board@{Model\+::\+Board}!set\+Length@{set\+Length}}
+\index{set\+Length@{set\+Length}!Model\+::\+Board@{Model\+::\+Board}}
+\subsubsection{\texorpdfstring{set\+Length()}{setLength()}}
+{\footnotesize\ttfamily void Model.\+Board.\+set\+Length (\begin{DoxyParamCaption}\item[{int}]{length }\end{DoxyParamCaption})}
+
+Set length of board. 
+\begin{DoxyParams}{Parameters}
+{\em length} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_model_1_1_board_aec81a53097f16fadf2d64dab72cf6d47}{}\label{class_model_1_1_board_aec81a53097f16fadf2d64dab72cf6d47} 
+\index{Model\+::\+Board@{Model\+::\+Board}!set\+Positions@{set\+Positions}}
+\index{set\+Positions@{set\+Positions}!Model\+::\+Board@{Model\+::\+Board}}
+\subsubsection{\texorpdfstring{set\+Positions()}{setPositions()}}
+{\footnotesize\ttfamily \hyperlink{class_model_1_1_pieces_1_1_piece}{Piece} Model.\+Board.\+set\+Positions (\begin{DoxyParamCaption}\item[{\hyperlink{class_model_1_1_move}{Move}}]{move }\end{DoxyParamCaption})}
+
+Set the new positions of a chess board after a move. 
+\begin{DoxyParams}{Parameters}
+{\em move} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_model_1_1_board_a2a1d724b1cfaa4ec61b22e6d6b769cab}{}\label{class_model_1_1_board_a2a1d724b1cfaa4ec61b22e6d6b769cab} 
+\index{Model\+::\+Board@{Model\+::\+Board}!set\+Primary\+Pieces@{set\+Primary\+Pieces}}
+\index{set\+Primary\+Pieces@{set\+Primary\+Pieces}!Model\+::\+Board@{Model\+::\+Board}}
+\subsubsection{\texorpdfstring{set\+Primary\+Pieces()}{setPrimaryPieces()}}
+{\footnotesize\ttfamily \hyperlink{class_model_1_1_pieces_1_1_piece}{Piece} \mbox{[}$\,$\mbox{]} Model.\+Board.\+set\+Primary\+Pieces (\begin{DoxyParamCaption}\item[{\hyperlink{class_model_1_1_pieces_1_1_piece}{Piece}}]{positions\mbox{[}$\,$\mbox{]}\mbox{[}$\,$\mbox{]},  }\item[{int}]{y\+Value,  }\item[{\hyperlink{class_model_1_1_team}{Team}}]{team }\end{DoxyParamCaption})}
+
+Helper function to initialize all the non-\/pawns and put them in the right places. 
+\begin{DoxyParams}{Parameters}
+{\em positions} & \\
+\hline
+{\em y\+Value} & \\
+\hline
+{\em team} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pieces 1-\/d array with the primary non-\/pawn pieces for a team. 
+\end{DoxyReturn}
+\hypertarget{class_model_1_1_board_a57a6550786751e1b80fee7552a9355b6}{}\label{class_model_1_1_board_a57a6550786751e1b80fee7552a9355b6} 
+\index{Model\+::\+Board@{Model\+::\+Board}!set\+Width@{set\+Width}}
+\index{set\+Width@{set\+Width}!Model\+::\+Board@{Model\+::\+Board}}
+\subsubsection{\texorpdfstring{set\+Width()}{setWidth()}}
+{\footnotesize\ttfamily void Model.\+Board.\+set\+Width (\begin{DoxyParamCaption}\item[{int}]{width }\end{DoxyParamCaption})}
+
+Set width of board. 
+\begin{DoxyParams}{Parameters}
+{\em width} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_model_1_1_board_a6fac52f7cf767e242f6d202a9e52eb8c}{}\label{class_model_1_1_board_a6fac52f7cf767e242f6d202a9e52eb8c} 
+\index{Model\+::\+Board@{Model\+::\+Board}!toggle\+Team@{toggle\+Team}}
+\index{toggle\+Team@{toggle\+Team}!Model\+::\+Board@{Model\+::\+Board}}
+\subsubsection{\texorpdfstring{toggle\+Team()}{toggleTeam()}}
+{\footnotesize\ttfamily int Model.\+Board.\+toggle\+Team (\begin{DoxyParamCaption}\item[{int}]{turn\+Team\+Number }\end{DoxyParamCaption})}
+
+Helper function to change the team number. 
+\begin{DoxyParams}{Parameters}
+{\em turn\+Team\+Number} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+opposite team number. 
+\end{DoxyReturn}
+\hypertarget{class_model_1_1_board_a6c918896308d9752d1e81989766c6bee}{}\label{class_model_1_1_board_a6c918896308d9752d1e81989766c6bee} 
+\index{Model\+::\+Board@{Model\+::\+Board}!unset\+Positions@{unset\+Positions}}
+\index{unset\+Positions@{unset\+Positions}!Model\+::\+Board@{Model\+::\+Board}}
+\subsubsection{\texorpdfstring{unset\+Positions()}{unsetPositions()}}
+{\footnotesize\ttfamily void Model.\+Board.\+unset\+Positions (\begin{DoxyParamCaption}\item[{\hyperlink{class_model_1_1_move}{Move}}]{move,  }\item[{\hyperlink{class_model_1_1_pieces_1_1_piece}{Piece}}]{removed }\end{DoxyParamCaption})}
+
+Undo the last move. This method is used to reverse a move after checking if it protects the King from a check. This is relevant when checking for checkmates to ensure that there is at least one move available for the team. 
+\begin{DoxyParams}{Parameters}
+{\em move} & \\
+\hline
+{\em removed} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Model/Board.\+java\end{DoxyCompactItemize}

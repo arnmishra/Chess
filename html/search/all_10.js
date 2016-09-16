@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['unsetpositions',['unsetPositions',['../class_framework_1_1_board.html#a9011996b5b797378ba6bf5ee295790d8',1,'Framework::Board']]]
+  ['unsetpositions',['unsetPositions',['../class_model_1_1_board.html#a6c918896308d9752d1e81989766c6bee',1,'Model::Board']]]
 ];

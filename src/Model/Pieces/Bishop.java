@@ -34,7 +34,7 @@ public class Bishop extends Piece
 		int yMovement = Math.abs(move.getEndY() - move.getStartY());
 		if(isOnBoard && xMovement == yMovement)
 		{
-			return hasNoLeaps(move, board); //Check that the Bishop only moved diagonally
+			return hasNoPieceInMovementRoute(move, board); //Check that the Bishop only moved diagonally
 		}
 		else{
 			return false;
@@ -49,7 +49,7 @@ public class Bishop extends Piece
 	 * @return whether the bishop leaps over pieces.
 	 */
 	@Override
-	public boolean hasNoLeaps(Move move, Board board) {
+	public boolean hasNoPieceInMovementRoute(Move move, Board board) {
 		Piece[][] positions = board.getPositions();
 		int startX = move.getStartX();
 		int endX = move.getEndX();

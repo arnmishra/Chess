@@ -30,7 +30,7 @@ public class BoardTest {
 	}
 	
 	/**
-	 * Test for piece movement where a pawn is moved forward and then the board
+	 * Test for general piece movement where a pawn is moved forward and then the board
 	 * is checked to confirm that the pawn is now in the new location.
 	 * @throws Exception
 	 */
@@ -42,6 +42,7 @@ public class BoardTest {
 		Common.movePiece(board, 1, 1, 1, 2, teamNumber);
 		Piece[][] positions = board.getPositions();
 		assertTrue(positions[2][1] != null);
+		assertTrue(positions[1][1] == null);
 	}
 	
 	/**

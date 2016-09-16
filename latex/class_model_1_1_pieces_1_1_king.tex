@@ -1,0 +1,119 @@
+\hypertarget{class_model_1_1_pieces_1_1_king}{}\section{Model.\+Pieces.\+King Class Reference}
+\label{class_model_1_1_pieces_1_1_king}\index{Model.\+Pieces.\+King@{Model.\+Pieces.\+King}}
+Inheritance diagram for Model.\+Pieces.\+King\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_model_1_1_pieces_1_1_king}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_model_1_1_pieces_1_1_king_a064e3c2161d2fc9153efb4618493550e}{King} (\hyperlink{class_model_1_1_team}{Team} team, int x\+Value, int y\+Value)
+\item 
+boolean \hyperlink{class_model_1_1_pieces_1_1_king_afdaa2fec4da9bc1c217e9a3c88700cea}{is\+Valid\+Move} (\hyperlink{class_model_1_1_move}{Move} move, \hyperlink{class_model_1_1_board}{Board} board)
+\item 
+boolean \hyperlink{class_model_1_1_pieces_1_1_king_aaf00b36ede859653e9c3ae8c72ea302c}{has\+No\+Piece\+In\+Movement\+Route} (\hyperlink{class_model_1_1_move}{Move} move, \hyperlink{class_model_1_1_board}{Board} board)
+\item 
+List$<$ \hyperlink{class_model_1_1_move}{Move} $>$ \hyperlink{class_model_1_1_pieces_1_1_king_ac947a57bac9d81d02b64e8bc470257bf}{find\+All\+Moves} (\hyperlink{class_model_1_1_board}{Board} board)
+\item 
+List$<$ \hyperlink{class_model_1_1_move}{Move} $>$ \hyperlink{class_model_1_1_pieces_1_1_king_a4d77bfe79a1c8087c8ce91397388c6d5}{add\+Move\+To\+Possible\+Moves} (\hyperlink{class_model_1_1_board}{Board} board, int x\+Value, int y\+Value, int x\+Diff, int y\+Diff, List$<$ \hyperlink{class_model_1_1_move}{Move} $>$ possible\+Moves)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{class_model_1_1_pieces_1_1_king}{King} class to describe \hyperlink{class_model_1_1_pieces_1_1_king}{King}\textquotesingle{}s possible moves. \begin{DoxyAuthor}{Author}
+arnavmishra 
+\end{DoxyAuthor}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_model_1_1_pieces_1_1_king_a064e3c2161d2fc9153efb4618493550e}{}\label{class_model_1_1_pieces_1_1_king_a064e3c2161d2fc9153efb4618493550e} 
+\index{Model\+::\+Pieces\+::\+King@{Model\+::\+Pieces\+::\+King}!King@{King}}
+\index{King@{King}!Model\+::\+Pieces\+::\+King@{Model\+::\+Pieces\+::\+King}}
+\subsubsection{\texorpdfstring{King()}{King()}}
+{\footnotesize\ttfamily Model.\+Pieces.\+King.\+King (\begin{DoxyParamCaption}\item[{\hyperlink{class_model_1_1_team}{Team}}]{team,  }\item[{int}]{x\+Value,  }\item[{int}]{y\+Value }\end{DoxyParamCaption})}
+
+Constructor to initialize \hyperlink{class_model_1_1_pieces_1_1_king}{King} on a team and coordinate. 
+\begin{DoxyParams}{Parameters}
+{\em team} & \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_model_1_1_pieces_1_1_king_a4d77bfe79a1c8087c8ce91397388c6d5}{}\label{class_model_1_1_pieces_1_1_king_a4d77bfe79a1c8087c8ce91397388c6d5} 
+\index{Model\+::\+Pieces\+::\+King@{Model\+::\+Pieces\+::\+King}!add\+Move\+To\+Possible\+Moves@{add\+Move\+To\+Possible\+Moves}}
+\index{add\+Move\+To\+Possible\+Moves@{add\+Move\+To\+Possible\+Moves}!Model\+::\+Pieces\+::\+King@{Model\+::\+Pieces\+::\+King}}
+\subsubsection{\texorpdfstring{add\+Move\+To\+Possible\+Moves()}{addMoveToPossibleMoves()}}
+{\footnotesize\ttfamily List$<$\hyperlink{class_model_1_1_move}{Move}$>$ Model.\+Pieces.\+King.\+add\+Move\+To\+Possible\+Moves (\begin{DoxyParamCaption}\item[{\hyperlink{class_model_1_1_board}{Board}}]{board,  }\item[{int}]{x\+Value,  }\item[{int}]{y\+Value,  }\item[{int}]{x\+Diff,  }\item[{int}]{y\+Diff,  }\item[{List$<$ \hyperlink{class_model_1_1_move}{Move} $>$}]{possible\+Moves }\end{DoxyParamCaption})}
+
+Helper function to add a piece to the possible moves list after confirming validity 
+\begin{DoxyParams}{Parameters}
+{\em board} & \\
+\hline
+{\em x\+Value} & \\
+\hline
+{\em y\+Value} & \\
+\hline
+{\em x\+Diff} & \\
+\hline
+{\em y\+Diff} & \\
+\hline
+{\em possible\+Moves} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+list with or without new move depending on whether it is possible 
+\end{DoxyReturn}
+\hypertarget{class_model_1_1_pieces_1_1_king_ac947a57bac9d81d02b64e8bc470257bf}{}\label{class_model_1_1_pieces_1_1_king_ac947a57bac9d81d02b64e8bc470257bf} 
+\index{Model\+::\+Pieces\+::\+King@{Model\+::\+Pieces\+::\+King}!find\+All\+Moves@{find\+All\+Moves}}
+\index{find\+All\+Moves@{find\+All\+Moves}!Model\+::\+Pieces\+::\+King@{Model\+::\+Pieces\+::\+King}}
+\subsubsection{\texorpdfstring{find\+All\+Moves()}{findAllMoves()}}
+{\footnotesize\ttfamily List$<$\hyperlink{class_model_1_1_move}{Move}$>$ Model.\+Pieces.\+King.\+find\+All\+Moves (\begin{DoxyParamCaption}\item[{\hyperlink{class_model_1_1_board}{Board}}]{board }\end{DoxyParamCaption})}
+
+Function to get all valid possible moves for the \hyperlink{class_model_1_1_pieces_1_1_king}{King} in any direction. 
+\begin{DoxyParams}{Parameters}
+{\em board} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+all possible valid moves. 
+\end{DoxyReturn}
+\hypertarget{class_model_1_1_pieces_1_1_king_aaf00b36ede859653e9c3ae8c72ea302c}{}\label{class_model_1_1_pieces_1_1_king_aaf00b36ede859653e9c3ae8c72ea302c} 
+\index{Model\+::\+Pieces\+::\+King@{Model\+::\+Pieces\+::\+King}!has\+No\+Piece\+In\+Movement\+Route@{has\+No\+Piece\+In\+Movement\+Route}}
+\index{has\+No\+Piece\+In\+Movement\+Route@{has\+No\+Piece\+In\+Movement\+Route}!Model\+::\+Pieces\+::\+King@{Model\+::\+Pieces\+::\+King}}
+\subsubsection{\texorpdfstring{has\+No\+Piece\+In\+Movement\+Route()}{hasNoPieceInMovementRoute()}}
+{\footnotesize\ttfamily boolean Model.\+Pieces.\+King.\+has\+No\+Piece\+In\+Movement\+Route (\begin{DoxyParamCaption}\item[{\hyperlink{class_model_1_1_move}{Move}}]{move,  }\item[{\hyperlink{class_model_1_1_board}{Board}}]{board }\end{DoxyParamCaption})}
+
+The king can\textquotesingle{}t jump over any pieces since it only moves one space. 
+\begin{DoxyParams}{Parameters}
+{\em move} & \\
+\hline
+{\em board} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+whether the king leaps over pieces. 
+\end{DoxyReturn}
+\hypertarget{class_model_1_1_pieces_1_1_king_afdaa2fec4da9bc1c217e9a3c88700cea}{}\label{class_model_1_1_pieces_1_1_king_afdaa2fec4da9bc1c217e9a3c88700cea} 
+\index{Model\+::\+Pieces\+::\+King@{Model\+::\+Pieces\+::\+King}!is\+Valid\+Move@{is\+Valid\+Move}}
+\index{is\+Valid\+Move@{is\+Valid\+Move}!Model\+::\+Pieces\+::\+King@{Model\+::\+Pieces\+::\+King}}
+\subsubsection{\texorpdfstring{is\+Valid\+Move()}{isValidMove()}}
+{\footnotesize\ttfamily boolean Model.\+Pieces.\+King.\+is\+Valid\+Move (\begin{DoxyParamCaption}\item[{\hyperlink{class_model_1_1_move}{Move}}]{move,  }\item[{\hyperlink{class_model_1_1_board}{Board}}]{board }\end{DoxyParamCaption})}
+
+Function to check whether a king\textquotesingle{}s move is valid. 
+\begin{DoxyParams}{Parameters}
+{\em move} & \\
+\hline
+{\em board} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Whether the move is valid. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Model/\+Pieces/King.\+java\end{DoxyCompactItemize}

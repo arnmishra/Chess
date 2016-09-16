@@ -1,13 +1,9 @@
 var searchData=
 [
-  ['bishop',['Bishop',['../class_framework_1_1_pieces_1_1_bishop.html',1,'Framework::Pieces']]],
-  ['bishop',['Bishop',['../class_framework_1_1_pieces_1_1_bishop.html#a3396bd8dc296ef4648567b18fdc23639',1,'Framework::Pieces::Bishop']]],
-  ['bishop_2ejava',['Bishop.java',['../_bishop_8java.html',1,'']]],
+  ['bishop',['Bishop',['../class_model_1_1_pieces_1_1_bishop.html',1,'Model::Pieces']]],
+  ['bishop',['Bishop',['../class_model_1_1_pieces_1_1_bishop.html#a5f383759e28a0def1f6139861c9afa94',1,'Model::Pieces::Bishop']]],
   ['bishoptest',['BishopTest',['../class_tests_1_1_bishop_test.html',1,'Tests']]],
-  ['bishoptest_2ejava',['BishopTest.java',['../_bishop_test_8java.html',1,'']]],
-  ['board',['Board',['../class_framework_1_1_board.html#a2738a7191b7eed3385d092c60c23a2e1',1,'Framework::Board']]],
-  ['board',['Board',['../class_framework_1_1_board.html',1,'Framework']]],
-  ['board_2ejava',['Board.java',['../_board_8java.html',1,'']]],
-  ['boardtest',['BoardTest',['../class_tests_1_1_board_test.html',1,'Tests']]],
-  ['boardtest_2ejava',['BoardTest.java',['../_board_test_8java.html',1,'']]]
+  ['board',['Board',['../class_model_1_1_board.html#a9deb765ab1477d72b1674de48a9a6584',1,'Model::Board']]],
+  ['board',['Board',['../class_model_1_1_board.html',1,'Model']]],
+  ['boardtest',['BoardTest',['../class_tests_1_1_board_test.html',1,'Tests']]]
 ];

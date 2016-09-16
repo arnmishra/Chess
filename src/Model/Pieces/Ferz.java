@@ -34,7 +34,7 @@ public class Ferz extends Piece
 		int yMovement = Math.abs(move.getEndY() - move.getStartY());
 		if(isOnBoard && xMovement == 1 && yMovement == 1)
 		{
-			return hasNoLeaps(move, board); //Check that the Ferz only moved 1 space diagonally
+			return hasNoPieceInMovementRoute(move, board); //Check that the Ferz only moved 1 space diagonally
 		}
 		else{
 			return false;
@@ -48,7 +48,7 @@ public class Ferz extends Piece
 	 * @return whether the ferz leaps over pieces.
 	 */
 	@Override
-	public boolean hasNoLeaps(Move move, Board board) {
+	public boolean hasNoPieceInMovementRoute(Move move, Board board) {
 		return true;
 	}
 	

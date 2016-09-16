@@ -30,7 +30,7 @@ public class BishopTest {
 		Board board = new Board(8, 8);
 		board.setInitialBoard();
 		int teamNumber = 0;
-		Common.movePiece(board, 1, 1, 1, 2, teamNumber); // Move the pawn out of the way to test the bishop
+		Common.movePiece(board, 3, 1, 3, 2, teamNumber); // Move the pawn out of the way to test the bishop
 		
 		int xCoordinate = 2;
 		int yCoordinate = 0;
@@ -39,8 +39,12 @@ public class BishopTest {
 		{
 			fail("Incorrect piece type");
 		}
-		Move bishopMove = new Move(xCoordinate, yCoordinate, xCoordinate - 2, yCoordinate + 2, teamNumber);
-		assertTrue(bishop.isValidMove(bishopMove, board));
+		Move bishopMoveOneSpace = new Move(xCoordinate, yCoordinate, xCoordinate + 1, yCoordinate + 1, teamNumber);
+		assertTrue(bishop.isValidMove(bishopMoveOneSpace, board));
+		Move bishopMovTwoSpaces = new Move(xCoordinate, yCoordinate, xCoordinate + 2, yCoordinate + 2, teamNumber);
+		assertTrue(bishop.isValidMove(bishopMovTwoSpaces, board));
+		Move bishopMoveThreeSpaces = new Move(xCoordinate, yCoordinate, xCoordinate + 3, yCoordinate + 3, teamNumber);
+		assertTrue(bishop.isValidMove(bishopMoveThreeSpaces, board));
 	}
 	
 	/**
