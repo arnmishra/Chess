@@ -3,7 +3,7 @@ var searchData=
   ['checker',['Checker',['../class_model_1_1_pieces_1_1_checker.html#af2b456d3e6c3ceff5a641fac1928fd5a',1,'Model::Pieces::Checker']]],
   ['checkforward',['checkForward',['../class_model_1_1_pieces_1_1_pawn.html#a1088583c9809266ccefc49ce8d272d24',1,'Model::Pieces::Pawn']]],
   ['checkifmovelistsareequal',['checkIfMoveListsAreEqual',['../class_tests_1_1_common.html#a88d6dce17bfea9b706c866e0c896715d',1,'Tests::Common']]],
-  ['checknopiece',['checkNoPiece',['../class_model_1_1_pieces_1_1_checker.html#a39660db049663a3ee26f041642c31705',1,'Model.Pieces.Checker.checkNoPiece()'],['../class_model_1_1_pieces_1_1_pawn.html#a92db7183e3d916aa6aed7c9a7cf89ba3',1,'Model.Pieces.Pawn.checkNoPiece()']]],
+  ['checknopieceatdestination',['checkNoPieceAtDestination',['../class_model_1_1_pieces_1_1_checker.html#ada084337407a5dc86bee162d61de44a8',1,'Model.Pieces.Checker.checkNoPieceAtDestination()'],['../class_model_1_1_pieces_1_1_pawn.html#aa344255a52a7a231c6580caf9c411c1d',1,'Model.Pieces.Pawn.checkNoPieceAtDestination()']]],
   ['correctallcheckermoves',['correctAllCheckerMoves',['../class_tests_1_1_checker_test.html#a5eff464f77823f680ce240ca305bbbd9',1,'Tests::CheckerTest']]],
   ['correctallferzmoves',['correctAllFerzMoves',['../class_tests_1_1_ferz_test.html#a53d5f9199ad96f294b601cb1921b6231',1,'Tests::FerzTest']]],
   ['correctallstartingbishopmoves',['correctAllStartingBishopMoves',['../class_tests_1_1_bishop_test.html#a1635821930e814400c61693e0e65150c',1,'Tests::BishopTest']]],

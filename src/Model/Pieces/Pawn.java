@@ -35,7 +35,7 @@ public class Pawn extends Piece
 		
 		boolean isForward = checkForward(move, yDelta); // Check that the movement is forward.
 		boolean firstMove = (move.getStartY() == 1 || move.getStartY() == board.getLength()-2); // Check row for first move.
-		boolean noPiece = checkNoPiece(move, board); // Check if there is a piece already on the position being moved to.
+		boolean noPiece = checkNoPieceAtDestination(move, board); // Check if there is a piece already on the position being moved to.
 		
 		int xMovement = Math.abs(move.getEndX() - move.getStartX());
 		int yMovement = Math.abs(yDelta);
@@ -66,7 +66,7 @@ public class Pawn extends Piece
 	 * @param board
 	 * @return whether there is already a piece at the destination
 	 */
-	public boolean checkNoPiece(Move move, Board board)
+	public boolean checkNoPieceAtDestination(Move move, Board board)
 	{
 		Piece[][] positions = board.getPositions();
 		int endX = move.getEndX();

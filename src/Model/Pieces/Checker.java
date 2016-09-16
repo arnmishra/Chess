@@ -40,12 +40,12 @@ public class Checker extends Piece
 		
 		if(isOnBoard && xMovement == 1 && yMovement == 1) // Check if pawn is on the board and is moving forward.
 		{
-			return checkNoPiece(move, board); // Check that there is no piece in the destination location
+			return checkNoPieceAtDestination(move, board); // Check that there is no piece in the destination location
 		}
 		else if(isOnBoard && yMovement == 2 && xMovement == 2)
 		{
 			 // Check to make sure a piece is being jumped over and there is no opponent piece at the destination
-			isValid = !hasNoPieceInMovementRoute(move, board) && checkNoPiece(move, board);
+			isValid = !hasNoPieceInMovementRoute(move, board) && checkNoPieceAtDestination(move, board);
 		}
 		else
 		{
@@ -61,7 +61,7 @@ public class Checker extends Piece
 	 * @param board
 	 * @return whether there is already a piece at the destination
 	 */
-	public boolean checkNoPiece(Move move, Board board)
+	public boolean checkNoPieceAtDestination(Move move, Board board)
 	{
 		Piece[][] positions = board.getPositions();
 		int endX = move.getEndX();
