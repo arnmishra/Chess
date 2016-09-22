@@ -13,6 +13,9 @@ public class Team
 {
 	private int teamNumber; // Holds the team's team number.
 	private List<Piece> pieces = new ArrayList<Piece>(); // Holds all active pieces for a team.
+	private String teamName;
+	private int teamScore;
+	private Stack<Move> moves = new Stack<Move>();
 	
 	/**
 	 * Constructor to initialize team with a team number.
@@ -21,6 +24,46 @@ public class Team
 	public Team(int teamNumber)
 	{
 		this.teamNumber = teamNumber;
+	}
+	
+	/**
+	 * Getter for team name.
+	 */
+	public String getTeamName()
+	{
+		return this.teamName;
+	}
+	
+	/**
+	 * Setter for team name.
+	 */
+	public void setTeamName(String teamName)
+	{
+		this.teamName = teamName;
+	}
+	
+	/**
+	 * Getter for team score.
+	 */
+	public int getTeamScore()
+	{
+		return this.teamScore;
+	}
+	
+	/**
+	 * Setter for team score.
+	 */
+	public void setTeamScore(int teamScore)
+	{
+		this.teamScore = teamScore;
+	}
+	
+	/**
+	 * Setter for team score.
+	 */
+	public void incrementTeamScore()
+	{
+		this.teamScore++;
 	}
 	
 	/**
@@ -60,11 +103,49 @@ public class Team
 	}
 	
 	/**
+	 * Remove all pieces from array of pieces when resetting game.
+	 */
+	public void removeAllPieces()
+	{
+		pieces = new ArrayList<Piece>();
+	}
+	
+	/**
 	 * Getter for the pieces of the team.
-	 * @return
+	 * @return pieces
 	 */
 	public List<Piece> getPieces()
 	{
 		return pieces;
+	}
+	
+	/**
+	 * Getter for moves of the team.
+	 * @return moves
+	 */
+	public Stack<Move> getMoves()
+	{
+		return this.moves;
+	}
+	
+	/**
+	 * Add a move to the moves list.
+	 * @param move
+	 */
+	public void addMove(Move move)
+	{
+		this.moves.push(move);
+	}
+	
+	/**
+	 * Remove last move from the moves list.
+	 */
+	public Move undoLastMove()
+	{
+		if(moves.isEmpty())
+		{
+			return null;
+		}
+		return this.moves.pop();
 	}
 }

@@ -74,6 +74,7 @@ public class Board
 	 */
 	public void setInitialBoard()
 	{
+		this.positions = new Piece[this.length][this.width];
 		positions[0] = setPrimaryPieces(positions, 0, team0);
 		positions[7] = setPrimaryPieces(positions, 7, team1);
 		for(int i = 0; i < 8; i++)
@@ -81,8 +82,10 @@ public class Board
 			positions[1][i] = new Pawn(team0, i, 1);
 			positions[6][i] = new Pawn(team1, i, 6);
 		}
+		team0.removeAllPieces();
 		team0.addPieces(positions[0]);
 		team0.addPieces(positions[1]);
+		team1.removeAllPieces();
 		team1.addPieces(positions[7]);
 		team1.addPieces(positions[6]);
 	}
@@ -120,6 +123,14 @@ public class Board
 	}
 	
 	/**
+	 * Replace Knights with Checkers and Bishops with Ferzs for custom piece game.
+	 */
+	public void setCustomBoard()
+	{
+		
+	}
+	
+	/**
 	 * Get positions on entire chess board.
 	 * @return positions
 	 */
@@ -133,7 +144,7 @@ public class Board
 	 * Set the new positions of a chess board after a move.
 	 * @param move
 	 */
-	public Piece setPositions(Move move)
+	public void setPositions(Move move)
 	{
 		int startX = move.getStartX();
 		int startY = move.getStartY();
@@ -143,15 +154,15 @@ public class Board
 		Piece replaced = positions[endY][endX];
 		if(replaced != null)
 		{
-			Team team = replaced.getTeam();
-			team.removePiece(replaced);
+			Team opponent = replaced.getTeam();
+			opponent.removePiece(replaced);
 		}
 		Piece moved = positions[startY][startX];
 		Piece removed = positions[endY][endX];
 		moved.setCoordinates(endX, endY);
 		positions[endY][endX] = positions[startY][startX];
 		positions[startY][startX] = null;
-		return removed;
+		move.setRemovedPiece(removed);
 	}
 	
 	/**
@@ -160,13 +171,13 @@ public class Board
 	 * to ensure that there is at least one move available for the team.
 	 * @param move
 	 * @param removed
-	 */
+	 */ 
 	public void unsetPositions(Move move, Piece removed)
 	{
 		int startX = move.getStartX();
 		int startY = move.getStartY();
 		int endX = move.getEndX();
-		int endY = move.getEndY();		
+		int endY = move.getEndY();	
 		if(removed != null)
 		{
 			Team team = removed.getTeam();
@@ -186,18 +197,24 @@ public class Board
 	 * @param move
 	 * @return whether the king is in check after the move.
 	 */
-	public boolean isTeamInCheck(Move move)
+	public boolean isTeamInCheckAfterMove(Move move)
 	{
 		Piece removed = positions[move.getEndY()][move.getEndX()];
 		this.setPositions(move);
 		int turnTeamNumber = move.getTeamNumber();
+		boolean isCheck = isTeamInCheck(turnTeamNumber);
+		this.unsetPositions(move, removed);
+		return isCheck;
+	}
+	
+	public boolean isTeamInCheck(int turnTeamNumber)
+	{
 		List<Piece> checkPieces = getTeamPieces(turnTeamNumber);
 		int opposingTeamNumber = toggleTeam(turnTeamNumber);
 		List<Piece> opposingPieces = getTeamPieces(opposingTeamNumber);
 		Piece checkKing = getKing(checkPieces);
 		if(checkKing == null) // If board is set-up for testing with no King, no check possible
 		{
-			this.unsetPositions(move, removed);
 			return false;
 		}
 		int kingX = checkKing.getXValue();
@@ -215,7 +232,6 @@ public class Board
 				break;
 			}
 		}
-		this.unsetPositions(move, removed);
 		return isCheck;
 	}
 	
@@ -234,7 +250,7 @@ public class Board
 			List<Move> possibleMoves = checkPiece.findAllMoves(this);
 			for(int j = 0; j < possibleMoves.size(); j++)
 			{
-				isCheck = isTeamInCheck(possibleMoves.get(j));
+				isCheck = isTeamInCheckAfterMove(possibleMoves.get(j));
 				if(!isCheck)
 				{
 					return false;

@@ -62,7 +62,7 @@ public class Rook extends Piece
 		{
 			return traverseRow(startY, startX, endX, positions);
 		}
-		else if(startX < endX)
+		else if(endX < startX)
 		{
 			return traverseRow(startY, endX, startX, positions);
 		}

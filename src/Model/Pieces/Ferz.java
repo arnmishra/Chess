@@ -87,7 +87,7 @@ public class Ferz extends Piece
 		Move newMove = new Move(xValue, yValue, xValue + xDiff, yValue + yDiff, this.getTeamNumber());
 		if(isValidMove(newMove, board))
 		{
-			boolean isCheck = board.isTeamInCheck(newMove);
+			boolean isCheck = board.isTeamInCheckAfterMove(newMove);
 			if(!isCheck)
 			{
 				possibleMoves.add(newMove);

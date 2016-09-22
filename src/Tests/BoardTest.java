@@ -57,7 +57,7 @@ public class BoardTest {
 		board.setInitialBoard();
 		int teamNumber = 0;
 		Move move = new Move(1, 1, 1, 2, teamNumber); // Move a pawn up from starting position
-		assertFalse(board.isTeamInCheck(move));
+		assertFalse(board.isTeamInCheckAfterMove(move));
 	}
 	
 	/**
@@ -71,7 +71,7 @@ public class BoardTest {
 		board.setInitialBoard();
 		setUpCheck(board);
 		Move move = new Move(6, 1, 6, 3, 0);
-		boolean inCheck = board.isTeamInCheck(move);
+		boolean inCheck = board.isTeamInCheckAfterMove(move);
 		assertTrue(inCheck);
 	}
 
@@ -86,7 +86,7 @@ public class BoardTest {
 		board.setInitialBoard();
 		setUpCheck(board);
 		Move move = new Move(6, 1, 6, 2, 0);
-		boolean inCheck = board.isTeamInCheck(move);
+		boolean inCheck = board.isTeamInCheckAfterMove(move);
 		assertFalse(inCheck);
 	}
 	

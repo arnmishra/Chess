@@ -3,6 +3,7 @@ import java.util.*;
 
 import Model.Board;
 import Model.Move;
+import Model.Team;
 import Model.Pieces.*;
 import View.GUI;
 
@@ -17,6 +18,7 @@ public class RunGame
 	private static List<Integer> inputs = new ArrayList<Integer>();
 	private static int turnTeamNumber = 0;
 	private static GUI gui;
+	private static List<Move> allPossibleMoves;
 	/**
 	 * Main function to set-up the game and then start the moves.
 	 * @param args
@@ -30,6 +32,13 @@ public class RunGame
 
 	public static Board setInputs(int xValue, int yValue, Board board)
 	{
+		if(numMoves == 1 && xValue == inputs.get(0) && yValue == inputs.get(1))
+		{
+			numMoves = 0;
+			gui.unsetBorder(xValue, yValue);
+			removeInputs();
+			return board;
+		}
 		numMoves += 1;
 		inputs.add(xValue);
 		inputs.add(yValue);
@@ -39,26 +48,76 @@ public class RunGame
 			int ret = playMove(board, board.getPositions(), move);
 			if(ret == -1)
 			{
-				gui.unsetBorder(move);
+				gui.unsetBorder(inputs.get(0), inputs.get(1));
+				gui.unsetBorder(xValue, yValue);
 			}
 			removeInputs();
+		}
+		else
+		{
+			Piece[][] positions = board.getPositions();
+			Piece piece = positions[yValue][xValue];
+			if(piece == null)
+			{
+				gui.unsetBorder(xValue, yValue);
+				gui.errorMessage("No Piece at that Start Coordinate");
+				removeInputs();
+			}
+			else
+			{
+				if(piece.getTeamNumber() != turnTeamNumber)
+				{
+					gui.unsetBorder(xValue, yValue);
+					gui.errorMessage("It is Team " + turnTeamNumber + "'s turn.");
+					removeInputs();
+				}
+				else
+				{
+					allPossibleMoves = piece.findAllMoves(board);
+					gui.showPossibleMoves(allPossibleMoves);
+				}
+			}
 		}
 		return board;
 	}
 	
-	public static Board restartGame()
+	public static void forfeitGame(Board board)
 	{
-		Board board = new Board(8,8);
+		Team notForfeitTeam = board.getTeam(board.toggleTeam(turnTeamNumber));
+		notForfeitTeam.incrementTeamScore();
+		restartGame(board);
+	}
+	
+	public static void restartGame(Board board)
+	{
 		board.setInitialBoard();
-		removeInputs();
+		numMoves = 0;
+		inputs = new ArrayList<Integer>();
 		turnTeamNumber = 0;
-		return board;
 	}
 	
 	public static void removeInputs()
 	{
 		numMoves = 0;
 		inputs = new ArrayList<Integer>();
+		gui.unshowPossibleMoves(allPossibleMoves);
+	}
+	
+	public static void undoMove(Board board)
+	{
+		Team opposingTeam = board.getTeam(board.toggleTeam(turnTeamNumber));
+		Move lastOpposingMove = opposingTeam.undoLastMove();
+		Team currentTeam = board.getTeam(turnTeamNumber);
+		Move lastMoveByCurrentTeam = currentTeam.undoLastMove();
+		if(lastOpposingMove != null && lastMoveByCurrentTeam != null)
+		{
+			board.unsetPositions(lastOpposingMove, lastOpposingMove.getRemovedPiece());
+			board.unsetPositions(lastMoveByCurrentTeam, lastMoveByCurrentTeam.getRemovedPiece());
+		}
+		else
+		{
+			restartGame(board);
+		}
 	}
 	
 	/**
@@ -74,43 +133,46 @@ public class RunGame
 		boolean isStaleMate = board.getStaleMate(turnTeamNumber);
 		if(isStaleMate)
 		{
-			System.out.println("Stale Mate!");
-			return -1;
-		}
-		if(positions[move.getStartY()][move.getStartX()] == null)
-		{
-			System.out.println("No Piece at that Start Coordinate");
+			gui.errorMessage("Stale Mate!");
 			return -1;
 		}
 		Piece piece = positions[move.getStartY()][move.getStartX()];
 		if(piece.getTeamNumber() != turnTeamNumber)
 		{
-			System.out.println("It is team " + turnTeamNumber + "'s turn");
+			gui.errorMessage("It is team " + turnTeamNumber + "'s turn");
 			return -1;
 		}
 		
-		if(board.isTeamInCheck(move))
+		if(board.isTeamInCheckAfterMove(move))
 		{
-			System.out.println("Invalid Move: Your King is in Check");
-			board.printBoard();
+			gui.errorMessage("Invalid Move: Your King is in Check");
 			return -1;
 		}
 		boolean isValid = piece.isValidMove(move, board);
 		if(!isValid)
 		{
-			System.out.println("Invalid Move");
+			gui.errorMessage("Invalid Move");
 			return -1;
 		}
 		board.setPositions(move);
+		Team moving = board.getTeam(turnTeamNumber);
+		moving.addMove(move);
 		gui.makeMove(move);
 		board.printBoard();
 		boolean isCheckMate = board.getCheckMate(board.toggleTeam(turnTeamNumber)); // Check if the opposing team lost
 		if(isCheckMate)
 		{
-			System.out.println("Team " + turnTeamNumber + " wins!");
-			return -1;
+			int winningTeamNumber = turnTeamNumber;
+			turnTeamNumber = board.toggleTeam(turnTeamNumber);
+			gui.isCheckMate(winningTeamNumber);
+			return 0;
 		}
 		turnTeamNumber = board.toggleTeam(turnTeamNumber);
+		
+		if(board.isTeamInCheck(turnTeamNumber))
+		{
+			gui.errorMessage("Team " + turnTeamNumber + " is in Check!");
+		}
 		return 0;
 	}
 	

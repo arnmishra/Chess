@@ -1,5 +1,7 @@
 package Model;
 
+import Model.Pieces.Piece;
+
 public class Move
 {
 	private int startX; // Move's starting X coordinate.
@@ -7,6 +9,7 @@ public class Move
 	private int startY; // Move's starting Y coordinate.
 	private int endY; // Move's ending X coordinate.
 	private int team; // Team that makes move.
+	private Piece removed; //Piece that is replaced by move, null if none
 	
 	/**
 	 * Constructor to initialize move object.
@@ -69,4 +72,21 @@ public class Move
 		return this.team;
 	}
 	
+	/**
+	 * Getter for removed piece.
+	 * @return piece that was removed by move
+	 */
+	public Piece getRemovedPiece()
+	{
+		return this.removed;
+	}
+	
+	/**
+	 * Setter for removed piece.
+	 * @param piece removed by move
+	 */
+	public void setRemovedPiece(Piece removed)
+	{
+		this.removed = removed;
+	}
 }

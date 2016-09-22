@@ -75,7 +75,7 @@ public class Knight extends Piece
 			boolean isValid = isValidMove(newMove, board); // Check if this move is valid, if so, add to list of moves.
 			if(isValid)
 			{
-				boolean isCheck = board.isTeamInCheck(newMove);
+				boolean isCheck = board.isTeamInCheckAfterMove(newMove);
 				if(!isCheck)
 				{
 					possibleMoves.add(newMove);
