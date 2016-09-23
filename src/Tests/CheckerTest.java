@@ -37,7 +37,6 @@ public class CheckerTest {
 		board.addPieceToBoard(checker);
 		
 		Move move = new Move(xValue, yValue, 2, 2, teamNumber);
-		
 		assertTrue(checker.isValidMove(move, board));
 	}
 	
@@ -80,9 +79,12 @@ public class CheckerTest {
 		Checker checker = new Checker(team0, xValue, yValue);
 		board.addPieceToBoard(checker);
 		
-		Move move = new Move(xValue, yValue, 3, 3, teamNumber);
-		
-		assertFalse(checker.isValidMove(move, board));
+		Move moveTooFar = new Move(xValue, yValue, 3, 3, teamNumber);
+		assertFalse(checker.isValidMove(moveTooFar, board));
+		Move moveHorizontal = new Move(xValue, yValue, 3, 1, teamNumber);
+		assertFalse(checker.isValidMove(moveHorizontal, board));
+		Move moveVertical = new Move(xValue, yValue, 1, 3, teamNumber);
+		assertFalse(checker.isValidMove(moveVertical, board));
 	}
 	
 	/**
@@ -106,7 +108,6 @@ public class CheckerTest {
 		board.addPieceToBoard(checker);
 		
 		Move move = new Move(xValue, yValue, 3, 3, teamNumber);
-		
 		assertFalse(checker.isValidMove(move, board));
 	}
 	

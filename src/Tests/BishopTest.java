@@ -66,8 +66,12 @@ public class BishopTest {
 		{
 			fail("Incorrect piece type");
 		}
-		Move move = new Move(xCoordinate, yCoordinate, xCoordinate, yCoordinate + 2, teamNumber);// Try forward move
-		assertFalse(bishop.isValidMove(move, board));
+		Move forwardMove = new Move(xCoordinate, yCoordinate, xCoordinate, yCoordinate + 2, teamNumber);// Try forward move
+		assertFalse(bishop.isValidMove(forwardMove, board));
+		Move occupiedMove = new Move(xCoordinate, yCoordinate, xCoordinate + 1, yCoordinate + 1, teamNumber);// Try occupied move
+		assertFalse(bishop.isValidMove(occupiedMove, board));
+		Move singleForwardMove = new Move(xCoordinate, yCoordinate, xCoordinate, yCoordinate + 1, teamNumber);// Try move 1
+		assertFalse(bishop.isValidMove(singleForwardMove, board));
 	}
 	
 	/**

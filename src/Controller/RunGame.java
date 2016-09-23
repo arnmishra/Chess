@@ -189,21 +189,17 @@ public class RunGame
 	 */
 	public static int playMove(Board board, Piece[][] positions, Move move)
 	{
-		boolean isStaleMate = board.getStaleMate(turnTeamNumber);
-		if(isStaleMate)
-		{
-			gui.errorMessage("Stale Mate!");
-			return -1;
-		}
 		Piece piece = positions[move.getStartY()][move.getStartX()];
 		if(board.isTeamInCheckAfterMove(move))
 		{
+			gui.unshowPossibleMoves(allPossibleMoves);
 			gui.errorMessage("Invalid Move: Your King is in Check");
 			return -1;
 		}
 		boolean isValid = piece.isValidMove(move, board);
 		if(!isValid)
 		{
+			gui.unshowPossibleMoves(allPossibleMoves);
 			gui.errorMessage("Invalid Move");
 			return -1;
 		}
@@ -211,10 +207,10 @@ public class RunGame
 		Team moving = board.getTeam(turnTeamNumber);
 		moving.addMove(move);
 		gui.makeMove(move);
-		board.printBoard();
 		boolean isCheckMate = board.getCheckMate(board.toggleTeam(turnTeamNumber)); // Check if the opposing team lost
 		if(isCheckMate)
 		{
+			gui.unshowPossibleMoves(allPossibleMoves);
 			int winningTeamNumber = turnTeamNumber;
 			turnTeamNumber = board.toggleTeam(turnTeamNumber);
 			gui.isCheckMate(winningTeamNumber);
@@ -224,7 +220,17 @@ public class RunGame
 		
 		if(board.isTeamInCheck(turnTeamNumber))
 		{
-			gui.errorMessage("Team " + turnTeamNumber + " is in Check!");
+			gui.unshowPossibleMoves(allPossibleMoves);
+			Team turnOfTeam = board.getTeam(turnTeamNumber);
+			gui.errorMessage("Team " + turnOfTeam.getTeamName() + " is in Check!");
+		}
+		
+		if(board.getStaleMate(turnTeamNumber))
+		{
+			gui.unshowPossibleMoves(allPossibleMoves);
+			gui.errorMessage("Stale Mate!");
+			gui.isStaleMate();
+			return 0;
 		}
 		return 0;
 	}

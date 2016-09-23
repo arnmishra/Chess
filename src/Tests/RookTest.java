@@ -86,8 +86,10 @@ public class RookTest {
 		{
 			fail("Incorrect piece type");
 		}
-		Move move = new Move(xCoordinate, yCoordinate, xCoordinate + 1, yCoordinate + 1, teamNumber);// Try diagonal move
-		assertFalse(rook.isValidMove(move, board));
+		Move moveDiagonal = new Move(xCoordinate, yCoordinate, xCoordinate + 1, yCoordinate + 1, teamNumber);// Try diagonal move
+		assertFalse(rook.isValidMove(moveDiagonal, board));
+		Move moveOccupied = new Move(xCoordinate, yCoordinate, xCoordinate + 1, yCoordinate, teamNumber);// Try occupied move
+		assertFalse(rook.isValidMove(moveOccupied, board));
 	}
 	
 	/**

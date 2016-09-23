@@ -20,9 +20,7 @@ import Controller.RunGame;
 
 /**
  * Sources: 
- * http://stackoverflow.com/questions/299495/how-to-add-an-image-to-a-jpanel
  * https://wiki.illinois.edu/wiki/pages/viewpage.action?spaceKey=cs242&title=Assignment+1.1
- * http://stackoverflow.com/questions/22865976/how-do-you-change-the-color-of-a-ChessboardTile-after-it-is-clicked
  * GUI class to develop primary chess board.
  * @author arnavmishra
  *
@@ -94,6 +92,36 @@ public class GUI implements ActionListener{
 		team.setTeamName(teamName);
 	}
 	
+    /**
+     * Sets up the File menubar on the window
+     * @param window
+     */
+    private void setUpMenu(JFrame window) {
+        JMenuBar menubar = new JMenuBar();
+        JMenu file = new JMenu("File");
+        menubar = addMenuItem(window, file, menubar, "Restart");
+        menubar = addMenuItem(window, file, menubar, "Forfeit");
+        menubar = addMenuItem(window, file, menubar, "Undo");
+        window.setJMenuBar(menubar);
+    }
+    
+    /**
+     * Adds each specific menu item with an action listener
+     * @param window
+     * @param file
+     * @param menubar
+     * @param menuItem
+     * @return updated menubar
+     */
+    private JMenuBar addMenuItem(JFrame window, JMenu file, JMenuBar menubar, String menuItem)
+    {
+    	JMenuItem newGame = new JMenuItem(menuItem);
+        newGame.addActionListener(this);
+        file.add(newGame);
+        menubar.add(file);
+        return menubar;
+    }
+	
 	/**
 	 * Initializes the window each time anything is reset (checkmate, inital start,
 	 * etc.). Puts up the proper score, game board, and team names.
@@ -150,6 +178,7 @@ public class GUI implements ActionListener{
     /**
      * Function to get the Image of the Piece that is currently being
      * considered from the View/Pieces directory.
+     * Adding a picture to a JPanel: http://stackoverflow.com/questions/299495/how-to-add-an-image-to-a-jpanel
      * @param row
      * @param piece
      * @return
@@ -242,6 +271,23 @@ public class GUI implements ActionListener{
     }
     
     /**
+     * If the game is over and stale mate is reached, display a dialog indicating
+     * this and increment the winning team's score. Then re-ask the user whether
+     * they want to use custom pieces and set up a new game board with the updated
+     * score.
+     * @param teamNumber
+     */
+    public void isStaleMate()
+    {
+    	askIfUsingCustomPieces();
+    	RunGame.restartGame(gameBoard, useCustomPieces);
+		JPanel boardPanels = initializeBoard(gameBoard.getPositions());
+		JPanel fullWindow = initializeWindow(boardPanels);
+		window.setContentPane(fullWindow);
+		window.setVisible(true);
+    }
+    
+    /**
      * Make a move on the front-end given a move object. This is called by the 
      * controller after validity of the move is confirmed.
      * @param move
@@ -268,37 +314,7 @@ public class GUI implements ActionListener{
     	ChessboardTile button = tiles[yValue][xValue];
         button.setBorder(null);
     }
-    
-    /**
-     * Sets up the File menubar on the window
-     * @param window
-     */
-    private void setUpMenu(JFrame window) {
-        JMenuBar menubar = new JMenuBar();
-        JMenu file = new JMenu("File");
-        menubar = addMenuItem(window, file, menubar, "Restart");
-        menubar = addMenuItem(window, file, menubar, "Forfeit");
-        menubar = addMenuItem(window, file, menubar, "Undo");
-        window.setJMenuBar(menubar);
-    }
-    
-    /**
-     * Adds each specific menu item with an action listener
-     * @param window
-     * @param file
-     * @param menubar
-     * @param menuItem
-     * @return updated menubar
-     */
-    private JMenuBar addMenuItem(JFrame window, JMenu file, JMenuBar menubar, String menuItem)
-    {
-    	JMenuItem newGame = new JMenuItem(menuItem);
-        newGame.addActionListener(this);
-        file.add(newGame);
-        menubar.add(file);
-        return menubar;
-    }
-    
+
     /**
      * Function to get the color of the piece based on
      * the team number.
@@ -427,6 +443,8 @@ public class GUI implements ActionListener{
      * Function to process a click on any of the tiles on the
      * board and use them to set the inputs or make the move if this
      * is the second tile clicked and the movement is valid.
+     * Changing color: 
+     * http://stackoverflow.com/questions/22865976/how-do-you-change-the-color-of-a-jbutton-after-it-is-clicked
      * @param e
      */
     public void processPieceClick(ActionEvent e)

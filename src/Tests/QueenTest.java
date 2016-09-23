@@ -86,8 +86,10 @@ public class QueenTest {
 		{
 			fail("Incorrect piece type");
 		}
-		Move move = new Move(xCoordinate, yCoordinate, xCoordinate + 1, yCoordinate + 2, teamNumber);// Try knight move
-		assertFalse(queen.isValidMove(move, board));
+		Move moveKnight = new Move(xCoordinate, yCoordinate, xCoordinate + 1, yCoordinate + 2, teamNumber);// Try knight move
+		assertFalse(queen.isValidMove(moveKnight, board));
+		Move moveOccupied = new Move(xCoordinate, yCoordinate, xCoordinate - 1, yCoordinate + 1, teamNumber);// Try occupied move
+		assertFalse(queen.isValidMove(moveOccupied, board));
 	}
 	
 	/**

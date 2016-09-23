@@ -67,7 +67,7 @@ public class KingTest {
 		{
 			fail("Incorrect piece type");
 		}
-		Move kingMoveDiagonal = new Move(xCoordinate, yCoordinate, xCoordinate + -1, yCoordinate + 1, teamNumber);
+		Move kingMoveDiagonal = new Move(xCoordinate, yCoordinate, xCoordinate - 1, yCoordinate + 1, teamNumber);
 		assertTrue(king.isValidMove(kingMoveDiagonal, board)); // Validate king's diagonal movement
 	}
 	
@@ -90,8 +90,12 @@ public class KingTest {
 		{
 			fail("Incorrect piece type");
 		}
-		Move move = new Move(xCoordinate, yCoordinate, xCoordinate, yCoordinate + 2, teamNumber);// Try moving forward 2
-		assertFalse(king.isValidMove(move, board));
+		Move moveTooFar = new Move(xCoordinate, yCoordinate, xCoordinate, yCoordinate + 2, teamNumber);// Try moving forward 2
+		assertFalse(king.isValidMove(moveTooFar, board));
+		Move moveOccupied = new Move(xCoordinate, yCoordinate, xCoordinate + 1, yCoordinate + 1, teamNumber);// Try occupied move
+		assertFalse(king.isValidMove(moveOccupied, board));
+		Move moveKnightStyle = new Move(xCoordinate, yCoordinate, xCoordinate + 2, yCoordinate + 1, teamNumber);// Try knight move
+		assertFalse(king.isValidMove(moveKnightStyle, board));
 	}
 	
 	/**

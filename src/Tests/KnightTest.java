@@ -62,8 +62,12 @@ public class KnightTest {
 		{
 			fail("Incorrect piece type");
 		}
-		Move move = new Move(xCoordinate, yCoordinate, xCoordinate + 1, yCoordinate + 1, teamNumber);// Try diagonal move
-		assertFalse(knight.isValidMove(move, board));
+		Move moveDiagonal = new Move(xCoordinate, yCoordinate, xCoordinate + 1, yCoordinate + 1, teamNumber);// Try diagonal move
+		assertFalse(knight.isValidMove(moveDiagonal, board));
+		Move moveHorizontal = new Move(xCoordinate, yCoordinate, xCoordinate, yCoordinate + 1, teamNumber);// Try vertical move
+		assertFalse(knight.isValidMove(moveHorizontal, board));
+		Move moveVertical = new Move(xCoordinate, yCoordinate, xCoordinate + 1, yCoordinate, teamNumber);// Try horizontal move
+		assertFalse(knight.isValidMove(moveVertical, board));
 	}
 	
 	/**

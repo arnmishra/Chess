@@ -47,8 +47,10 @@ public class PieceTest {
 		int xCoordinate = 0;
 		int yCoordinate = 0;
 		Piece piece = board.getPositions()[yCoordinate][xCoordinate];
-		Move move = new Move(xCoordinate, yCoordinate, xCoordinate - 1, yCoordinate, teamNumber);
-		assertFalse(piece.isValidMove(move, board));
+		Move moveHorizontal = new Move(xCoordinate, yCoordinate, xCoordinate - 1, yCoordinate, teamNumber);
+		assertFalse(piece.isValidMove(moveHorizontal, board));
+		Move moveVertical = new Move(xCoordinate, yCoordinate, xCoordinate, yCoordinate - 1, teamNumber);
+		assertFalse(piece.isValidMove(moveVertical, board));
 	}
 	
 	/**
