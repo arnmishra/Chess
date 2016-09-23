@@ -10,7 +10,9 @@ import Model.Team;
  * Pawn class to describe Checker's possible moves.
  * A Checker can move 1 space diagonally in any direction or if there is a piece 
  * diagonally adjacent to it, it can jump over that piece, thus moving 2 diagonally 
- * (similar to a Checker would in the game Checkers)
+ * (similar to a Checker would in the game Checkers). Unlike checkers, to kill pieces,
+ * the checker moves diagonally 1 space like a pawn would. To put the king in check, the
+ * Checker must be 1 square diagonal from the King.
  * @author arnavmishra
  *
  */
@@ -40,7 +42,7 @@ public class Checker extends Piece
 		
 		if(isOnBoard && xMovement == 1 && yMovement == 1) // Check if pawn is on the board and is moving forward.
 		{
-			return checkNoPieceAtDestination(move, board); // Check that there is no piece in the destination location
+			return true;
 		}
 		else if(isOnBoard && yMovement == 2 && xMovement == 2)
 		{
@@ -53,6 +55,8 @@ public class Checker extends Piece
 		}
 		return isValid;
 	}
+	
+	
 	
 	/**
 	 * Helper function to confirm that there is no piece where the checker is moving

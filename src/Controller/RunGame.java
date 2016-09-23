@@ -26,7 +26,6 @@ public class RunGame
 	public static void main(String args[])
 	{
 		Board board = new Board(8,8);
-		board.setInitialBoard();
 		gui = new GUI(board);
 	}
 
@@ -55,42 +54,48 @@ public class RunGame
 		}
 		else
 		{
-			Piece[][] positions = board.getPositions();
-			Piece piece = positions[yValue][xValue];
-			if(piece == null)
-			{
-				gui.unsetBorder(xValue, yValue);
-				gui.errorMessage("No Piece at that Start Coordinate");
-				removeInputs();
-			}
-			else
-			{
-				if(piece.getTeamNumber() != turnTeamNumber)
-				{
-					gui.unsetBorder(xValue, yValue);
-					gui.errorMessage("It is Team " + turnTeamNumber + "'s turn.");
-					removeInputs();
-				}
-				else
-				{
-					allPossibleMoves = piece.findAllMoves(board);
-					gui.showPossibleMoves(allPossibleMoves);
-				}
-			}
+			displayPossibleMoves(board, yValue, xValue);
 		}
 		return board;
 	}
 	
-	public static void forfeitGame(Board board)
+	public static void displayPossibleMoves(Board board, int yValue, int xValue)
+	{
+		Piece[][] positions = board.getPositions();
+		Piece piece = positions[yValue][xValue];
+		if(piece == null)
+		{
+			gui.unsetBorder(xValue, yValue);
+			gui.errorMessage("No Piece at that Start Coordinate");
+			removeInputs();
+		}
+		else
+		{
+			if(piece.getTeamNumber() != turnTeamNumber)
+			{
+				Team turnOfTeam = board.getTeam(turnTeamNumber);
+				gui.unsetBorder(xValue, yValue);
+				gui.errorMessage("It is " + turnOfTeam.getTeamName() + "'s turn.");
+				removeInputs();
+			}
+			else
+			{
+				allPossibleMoves = piece.findAllMoves(board);
+				gui.showPossibleMoves(allPossibleMoves);
+			}
+		}
+	}
+	
+	public static void forfeitGame(Board board, Boolean useCustomPieces)
 	{
 		Team notForfeitTeam = board.getTeam(board.toggleTeam(turnTeamNumber));
 		notForfeitTeam.incrementTeamScore();
-		restartGame(board);
+		restartGame(board, useCustomPieces);
 	}
 	
-	public static void restartGame(Board board)
+	public static void restartGame(Board board, Boolean useCustomPieces)
 	{
-		board.setInitialBoard();
+		board.setInitialBoard(useCustomPieces);
 		numMoves = 0;
 		inputs = new ArrayList<Integer>();
 		turnTeamNumber = 0;
@@ -103,7 +108,7 @@ public class RunGame
 		gui.unshowPossibleMoves(allPossibleMoves);
 	}
 	
-	public static void undoMove(Board board)
+	public static void undoMove(Board board, Boolean useCustomPieces)
 	{
 		Team opposingTeam = board.getTeam(board.toggleTeam(turnTeamNumber));
 		Move lastOpposingMove = opposingTeam.undoLastMove();
@@ -116,7 +121,7 @@ public class RunGame
 		}
 		else
 		{
-			restartGame(board);
+			restartGame(board, useCustomPieces);
 		}
 	}
 	

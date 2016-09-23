@@ -30,6 +30,7 @@ import Controller.RunGame;
 public class GUI implements ActionListener{
 	private static ChessboardTile[][] tiles = new ChessboardTile[8][8];
 	private static JPanel boardPanels;
+	private static Boolean useCustomPieces;
 	private static int WIDTH = 8;
 	private static int HEIGHT = 8;
 	private static int DIMENSIONS = 500;
@@ -43,14 +44,10 @@ public class GUI implements ActionListener{
 	 */
 	public GUI(Board board){
 		gameBoard = board;
+		useCustomPieces = checkIfUsingCustomPieces();
+		gameBoard.setInitialBoard(useCustomPieces);
 		setTeamNames(gameBoard, 0);
 		setTeamNames(gameBoard, 1);
-		int addCustomPieces = JOptionPane.showConfirmDialog(null, "Do you want to play with custom pieces (Ferz/Checker)?");
-		if(addCustomPieces == 0) // 0 Means "Yes"
-		{
-			gameBoard.setCustomBoard();
-		}
-		gameBoard = board;
 		Piece[][] piecePositions = gameBoard.getPositions();
 		try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -67,6 +64,17 @@ public class GUI implements ActionListener{
         window.setVisible(true);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
+	
+	private Boolean checkIfUsingCustomPieces()
+	{
+		Boolean useCustomPieces = false;
+		int addCustomPieces = JOptionPane.showConfirmDialog(null, "Do you want to play with custom pieces (Ferz/Checker)?");
+		if(addCustomPieces == 0) // 0 Means "Yes"
+		{
+			useCustomPieces = true;
+		}
+		return useCustomPieces;
+	}
 	
 	private void setTeamNames(Board board, int teamNumber)
 	{
@@ -184,6 +192,14 @@ public class GUI implements ActionListener{
     	{
     		return pieceColor + "Pawn.png";
     	}
+    	else if(piece instanceof Ferz)
+    	{
+    		return pieceColor + "Ferz.png";
+    	}
+    	else if(piece instanceof Checker)
+    	{
+    		return pieceColor + "Checker.png";
+    	}
     	return null;
     }
     
@@ -193,7 +209,8 @@ public class GUI implements ActionListener{
     	String teamName = winningTeam.getTeamName();
     	JOptionPane.showMessageDialog(null, teamName + " wins!");
     	winningTeam.incrementTeamScore();
-    	RunGame.restartGame(gameBoard);
+    	useCustomPieces = checkIfUsingCustomPieces();
+    	RunGame.restartGame(gameBoard, useCustomPieces);
 		JPanel boardPanels = initializeBoard(gameBoard.getPositions());
 		JPanel fullWindow = initializeWindow(boardPanels);
 		window.setContentPane(fullWindow);
@@ -203,12 +220,8 @@ public class GUI implements ActionListener{
     public void makeMove(Move move)
     {
     	ChessboardTile sourceButton = tiles[move.getStartY()][move.getStartX()];
-        //lastSource = source;
         ChessboardTile destinationButton = tiles[move.getEndY()][move.getEndX()];
-        //lastDestination = destination;
         Icon sourceIcon = sourceButton.getIcon();
-        //lastSourceIcon = sourceIcon;
-        //lastDestinationIcon = destination.getIcon();
         destinationButton.setIcon(sourceIcon);
         sourceButton.setIcon(null);
         sourceButton.setBorder(null);
@@ -314,7 +327,8 @@ public class GUI implements ActionListener{
 			{
 				return;
 			}
-			RunGame.restartGame(gameBoard);
+			useCustomPieces = checkIfUsingCustomPieces();
+			RunGame.restartGame(gameBoard, useCustomPieces);
 			JPanel boardPanels = initializeBoard(gameBoard.getPositions());
 			JPanel fullWindow = initializeWindow(boardPanels);
 			window.setContentPane(fullWindow);
@@ -322,7 +336,8 @@ public class GUI implements ActionListener{
 		}
 		else if(action.equals("Forfeit"))
 		{
-			RunGame.forfeitGame(gameBoard);
+			useCustomPieces = checkIfUsingCustomPieces();
+			RunGame.forfeitGame(gameBoard, useCustomPieces);
 			JPanel boardPanels = initializeBoard(gameBoard.getPositions());
 			JPanel fullWindow = initializeWindow(boardPanels);
 			window.setContentPane(fullWindow);
@@ -330,7 +345,7 @@ public class GUI implements ActionListener{
 		}
 		else if(action.equals("Undo"))
 		{
-			RunGame.undoMove(gameBoard);
+			RunGame.undoMove(gameBoard, useCustomPieces);
 			initializeBoard(gameBoard.getPositions());
 			JPanel fullWindow = initializeWindow(boardPanels);
 			window.setContentPane(fullWindow);

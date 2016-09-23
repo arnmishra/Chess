@@ -72,11 +72,11 @@ public class Board
 	 * Function to put pieces in initial starting positions. 
 	 * @return a Piece double array with all the current positions.
 	 */
-	public void setInitialBoard()
+	public void setInitialBoard(Boolean useCustomPieces)
 	{
 		this.positions = new Piece[this.length][this.width];
-		positions[0] = setPrimaryPieces(positions, 0, team0);
-		positions[7] = setPrimaryPieces(positions, 7, team1);
+		positions[0] = setPrimaryPieces(positions, 0, team0, useCustomPieces);
+		positions[7] = setPrimaryPieces(positions, 7, team1, useCustomPieces);
 		for(int i = 0; i < 8; i++)
 		{
 			positions[1][i] = new Pawn(team0, i, 1);
@@ -109,25 +109,33 @@ public class Board
 	 * @param team
 	 * @return Pieces 1-d array with the primary non-pawn pieces for a team.
 	 */
-	public Piece[] setPrimaryPieces(Piece[][] positions, int yValue, Team team)
+	public Piece[] setPrimaryPieces(Piece[][] positions, int yValue, Team team, Boolean useCustomPieces)
 	{
 		positions[yValue][0] = new Rook(team, 0, yValue);
-		positions[yValue][1] = new Knight(team, 1, yValue);
-		positions[yValue][2] = new Bishop(team, 2, yValue);
+		if(useCustomPieces)
+		{
+			positions[yValue][1] = new Checker(team, 1, yValue);
+			positions[yValue][2] = new Ferz(team, 2, yValue);
+		}
+		else
+		{
+			positions[yValue][1] = new Knight(team, 1, yValue);
+			positions[yValue][2] = new Bishop(team, 2, yValue);
+		}
 		positions[yValue][3] = new Queen(team, 3, yValue);
 		positions[yValue][4] = new King(team, 4, yValue);
-		positions[yValue][5] = new Bishop(team, 5, yValue);
-		positions[yValue][6] = new Knight(team, 6, yValue);
+		if(useCustomPieces)
+		{
+			positions[yValue][5] = new Checker(team, 5, yValue);
+			positions[yValue][6] = new Ferz(team, 6, yValue);
+		}
+		else
+		{
+			positions[yValue][5] = new Knight(team, 5, yValue);
+			positions[yValue][6] = new Bishop(team, 6, yValue);
+		}
 		positions[yValue][7] = new Rook(team, 7, yValue);
 		return positions[yValue];
-	}
-	
-	/**
-	 * Replace Knights with Checkers and Bishops with Ferzs for custom piece game.
-	 */
-	public void setCustomBoard()
-	{
-		
 	}
 	
 	/**
@@ -207,6 +215,11 @@ public class Board
 		return isCheck;
 	}
 	
+	/**
+	 * Method to check if King of a certain team is currently in check.
+	 * @param turnTeamNumber
+	 * @return whether the king is in check
+	 */
 	public boolean isTeamInCheck(int turnTeamNumber)
 	{
 		List<Piece> checkPieces = getTeamPieces(turnTeamNumber);
