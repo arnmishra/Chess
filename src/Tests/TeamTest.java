@@ -39,7 +39,7 @@ public class TeamTest {
 	@Test
 	public void takeAPiece() throws Exception {
 		Board board = new Board(8, 8);
-		board.setInitialBoard();
+		board.setInitialBoard(false);
 		
 		int xCoordinate = 4;
 		int yCoordinate = 1;
@@ -74,7 +74,7 @@ public class TeamTest {
 	@Test
 	public void addAPiece() throws Exception {
 		Board board = new Board(8, 8);
-		board.setInitialBoard();
+		board.setInitialBoard(false);
 		
 		Team team0 = board.getTeam(0);
 		Pawn pawn = new Pawn(team0, 4, 0);

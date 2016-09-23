@@ -42,30 +42,12 @@ public class Board
 	}
 	
 	/**
-	 * Set width of board.
-	 * @param width
-	 */
-	public void setWidth(int width)
-	{
-		this.width = width;
-	}
-	
-	/**
 	 * Get length of board.
 	 * @return length
 	 */
 	public int getLength()
 	{
 		return this.length;
-	}
-	
-	/**
-	 * Set length of board.
-	 * @param length
-	 */
-	public void setLength(int length)
-	{
-		this.length = length;
 	}
 	
 	/**
@@ -126,13 +108,13 @@ public class Board
 		positions[yValue][4] = new King(team, 4, yValue);
 		if(useCustomPieces)
 		{
-			positions[yValue][5] = new Checker(team, 5, yValue);
-			positions[yValue][6] = new Ferz(team, 6, yValue);
+			positions[yValue][6] = new Checker(team, 5, yValue);
+			positions[yValue][5] = new Ferz(team, 6, yValue);
 		}
 		else
 		{
-			positions[yValue][5] = new Knight(team, 5, yValue);
-			positions[yValue][6] = new Bishop(team, 6, yValue);
+			positions[yValue][6] = new Knight(team, 6, yValue);
+			positions[yValue][5] = new Bishop(team, 5, yValue);
 		}
 		positions[yValue][7] = new Rook(team, 7, yValue);
 		return positions[yValue];

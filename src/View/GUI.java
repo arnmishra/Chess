@@ -28,23 +28,27 @@ import Controller.RunGame;
  *
  */
 public class GUI implements ActionListener{
-	private static ChessboardTile[][] tiles = new ChessboardTile[8][8];
-	private static JPanel boardPanels;
-	private static Boolean useCustomPieces;
-	private static int WIDTH = 8;
-	private static int HEIGHT = 8;
-	private static int DIMENSIONS = 500;
-	private static Board gameBoard;
-	private static JFrame window;
-	private static String PATH = "/Users/arnavmishra/Repos/cs242/Chess/src/View/Pieces/";
+	private static ChessboardTile[][] tiles = new ChessboardTile[8][8]; //2D Array of extended JButton tiles
+	private static JPanel boardPanels; //Primary panel for the chess board
+	private static Boolean useCustomPieces; //Whether or not custom pieces are being used in this round
+	private static int WIDTH = 8; //Board width
+	private static int HEIGHT = 8; // Board height
+	private static int XDIMENSIONS = 650; //Full window's X Dimensions
+	private static int YDIMENSIONS = 850; //Full window's Y Dimensions
+	private static int BOARDDIMENSIONS = 500; //Dimensions of just the game board
+	private static Board gameBoard; //Board object for these games
+	private static JFrame window; //Primary JFrame window
+	private static String PATH = "/Users/arnavmishra/Repos/cs242/Chess/src/View/Pieces/"; //Path to pieces
 	
 	/**
-	 * Constructor to create GUI using positions of pieces on board.
+	 * Constructor to create GUI using positions of pieces on board object.
+	 * Also adds the team names, choice of using custom pieces, and menu
+	 * bar on gui.
 	 * @param piecePositions
 	 */
 	public GUI(Board board){
 		gameBoard = board;
-		useCustomPieces = checkIfUsingCustomPieces();
+		askIfUsingCustomPieces();
 		gameBoard.setInitialBoard(useCustomPieces);
 		setTeamNames(gameBoard, 0);
 		setTeamNames(gameBoard, 1);
@@ -55,7 +59,7 @@ public class GUI implements ActionListener{
             //silently ignore
         }
         window = new JFrame("Chess Game");
-        window.setSize(DIMENSIONS + 350, DIMENSIONS + 150);
+        window.setSize(YDIMENSIONS, XDIMENSIONS);
         window.setLayout(new BoxLayout(window, BoxLayout.X_AXIS));
         JPanel boardPanels = initializeBoard(piecePositions);
         setUpMenu(window);
@@ -65,17 +69,24 @@ public class GUI implements ActionListener{
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 	
-	private Boolean checkIfUsingCustomPieces()
+	/**
+	 * Dialog box to ask the users whether to use custom pieces in the game.
+	 */
+	private void askIfUsingCustomPieces()
 	{
-		Boolean useCustomPieces = false;
+		useCustomPieces = false;
 		int addCustomPieces = JOptionPane.showConfirmDialog(null, "Do you want to play with custom pieces (Ferz/Checker)?");
 		if(addCustomPieces == 0) // 0 Means "Yes"
 		{
 			useCustomPieces = true;
 		}
-		return useCustomPieces;
 	}
 	
+	/**
+	 * Dialog boxes to get the names of the two teams from the user input.
+	 * @param board
+	 * @param teamNumber
+	 */
 	private void setTeamNames(Board board, int teamNumber)
 	{
 		String teamName = JOptionPane.showInputDialog("Team " + teamNumber + " Name");
@@ -83,6 +94,12 @@ public class GUI implements ActionListener{
 		team.setTeamName(teamName);
 	}
 	
+	/**
+	 * Initializes the window each time anything is reset (checkmate, inital start,
+	 * etc.). Puts up the proper score, game board, and team names.
+	 * @param boardPanels
+	 * @return
+	 */
 	private JPanel initializeWindow(JPanel boardPanels)
 	{
 		JPanel fullWindow = new JPanel();
@@ -101,7 +118,7 @@ public class GUI implements ActionListener{
 	}
 	
 	/**
-	 * Function to initialize the board by creating a JPanel that is
+	 * Function to initialize the chess board by creating a JPanel that is
 	 * correctly colored for each of the tiles on the board.
 	 * @param piecePositions
 	 */
@@ -150,7 +167,7 @@ public class GUI implements ActionListener{
 		ImageIcon icon = null;
     	try {
 			pieceImage = ImageIO.read(new File(PATH + piecePath));
-			Image scaledPiece = pieceImage.getScaledInstance(-1, DIMENSIONS/WIDTH, Image.SCALE_SMOOTH);
+			Image scaledPiece = pieceImage.getScaledInstance(-1, BOARDDIMENSIONS/WIDTH, Image.SCALE_SMOOTH);
 			icon = new ImageIcon(scaledPiece);
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -203,13 +220,20 @@ public class GUI implements ActionListener{
     	return null;
     }
     
+    /**
+     * If the game is over and checkmate is reached, display a dialog indicating
+     * this and increment the winning team's score. Then re-ask the user whether
+     * they want to use custom pieces and set up a new game board with the updated
+     * score.
+     * @param teamNumber
+     */
     public void isCheckMate(int teamNumber)
     {
     	Team winningTeam = gameBoard.getTeam(teamNumber);
     	String teamName = winningTeam.getTeamName();
     	JOptionPane.showMessageDialog(null, teamName + " wins!");
     	winningTeam.incrementTeamScore();
-    	useCustomPieces = checkIfUsingCustomPieces();
+    	askIfUsingCustomPieces();
     	RunGame.restartGame(gameBoard, useCustomPieces);
 		JPanel boardPanels = initializeBoard(gameBoard.getPositions());
 		JPanel fullWindow = initializeWindow(boardPanels);
@@ -217,6 +241,11 @@ public class GUI implements ActionListener{
 		window.setVisible(true);
     }
     
+    /**
+     * Make a move on the front-end given a move object. This is called by the 
+     * controller after validity of the move is confirmed.
+     * @param move
+     */
     public void makeMove(Move move)
     {
     	ChessboardTile sourceButton = tiles[move.getStartY()][move.getStartX()];
@@ -228,13 +257,22 @@ public class GUI implements ActionListener{
         destinationButton.setBorder(null);
     }
     
-    
+    /**
+     * Unset a colored border on a square after either making a move or
+     * deselecting a piece.
+     * @param xValue
+     * @param yValue
+     */
     public void unsetBorder(int xValue, int yValue)
     {
     	ChessboardTile button = tiles[yValue][xValue];
         button.setBorder(null);
     }
     
+    /**
+     * Sets up the File menubar on the window
+     * @param window
+     */
     private void setUpMenu(JFrame window) {
         JMenuBar menubar = new JMenuBar();
         JMenu file = new JMenu("File");
@@ -244,6 +282,14 @@ public class GUI implements ActionListener{
         window.setJMenuBar(menubar);
     }
     
+    /**
+     * Adds each specific menu item with an action listener
+     * @param window
+     * @param file
+     * @param menubar
+     * @param menuItem
+     * @return updated menubar
+     */
     private JMenuBar addMenuItem(JFrame window, JMenu file, JMenuBar menubar, String menuItem)
     {
     	JMenuItem newGame = new JMenuItem(menuItem);
@@ -288,11 +334,21 @@ public class GUI implements ActionListener{
     	}
     }
     
+    /**
+     * Function to print error messages for invalid clicks/movements.
+     * @param message
+     */
     public void errorMessage(String message)
     {
     	JOptionPane.showMessageDialog(null, message);
     }
     
+    /**
+     * Function to set up a Cyan color border on each of the squares
+     * that a piece can move to. This is to help the user choose an
+     * available square to move to.
+     * @param allPossibleMoves
+     */
     public void showPossibleMoves(List<Move> allPossibleMoves)
     {
     	for(int i = 0; i < allPossibleMoves.size(); i++)
@@ -305,6 +361,11 @@ public class GUI implements ActionListener{
 		}
     }
     
+    /**
+     * Function to remove the Cyan borders on all squares that had
+     * been highlighted as possible moves for a piece.
+     * @param allPossibleMoves
+     */
     public void unshowPossibleMoves(List<Move> allPossibleMoves)
     {
     	for(int i = 0; i < allPossibleMoves.size(); i++)
@@ -316,48 +377,88 @@ public class GUI implements ActionListener{
 			button.setBorder(null);
 		}
     }
+    
+    /**
+     * Function to process the restart gui button including confirming
+     * agreement from both teams and re-initializing the panels.
+     */
+    public void restartGui()
+    {
+    	int confirmRestart = JOptionPane.showConfirmDialog(null, "Do Both Teams agree to Restart?");
+		if(confirmRestart != 0)
+		{
+			return;
+		}
+		askIfUsingCustomPieces();
+		RunGame.restartGame(gameBoard, useCustomPieces);
+		JPanel boardPanels = initializeBoard(gameBoard.getPositions());
+		JPanel fullWindow = initializeWindow(boardPanels);
+		window.setContentPane(fullWindow);
+		window.setVisible(true);
+    }
+    
+    /**
+     * Function to process a forfeit on the gui by a team including 
+     * incrementing score and restarting the board.
+     */
+    public void forfeitGui()
+    {
+    	askIfUsingCustomPieces();
+		RunGame.forfeitGame(gameBoard, useCustomPieces);
+		JPanel boardPanels = initializeBoard(gameBoard.getPositions());
+		JPanel fullWindow = initializeWindow(boardPanels);
+		window.setContentPane(fullWindow);
+		window.setVisible(true);
+    }
+    
+    /**
+     * Function to process an undo move on the gui.
+     */
+    public void undoMoveGui()
+    {
+    	RunGame.undoMove(gameBoard, useCustomPieces);
+		initializeBoard(gameBoard.getPositions());
+		JPanel fullWindow = initializeWindow(boardPanels);
+		window.setContentPane(fullWindow);
+		window.setVisible(true);
+    }
+    
+    /**
+     * Function to process a click on any of the tiles on the
+     * board and use them to set the inputs or make the move if this
+     * is the second tile clicked and the movement is valid.
+     * @param e
+     */
+    public void processPieceClick(ActionEvent e)
+    {
+    	ChessboardTile sourceButton = (ChessboardTile)e.getSource();
+		sourceButton.setBorder(new LineBorder(Color.RED, 2));
+		int xValue = sourceButton.getXValue();
+		int yValue = sourceButton.getYValue();
+		gameBoard = RunGame.setInputs(xValue, yValue, gameBoard);
+    }
 
+    /**
+     * Action listener to deal with clicks on the GUI.
+     */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String action = e.getActionCommand();
 		if(action.equals("Restart"))
 		{
-			int confirmRestart = JOptionPane.showConfirmDialog(null, "Do Both Teams agree to Restart?");
-			if(confirmRestart != 0)
-			{
-				return;
-			}
-			useCustomPieces = checkIfUsingCustomPieces();
-			RunGame.restartGame(gameBoard, useCustomPieces);
-			JPanel boardPanels = initializeBoard(gameBoard.getPositions());
-			JPanel fullWindow = initializeWindow(boardPanels);
-			window.setContentPane(fullWindow);
-			window.setVisible(true);
+			restartGui();
 		}
 		else if(action.equals("Forfeit"))
 		{
-			useCustomPieces = checkIfUsingCustomPieces();
-			RunGame.forfeitGame(gameBoard, useCustomPieces);
-			JPanel boardPanels = initializeBoard(gameBoard.getPositions());
-			JPanel fullWindow = initializeWindow(boardPanels);
-			window.setContentPane(fullWindow);
-			window.setVisible(true);
+			forfeitGui();
 		}
 		else if(action.equals("Undo"))
 		{
-			RunGame.undoMove(gameBoard, useCustomPieces);
-			initializeBoard(gameBoard.getPositions());
-			JPanel fullWindow = initializeWindow(boardPanels);
-			window.setContentPane(fullWindow);
-			window.setVisible(true);
+			undoMoveGui();
 		}
 		else
 		{
-			ChessboardTile sourceButton = (ChessboardTile)e.getSource();
-			sourceButton.setBorder(new LineBorder(Color.RED, 2));
-			int xValue = sourceButton.getXValue();
-			int yValue = sourceButton.getYValue();
-			gameBoard = RunGame.setInputs(xValue, yValue, gameBoard);
+			processPieceClick(e);
 		}
 	}
 }

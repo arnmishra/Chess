@@ -4,6 +4,7 @@ import java.util.List;
 
 import Model.Board;
 import Model.Move;
+import Model.Team;
 
 /**
  * Common class to hold any common methods across the tests.
@@ -68,6 +69,8 @@ public class Common
 	public static void movePiece(Board board, int startX, int startY, int endX, int endY, int teamNumber)
 	{
 		Move move = new Move(startX, startY, endX, endY, teamNumber);
+		Team moving = board.getTeam(teamNumber);
+		moving.addMove(move);
 		board.setPositions(move);
 	}
 }

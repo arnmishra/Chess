@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import Model.Board;
 import Model.Move;
+import Model.Team;
 import Model.Pieces.*;
 
 /**
@@ -37,7 +38,7 @@ public class BoardTest {
 	@Test
 	public void movingPiece() throws Exception {
 		Board board = new Board(8, 8);
-		board.setInitialBoard();
+		board.setInitialBoard(false);
 		int teamNumber = 0;
 		Common.movePiece(board, 1, 1, 1, 2, teamNumber);
 		Piece[][] positions = board.getPositions();
@@ -54,7 +55,7 @@ public class BoardTest {
 	@Test
 	public void notInCheck() throws Exception {
 		Board board = new Board(8, 8);
-		board.setInitialBoard();
+		board.setInitialBoard(false);
 		int teamNumber = 0;
 		Move move = new Move(1, 1, 1, 2, teamNumber); // Move a pawn up from starting position
 		assertFalse(board.isTeamInCheckAfterMove(move));
@@ -68,7 +69,7 @@ public class BoardTest {
 	@Test
 	public void notProtectingCheck() throws Exception {
 		Board board = new Board(8,8);
-		board.setInitialBoard();
+		board.setInitialBoard(false);
 		setUpCheck(board);
 		Move move = new Move(6, 1, 6, 3, 0);
 		boolean inCheck = board.isTeamInCheckAfterMove(move);
@@ -83,7 +84,7 @@ public class BoardTest {
 	@Test
 	public void protectingCheck() throws Exception {
 		Board board = new Board(8,8);
-		board.setInitialBoard();
+		board.setInitialBoard(false);
 		setUpCheck(board);
 		Move move = new Move(6, 1, 6, 2, 0);
 		boolean inCheck = board.isTeamInCheckAfterMove(move);
@@ -97,7 +98,7 @@ public class BoardTest {
 	@Test
 	public void notInCheckMate() throws Exception {
 		Board board = new Board(8, 8);
-		board.setInitialBoard();
+		board.setInitialBoard(false);
 		assertFalse(board.getCheckMate(0));
 	}
 	
@@ -108,10 +109,10 @@ public class BoardTest {
 	@Test
 	public void inCheckMate() throws Exception {
 		Board board = new Board(8, 8);
-		board.setInitialBoard();
+		board.setInitialBoard(false);
 		setUpCheck(board);
-		Common.movePiece(board, 6, 1, 6, 2, 0);
-		Common.movePiece(board, 7, 3, 6, 2, 1);
+		Common.movePiece(board, 6, 1, 6, 2, 0); //g3
+		Common.movePiece(board, 7, 3, 6, 2, 1); //Qxg3#
 		boolean inCheckMate = board.getCheckMate(0);
 		assertTrue(inCheckMate);
 	}
@@ -138,7 +139,7 @@ public class BoardTest {
 	@Test
 	public void notInStaleMate() throws Exception {
 		Board board = new Board(8, 8);
-		board.setInitialBoard();
+		board.setInitialBoard(false);
 		boolean isStaleMate = board.getStaleMate(0);
 		assertFalse(isStaleMate);
 	}
@@ -151,7 +152,7 @@ public class BoardTest {
 	@Test
 	public void inStaleMate() throws Exception {
 		Board board = new Board(8,8);
-		board.setInitialBoard();
+		board.setInitialBoard(false);
 		setUpStaleMate(board);
 		boolean isStaleMate = board.getStaleMate(1);
 		assertTrue(isStaleMate);
@@ -184,6 +185,28 @@ public class BoardTest {
 		Common.movePiece(board, 1, 7, 2, 7, team1); //Qxc8
 		Common.movePiece(board, 5, 6, 6, 5, team0); //Kg6
 		Common.movePiece(board, 2, 7, 4, 5, team1); //Qe6
+	}
+	
+	@Test
+	public void undoMove() {
+		Board board = new Board(8, 8);
+		board.setInitialBoard(false);
+		int team0 = 0;
+		int team1 = 1;
+		Common.movePiece(board, 2, 1, 2, 3, team0); //c4
+		Common.movePiece(board, 7, 6, 7, 4, team1); //h5
+		Piece[][] positions = board.getPositions();
+		assertTrue(positions[1][2] == null);
+		assertTrue(positions[6][7] == null);
+		Team opposingTeam = board.getTeam(1);
+		Move lastOpposingMove = opposingTeam.undoLastMove();
+		Team currentTeam = board.getTeam(0);
+		Move lastMoveByCurrentTeam = currentTeam.undoLastMove();
+		board.unsetPositions(lastOpposingMove, lastOpposingMove.getRemovedPiece()); //undo move
+		board.unsetPositions(lastMoveByCurrentTeam, lastMoveByCurrentTeam.getRemovedPiece()); //undo move
+		assertFalse(positions[1][2] == null);
+		assertFalse(positions[6][7] == null);
+		
 	}
 	
 	

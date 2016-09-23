@@ -41,7 +41,7 @@ public class PieceTest {
 	@Test
 	public void moveOffBoard() throws Exception {
 		Board board = new Board(8, 8);
-		board.setInitialBoard();
+		board.setInitialBoard(false);
 		int teamNumber = 0;
 		
 		int xCoordinate = 0;
@@ -59,7 +59,7 @@ public class PieceTest {
 	@Test
 	public void spaceOccupiedBySameTeam() throws Exception {
 		Board board = new Board(8, 8);
-		board.setInitialBoard();
+		board.setInitialBoard(false);
 		int teamNumber = 0;
 		
 		int xCoordinate = 0;
