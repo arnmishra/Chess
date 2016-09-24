@@ -92,4 +92,14 @@ public class TeamTest {
 		}
 		assertEquals(numberOfPawns, 9); // After adding a pawn, Team0 should only have 9 pawns.
 	}
+	
+	public void testScore()
+	{
+		Board board = new Board(8, 8);
+		board.setInitialBoard(false);
+		
+		Team team0 = board.getTeam(0);
+		team0.setTeamScore(5);
+		assertEquals(team0.getTeamScore(), 5);
+	}
 }

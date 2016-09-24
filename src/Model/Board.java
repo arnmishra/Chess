@@ -108,8 +108,8 @@ public class Board
 		positions[yValue][4] = new King(team, 4, yValue);
 		if(useCustomPieces)
 		{
-			positions[yValue][6] = new Checker(team, 5, yValue);
-			positions[yValue][5] = new Ferz(team, 6, yValue);
+			positions[yValue][6] = new Checker(team, 6, yValue);
+			positions[yValue][5] = new Ferz(team, 5, yValue);
 		}
 		else
 		{
